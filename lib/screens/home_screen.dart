@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
-import 'tabs/chat_tab.dart';
-import 'tabs/features_tab.dart';
-import 'tabs/history_tab.dart';
-import 'tabs/settings_tab.dart';
+import 'chat_history_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,18 +11,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
-  final List<Widget> _tabs = [
-    const ChatTab(),
-    const FeaturesTab(),
-    const HistoryTab(),
-    const SettingsTab(),
-  ];
+  final ChatHistoryScreen _chatHistoryScreen = const ChatHistoryScreen();
+  final Widget _placeholderPage = const Scaffold(
+    body: Center(
+      child: Text('此页面已被移除'),
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _tabs[_currentIndex],
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [_placeholderPage, _chatHistoryScreen],
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -50,24 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600),
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble_outline),
-              activeIcon: Icon(Icons.chat_bubble),
-              label: '首页',
+              icon: Icon(Icons.people),
+              label: 'AI角色',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.grid_view_outlined),
-              activeIcon: Icon(Icons.grid_view),
-              label: '功能',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.history_outlined),
-              activeIcon: Icon(Icons.history),
-              label: '历史',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              activeIcon: Icon(Icons.settings),
-              label: '设置',
+              icon: Icon(Icons.chat),
+              label: '聊天历史',
             ),
           ],
         ),

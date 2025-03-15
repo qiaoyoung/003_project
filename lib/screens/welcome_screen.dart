@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:http/http.dart' as http;
 import '../colors.dart';
 import 'home_screen.dart';
 import 'dart:math' as math;
@@ -19,6 +21,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   late AnimationController _controller;
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _slideAnimation;
+  Timer? _autoNavigateTimer;
+  bool _isNetworkAvailable = false;
 
   @override
   void initState() {
@@ -52,25 +56,92 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // 启动动画
     _controller.forward();
 
-    // 3秒后自动导航到用户列表页面
-    Timer(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, '/user_list');
+    // 检查网络连接
+    _checkNetworkConnection();
+  }
+
+  // 检查网络连接
+  Future<void> _checkNetworkConnection() async {
+    try {
+      // 尝试访问网络
+      final response =
+          await http.get(Uri.parse('https://www.google.com')).timeout(
+        const Duration(seconds: 5),
+        onTimeout: () {
+          throw TimeoutException('连接超时');
+        },
+      );
+
+      setState(() {
+        _isNetworkAvailable = response.statusCode == 200;
+      });
+
+      if (!_isNetworkAvailable && mounted) {
+        _showNetworkErrorDialog();
       }
-    });
+    } catch (e) {
+      setState(() {
+        _isNetworkAvailable = false;
+      });
+
+      if (mounted) {
+        _showNetworkErrorDialog();
+      }
+    }
+  }
+
+  // 显示网络错误对话框
+  void _showNetworkErrorDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: const Text('网络连接错误'),
+        content: const Text('应用需要网络连接才能正常运行。请检查您的网络设置并重试。'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              _checkNetworkConnection();
+            },
+            child: const Text('重试'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              openAppSettings();
+            },
+            child: const Text('打开设置'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _autoNavigateTimer?.cancel();
     super.dispose();
   }
 
-  Future<void> _launchAppleAgreementUrl() async {
+  void _startAutoNavigateTimer() {
+    // 取消之前的计时器（如果有）
+    _autoNavigateTimer?.cancel();
+
+    // 3秒后自动导航到用户列表页面
+    _autoNavigateTimer = Timer(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/main');
+      }
+    });
+  }
+
+  void _launchPrivacyPolicy() async {
     final Uri url = Uri.parse(
         'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/');
-    if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw Exception('无法打开链接: $url');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
     }
   }
 
@@ -83,8 +154,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.blue.shade300,
-              Colors.blue.shade700,
+              const Color(0xFF1A237E), // 深蓝色
+              const Color(0xFF0D47A1), // 深蓝色
             ],
           ),
         ),
@@ -131,7 +202,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: const Text(
-                        'AILetGo',
+                        'Zyphra',
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
@@ -150,7 +221,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: const Text(
-                        '探索新朋友，开始新对话',
+                        '探索AI新朋友，开始新对话',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -161,7 +232,65 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     ),
                   ),
 
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 60),
+
+                  // 用户协议勾选 - 水平居中
+                  FadeTransition(
+                    opacity: _fadeAnimation,
+                    child: SlideTransition(
+                      position: _slideAnimation,
+                      child: Center(
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 24,
+                              height: 24,
+                              child: Checkbox(
+                                value: _isAgreementChecked,
+                                activeColor: Colors.white,
+                                checkColor: Colors.blue,
+                                side: const BorderSide(color: Colors.white),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    _isAgreementChecked = value ?? false;
+                                  });
+                                },
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            RichText(
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                ),
+                                children: [
+                                  const TextSpan(text: '我已阅读并同意'),
+                                  TextSpan(
+                                    text: '《用户最终协议》',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = _launchPrivacyPolicy,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
 
                   // 进入按钮
                   FadeTransition(
@@ -169,12 +298,17 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/user_list');
-                        },
+                        onPressed: _isAgreementChecked
+                            ? () {
+                                Navigator.pushReplacementNamed(
+                                    context, '/main');
+                              }
+                            : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.blue,
+                          disabledBackgroundColor: Colors.grey.shade400,
+                          disabledForegroundColor: Colors.grey.shade700,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 40,
                             vertical: 16,
@@ -208,7 +342,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         }
                       },
                       child: const Text(
-                        '© 2023 AILetGo. All rights reserved.',
+                        '© 2025 Zyphra. All rights reserved.',
                         style: TextStyle(
                           color: Colors.white70,
                           fontSize: 12,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../data/user_data.dart';
 import '../widgets/user_card.dart';
+import 'dart:async';
+import 'dart:math';
 
 class UserListScreen extends StatefulWidget {
   const UserListScreen({Key? key}) : super(key: key);
@@ -12,267 +14,436 @@ class UserListScreen extends StatefulWidget {
 
 class _UserListScreenState extends State<UserListScreen> {
   late List<User> users;
-  late List<User> filteredUsers;
-  String searchQuery = '';
+  late Map<String, List<User>> groupedUsers;
+  bool isLoading = false;
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
+      GlobalKey<RefreshIndicatorState>();
+  // 用于随机排序的随机数生成器
+  final Random _random = Random();
+  // 存储每个职业分组应该使用的布局样式
+  late Map<String, int> _layoutStyles;
 
   @override
   void initState() {
     super.initState();
     users = UserData.getUsers();
-    filteredUsers = users;
+    _groupUsersByOccupation();
+    _assignRandomLayoutStyles();
   }
 
-  void _filterUsers(String query) {
+  // 为每个职业分组分配随机的布局样式
+  void _assignRandomLayoutStyles() {
+    _layoutStyles = {};
+    for (var occupation in groupedUsers.keys) {
+      _layoutStyles[occupation] = _random.nextInt(3); // 0, 1, 2 分别对应三种布局
+    }
+  }
+
+  // 模拟网络请求延迟
+  Future<void> _refreshData() async {
     setState(() {
-      searchQuery = query;
-      if (query.isEmpty) {
-        filteredUsers = users;
-      } else {
-        filteredUsers = users.where((user) {
-          return user.nickname.toLowerCase().contains(query.toLowerCase()) ||
-              user.description.toLowerCase().contains(query.toLowerCase()) ||
-              user.tags.any((tag) =>
-                  tag.name.toLowerCase().contains(query.toLowerCase())) ||
-              user.occupation.toLowerCase().contains(query.toLowerCase()) ||
-              user.location.toLowerCase().contains(query.toLowerCase());
-        }).toList();
-      }
+      isLoading = true;
     });
+
+    // 模拟网络延迟
+    await Future.delayed(const Duration(seconds: 2));
+
+    setState(() {
+      users = UserData.getUsers(); // 重新获取数据
+      _groupUsersByOccupation();
+      // 重新随机分配布局样式
+      _assignRandomLayoutStyles();
+      isLoading = false;
+    });
+
+    return Future.value();
+  }
+
+  void _groupUsersByOccupation() {
+    groupedUsers = {};
+
+    // 按职业分组
+    for (var user in users) {
+      if (user.occupation.isEmpty) continue; // 跳过没有职业信息的用户
+
+      if (!groupedUsers.containsKey(user.occupation)) {
+        groupedUsers[user.occupation] = [];
+      }
+      groupedUsers[user.occupation]!.add(user);
+    }
+
+    // 移除人数太少的分组
+    groupedUsers.removeWhere((key, value) => value.length < 2);
+
+    // 如果没有足够的分组，添加一个"其他职业"分组
+    if (groupedUsers.isEmpty) {
+      groupedUsers['其他职业'] = users;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('用户列表'),
+        title: const Text('AI 人物'),
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.filter_list),
-            onPressed: () {
-              _showFilterDialog();
-            },
-          ),
-        ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: '搜索用户...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                filled: true,
-                fillColor: Colors.grey[100],
-                contentPadding: const EdgeInsets.symmetric(vertical: 0),
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: _refreshData,
+        child: groupedUsers.isEmpty
+            ? const Center(child: CircularProgressIndicator())
+            : CustomScrollView(
+                slivers: _buildOccupationGroups(),
               ),
-              onChanged: _filterUsers,
-            ),
-          ),
-          Expanded(
-            child: filteredUsers.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.search_off,
-                          size: 80,
-                          color: Colors.grey[400],
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          '没有找到匹配的用户',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: filteredUsers.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: UserCard(user: filteredUsers[index]),
-                      );
-                    },
-                  ),
-          ),
-        ],
       ),
     );
   }
 
-  void _showFilterDialog() {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (context, setState) {
-            return Container(
-              padding: const EdgeInsets.all(20),
+  List<Widget> _buildOccupationGroups() {
+    List<Widget> groups = [];
+
+    // 将职业分组的键转换为列表，以便可以随机排序
+    List<String> occupations = groupedUsers.keys.toList();
+    // 随机打乱职业分组的顺序
+    occupations.shuffle(_random);
+
+    for (var occupation in occupations) {
+      var occupationUsers = groupedUsers[occupation]!;
+
+      // 添加分组标题
+      groups.add(
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
+            child: Row(
+              children: [
+                Text(
+                  occupation,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    '${occupationUsers.length}人',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      // 使用为该职业分配的布局样式
+      int layoutStyle = _layoutStyles[occupation] ?? _random.nextInt(3);
+
+      // 根据布局样式选择不同的布局
+      switch (layoutStyle) {
+        case 0:
+          // 标准卡片布局
+          groups.add(
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) {
+                    if (i >= occupationUsers.length) return null;
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: UserCard(user: occupationUsers[i]),
+                    );
+                  },
+                  childCount: occupationUsers.length,
+                ),
+              ),
+            ),
+          );
+          break;
+
+        case 1:
+          // 水平滚动布局
+          groups.add(
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 220,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  itemCount: occupationUsers.length,
+                  itemBuilder: (context, i) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: _buildHorizontalUserCard(occupationUsers[i]),
+                    );
+                  },
+                ),
+              ),
+            ),
+          );
+          break;
+
+        case 2:
+          // 网格布局
+          groups.add(
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 16,
+                  mainAxisSpacing: 16,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) {
+                    if (i >= occupationUsers.length) return null;
+                    return _buildGridUserCard(occupationUsers[i]);
+                  },
+                  childCount: occupationUsers.length,
+                ),
+              ),
+            ),
+          );
+          break;
+      }
+    }
+
+    return groups;
+  }
+
+  Widget _buildHorizontalUserCard(User user) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/user_detail',
+          arguments: user,
+        );
+      },
+      child: Container(
+        width: 160,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // 用户头像
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(16)),
+              child: Image.asset(
+                user.avatarPath,
+                height: 120,
+                width: 160,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    '筛选用户',
+                  Text(
+                    user.nickname,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${user.age}岁 · ${user.location}',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white70,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    user.occupation,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context)
+                          .colorScheme
+                          .primary
+                          .withOpacity(0.9),
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    '性别',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      FilterChip(
-                        label: const Text('全部'),
-                        selected: searchQuery.isEmpty,
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('');
-                          }
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                      FilterChip(
-                        label: const Text('男性'),
-                        selected: searchQuery == '男性',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('男性');
-                          }
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                      FilterChip(
-                        label: const Text('女性'),
-                        selected: searchQuery == '女性',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('女性');
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    '民族',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: [
-                      FilterChip(
-                        label: const Text('亚洲人'),
-                        selected: searchQuery == '亚洲人',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('亚洲人');
-                          }
-                        },
-                      ),
-                      FilterChip(
-                        label: const Text('欧洲人'),
-                        selected: searchQuery == '欧洲人',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('欧洲人');
-                          }
-                        },
-                      ),
-                      FilterChip(
-                        label: const Text('非裔美国人'),
-                        selected: searchQuery == '非裔美国人',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('非裔美国人');
-                          }
-                        },
-                      ),
-                      FilterChip(
-                        label: const Text('拉丁裔'),
-                        selected: searchQuery == '拉丁裔',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('拉丁裔');
-                          }
-                        },
-                      ),
-                      FilterChip(
-                        label: const Text('白人'),
-                        selected: searchQuery == '白人',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('白人');
-                          }
-                        },
-                      ),
-                      FilterChip(
-                        label: const Text('印度裔'),
-                        selected: searchQuery == '印度裔',
-                        onSelected: (selected) {
-                          if (selected) {
-                            Navigator.pop(context);
-                            _filterUsers('印度裔');
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                      _filterUsers('');
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    child: const Text('重置筛选'),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
-            );
-          },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGridUserCard(User user) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/user_detail',
+          arguments: user,
         );
       },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // 用户头像
+            Expanded(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(16)),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      user.avatarPath,
+                      fit: BoxFit.cover,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withOpacity(0.7),
+                          ],
+                          stops: const [0.6, 1.0],
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 12,
+                      left: 12,
+                      right: 12,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            user.nickname,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Text(
+                                '${user.age}岁',
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Container(
+                                width: 6,
+                                height: 6,
+                                decoration: const BoxDecoration(
+                                  color: Colors.white30,
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Expanded(
+                                child: Text(
+                                  user.location,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.white70,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.work,
+                    size: 16,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(
+                      user.occupation,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

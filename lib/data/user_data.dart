@@ -395,19 +395,9 @@ class UserData {
     }
   }
 
-  // 生成随机位置
+  // 生成随机地点
   static String _generateLocation() {
     final List<String> cities = [
-      '北京',
-      '上海',
-      '广州',
-      '深圳',
-      '杭州',
-      '南京',
-      '成都',
-      '重庆',
-      '武汉',
-      '西安',
       '纽约',
       '洛杉矶',
       '伦敦',
@@ -427,7 +417,17 @@ class UserData {
       '孟买',
       '开罗',
       '里约热内卢',
-      '墨西哥城'
+      '墨西哥城',
+      '温哥华',
+      '奥斯陆',
+      '斯德哥尔摩',
+      '赫尔辛基',
+      '布拉格',
+      '维也纳',
+      '布达佩斯',
+      '华沙',
+      '雅典',
+      '苏黎世'
     ];
 
     return cities[_random.nextInt(cities.length)];
@@ -554,6 +554,68 @@ class UserData {
       '科技'
     ];
 
+    // 生活方式
+    final List<String> lifestyles = [
+      '极简主义',
+      '环保生活',
+      '数字游民',
+      '城市探险家',
+      '美食家',
+      '健身爱好者',
+      '瑜伽修行者',
+      '冒险家',
+      '艺术爱好者',
+      '科技极客',
+      '书虫',
+      '电影迷',
+      '音乐发烧友',
+      '咖啡爱好者',
+      '茶道爱好者',
+      '葡萄酒鉴赏家',
+      '摄影师',
+      '旅行博主',
+      '美食博主',
+      '时尚达人'
+    ];
+
+    // 价值观
+    final List<String> values = [
+      '家庭至上',
+      '追求自由',
+      '热爱和平',
+      '保护环境',
+      '尊重多元文化',
+      '追求平等',
+      '终身学习',
+      '诚实正直',
+      '乐于助人',
+      '追求卓越',
+      '创新思维',
+      '团队合作',
+      '独立思考',
+      '社会责任',
+      '文化传承'
+    ];
+
+    // 生活目标
+    final List<String> goals = [
+      '环游世界',
+      '创办自己的企业',
+      '学习多门语言',
+      '写一本书',
+      '参与志愿服务',
+      '学习一门乐器',
+      '掌握烹饪技巧',
+      '攀登高峰',
+      '完成马拉松',
+      '学习新技能',
+      '建立深厚友谊',
+      '追求工作与生活平衡',
+      '探索不同文化',
+      '成为行业专家',
+      '培养健康生活方式'
+    ];
+
     // 根据描述选择合适的爱好
     final List<String> contextualHobbies = [];
     if (info.contains('篮球')) contextualHobbies.add('打篮球');
@@ -567,22 +629,77 @@ class UserData {
     if (info.contains('潜水')) contextualHobbies.add('潜水');
     if (info.contains('艺术')) contextualHobbies.add('欣赏艺术');
 
+    // 选择性格特点
     final String personality =
         personalityTraits[_random.nextInt(personalityTraits.length)];
+    final String secondaryPersonality =
+        personalityTraits[_random.nextInt(personalityTraits.length)];
 
+    // 选择爱好
     String hobby;
+    String secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
     if (contextualHobbies.isNotEmpty) {
       hobby = contextualHobbies[_random.nextInt(contextualHobbies.length)];
+      // 确保第二个爱好与第一个不同
+      while (secondaryHobby == hobby && hobbies.length > 1) {
+        secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
+      }
     } else {
       hobby = hobbies[_random.nextInt(hobbies.length)];
+      // 确保第二个爱好与第一个不同
+      while (secondaryHobby == hobby && hobbies.length > 1) {
+        secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
+      }
     }
 
+    // 选择生活方式
+    final String lifestyle = lifestyles[_random.nextInt(lifestyles.length)];
+
+    // 选择价值观
+    final String value = values[_random.nextInt(values.length)];
+
+    // 选择生活目标
+    final String goal = goals[_random.nextInt(goals.length)];
+
+    // 根据职业添加专业描述
+    String professionalDescription = '';
+    if (occupation.contains('工程师') || occupation.contains('程序员')) {
+      professionalDescription = '在技术领域有着丰富的经验，擅长解决复杂问题和创新思考。';
+    } else if (occupation.contains('设计师')) {
+      professionalDescription = '有着敏锐的审美眼光和创意思维，善于将想法转化为视觉作品。';
+    } else if (occupation.contains('医生') || occupation.contains('护士')) {
+      professionalDescription = '关心他人健康，富有同情心，在医疗领域追求专业卓越。';
+    } else if (occupation.contains('教师') || occupation.contains('教授')) {
+      professionalDescription = '热爱教育事业，善于启发学生思考，乐于分享知识。';
+    } else if (occupation.contains('作家') || occupation.contains('编辑')) {
+      professionalDescription = '文字功底深厚，善于表达和讲述故事，对文学有着浓厚兴趣。';
+    } else if (occupation.contains('艺术') || occupation.contains('音乐')) {
+      professionalDescription = '艺术天赋出众，追求创意表达，在艺术领域不断探索和创新。';
+    } else if (occupation.contains('商') || occupation.contains('销售')) {
+      professionalDescription = '具有出色的沟通能力和商业头脑，善于把握市场机会。';
+    } else {
+      professionalDescription = '在工作中追求专业和卓越，不断学习和提升自己的能力。';
+    }
+
+    // 根据年龄段添加不同的描述
+    String ageRelatedDescription = '';
+    if (age < 25) {
+      ageRelatedDescription = '年轻有活力，充满对未来的憧憬和热情，正在探索人生的各种可能性。';
+    } else if (age < 35) {
+      ageRelatedDescription = '处于事业发展的关键阶段，平衡工作与个人生活，追求自我实现。';
+    } else if (age < 50) {
+      ageRelatedDescription = '拥有丰富的人生经验，事业和生活较为稳定，注重生活品质和个人成长。';
+    } else {
+      ageRelatedDescription = '阅历丰富，生活智慧深厚，珍视人生中的每一刻，乐于分享经验。';
+    }
+
+    // 构建更丰富的描述模板
     final List<String> templates = [
-      '一位$age岁的$ethnicity$gender，$personality的性格，喜欢$hobby。$occupation，来自$info',
-      '$personality的$ethnicity$gender，$age岁，是一名$occupation。$info 空闲时间喜欢$hobby。',
-      '来自$info的$age岁$ethnicity$gender，职业是$occupation。$personality，热爱$hobby。',
-      '$age岁$personality的$ethnicity$gender，职业是$occupation。$info 最大的爱好是$hobby。',
-      '$occupation，$age岁，$ethnicity$gender。$personality的性格，来自$info，喜欢$hobby。'
+      '一位$age岁的$ethnicity$gender，性格$personality且$secondaryPersonality，是一名$occupation。$professionalDescription 平时喜欢$hobby和$secondaryHobby，$lifestyle生活方式的践行者。$ageRelatedDescription 崇尚$value，梦想有一天能$goal。',
+      '$personality且$secondaryPersonality的$ethnicity$gender，$age岁，职业是$occupation。$professionalDescription 来自$info，$ageRelatedDescription 闲暇时光喜欢$hobby，偶尔也会$secondaryHobby。作为一个$lifestyle，$value对TA来说非常重要，未来希望能$goal。',
+      '来自$info的$age岁$ethnicity$gender，是一位$occupation。$professionalDescription $personality的性格使TA在工作中表现出色，而$secondaryPersonality的一面则体现在生活中。$ageRelatedDescription 热爱$hobby和$secondaryHobby，崇尚$lifestyle的生活。$value是TA的人生信条，希望有朝一日能$goal。',
+      '$age岁$personality的$ethnicity$gender，$occupation。$professionalDescription 虽然工作中是$personality的，但私下里却是$secondaryPersonality的。$ageRelatedDescription 最大的爱好是$hobby，也喜欢$secondaryHobby。作为$lifestyle，$value在TA的生活中占有重要位置，梦想着能$goal。',
+      '$occupation，$age岁，$ethnicity$gender。$professionalDescription $personality且$secondaryPersonality的性格，来自$info。$ageRelatedDescription 喜欢$hobby和$secondaryHobby，过着$lifestyle的生活。$value是TA一直坚持的原则，希望未来能够$goal。'
     ];
 
     return templates[_random.nextInt(templates.length)];

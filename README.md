@@ -1,6 +1,6 @@
-# AILetGo - AI聊天应用
+# Zyphra - AI聊天应用
 
-AILetGo是一款基于Flutter开发的AI聊天应用，专为iOS平台打造。
+Zyphra是一款基于Flutter开发的AI聊天应用，专为iOS平台打造。
 
 ## 项目特点
 
