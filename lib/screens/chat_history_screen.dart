@@ -60,7 +60,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
       });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('加载聊天历史失败: $e')),
+          SnackBar(content: Text('Failed to load chat history: $e')),
         );
       }
     }
@@ -70,7 +70,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('聊天历史'),
+        title: const Text('Chat History'),
       ),
       body: RefreshIndicator(
         onRefresh: _loadAllChatHistories,
@@ -99,7 +99,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  '暂无聊天记录',
+                  'No Chat Records',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -111,7 +111,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '与AI角色开始对话，记录将显示在这里',
+                  'Start a conversation with AI characters, records will appear here',
                   style: TextStyle(
                     fontSize: 14,
                     color: Theme.of(context)
@@ -126,7 +126,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
                     Navigator.pushNamed(context, '/user_list');
                   },
                   icon: const Icon(Icons.people),
-                  label: const Text('去选择AI角色'),
+                  label: const Text('Choose AI Characters'),
                 ),
               ],
             ),
@@ -195,16 +195,17 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
             return await showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: const Text('删除聊天记录'),
-                content: Text('确定要删除与${user.nickname}的所有聊天记录吗？此操作不可撤销。'),
+                title: const Text('Delete Chat History'),
+                content: Text(
+                    'Are you sure you want to delete all chat history with ${user.nickname}? This action cannot be undone.'),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(false),
-                    child: const Text('取消'),
+                    child: const Text('Cancel'),
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(context).pop(true),
-                    child: const Text('删除'),
+                    child: const Text('Delete'),
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.red,
                     ),
@@ -221,11 +222,12 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
             if (mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text('已删除与${user.nickname}的聊天记录'),
+                  content: Text(
+                      'Chat history with ${user.nickname} has been deleted'),
                   action: SnackBarAction(
-                    label: '撤销',
+                    label: 'Undo',
                     onPressed: () {
-                      // 撤销删除操作
+                      // Undo delete operation
                       _chatService.saveChatHistory(userId, messages);
                       _loadAllChatHistories();
                     },
@@ -322,7 +324,7 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
     if (messageDate == today) {
       return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
     } else if (messageDate == yesterday) {
-      return '昨天';
+      return 'Yesterday';
     } else {
       return '${time.month}/${time.day}';
     }

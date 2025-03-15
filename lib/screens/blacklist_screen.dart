@@ -50,7 +50,9 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('加载黑名单失败，请稍后再试')),
+          const SnackBar(
+              content:
+                  Text('Failed to load blacklist, please try again later')),
         );
       }
     }
@@ -76,7 +78,9 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
 
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('移除黑名单失败，请稍后再试')),
+            const SnackBar(
+                content: Text(
+                    'Failed to remove from blacklist, please try again later')),
           );
         }
       }
@@ -87,7 +91,9 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('移除黑名单失败，请稍后再试')),
+          const SnackBar(
+              content: Text(
+                  'Failed to remove from blacklist, please try again later')),
         );
       }
     }
@@ -95,24 +101,24 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
 
   void _showRemoveConfirmation(String userId) {
     final user = _userMap[userId];
-    final name = user?.nickname ?? 'AI角色 $userId';
+    final name = user?.nickname ?? 'AI Character $userId';
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('移除黑名单'),
-        content: Text('确定要将$name从黑名单中移除吗？'),
+        title: const Text('Remove from Blacklist'),
+        content: Text('Are you sure you want to remove $name from blacklist?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('取消'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               _removeFromBlacklist(userId);
             },
-            child: const Text('确定'),
+            child: const Text('Confirm'),
           ),
         ],
       ),
@@ -123,9 +129,9 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('黑名单'),
+        title: const Text('Blacklist'),
         backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: Stack(
@@ -157,7 +163,7 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            '您的黑名单为空',
+            'Your blacklist is empty',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
@@ -165,7 +171,7 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            '在AI角色详情页点击拉黑按钮将其加入黑名单',
+            'Click the block button on the AI character detail page to add them to the blacklist',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[500],
@@ -201,12 +207,12 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
                   : null,
             ),
             title: Text(
-              user?.nickname ?? 'AI角色 $userId',
+              user?.nickname ?? 'AI Character $userId',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: Text(user?.occupation ?? '已加入黑名单'),
+            subtitle: Text(user?.occupation ?? 'Added to blacklist'),
             trailing: IconButton(
               icon: const Icon(Icons.delete_outline, color: Colors.red),
               onPressed: () => _showRemoveConfirmation(userId),

@@ -33,24 +33,24 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: const Color(0xFF8BFFEA),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '首页',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.smart_toy),
-            label: 'AI工具',
+            label: 'AI Tools',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
-            label: '历史',
+            label: 'History',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: '设置',
+            label: 'Settings',
           ),
         ],
       ),
@@ -81,11 +81,11 @@ class PlaceholderPage extends StatelessWidget {
             Icon(
               Icons.construction,
               size: 80,
-              color: Colors.grey[400],
+              color: Color(0xFF8BFFEA),
             ),
             const SizedBox(height: 16),
             Text(
-              '$title页面正在建设中...',
+              '$title page is under construction...',
               style: TextStyle(
                 fontSize: 18,
                 color: Colors.grey[600],
@@ -97,11 +97,11 @@ class PlaceholderPage extends StatelessWidget {
                 // 可以添加一些交互
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('$title功能即将上线，敬请期待！'),
+                    content: Text('$title feature coming soon!'),
                   ),
                 );
               },
-              child: const Text('了解更多'),
+              child: const Text('Learn More'),
             ),
           ],
         ),

@@ -50,7 +50,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('加载收藏列表失败，请稍后再试')),
+          const SnackBar(
+              content:
+                  Text('Failed to load favorites, please try again later')),
         );
       }
     }
@@ -76,7 +78,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('移除收藏失败，请稍后再试')),
+            const SnackBar(
+                content: Text(
+                    'Failed to remove from favorites, please try again later')),
           );
         }
       }
@@ -87,7 +91,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('移除收藏失败，请稍后再试')),
+          const SnackBar(
+              content: Text(
+                  'Failed to remove from favorites, please try again later')),
         );
       }
     }
@@ -95,24 +101,24 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
 
   void _showRemoveConfirmation(String userId) {
     final user = _userMap[userId];
-    final name = user?.nickname ?? 'AI角色 $userId';
+    final name = user?.nickname ?? 'AI Character $userId';
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('移除收藏'),
-        content: Text('确定要将$name从收藏中移除吗？'),
+        title: const Text('Remove from Favorites'),
+        content: Text('Are you sure you want to remove $name from favorites?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('取消'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               _removeFromFavorites(userId);
             },
-            child: const Text('确定'),
+            child: const Text('Confirm'),
           ),
         ],
       ),
@@ -123,9 +129,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('我的收藏'),
+        title: const Text('My Favorites'),
         backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: Stack(
@@ -157,7 +163,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            '您还没有收藏任何AI角色',
+            'You have not collected any AI characters',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
@@ -165,7 +171,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            '在AI角色详情页点击收藏按钮添加到收藏',
+            'Click the favorite button on the AI character detail page to add to favorites',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[500],
@@ -201,12 +207,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   : null,
             ),
             title: Text(
-              user?.nickname ?? 'AI角色 $userId',
+              user?.nickname ?? 'AI Character $userId',
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            subtitle: Text(user?.occupation ?? '已收藏'),
+            subtitle: Text(user?.occupation ?? 'Collected'),
             trailing: IconButton(
               icon: const Icon(Icons.delete_outline, color: Colors.red),
               onPressed: () => _showRemoveConfirmation(userId),

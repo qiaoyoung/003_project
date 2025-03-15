@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark().copyWith(
-        primaryColor: Colors.indigo.shade800,
+        primaryColor: const Color(0xFF8BFFEA),
         scaffoldBackgroundColor: const Color(0xFF121212),
         appBarTheme: AppBarTheme(
           backgroundColor: const Color(0xFF1E1E1E),
@@ -32,21 +32,21 @@ class MyApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.indigo.shade700,
-            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFF8BFFEA),
+            foregroundColor: Colors.black,
           ),
         ),
         cardColor: const Color(0xFF2C2C2C),
-        colorScheme: ColorScheme.dark(
-          primary: Colors.indigo.shade700,
-          secondary: Colors.indigoAccent,
-          surface: const Color(0xFF1E1E1E),
-          background: const Color(0xFF121212),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF8BFFEA),
+          secondary: Color(0xFF5CDED0),
+          surface: Color(0xFF1E1E1E),
+          background: Color(0xFF121212),
           error: Colors.redAccent,
         ),
       ),
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Roboto',
         appBarTheme: const AppBarTheme(
@@ -56,17 +56,17 @@ class MyApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.indigo.shade700,
-            foregroundColor: Colors.white,
+            backgroundColor: const Color(0xFF8BFFEA),
+            foregroundColor: Colors.black,
           ),
         ),
         scaffoldBackgroundColor: const Color(0xFF121212),
         cardColor: const Color(0xFF2C2C2C),
-        colorScheme: ColorScheme.dark(
-          primary: Colors.indigo.shade700,
-          secondary: Colors.indigoAccent,
-          surface: const Color(0xFF1E1E1E),
-          background: const Color(0xFF121212),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFF8BFFEA),
+          secondary: Color(0xFF5CDED0),
+          surface: Color(0xFF1E1E1E),
+          background: Color(0xFF121212),
           error: Colors.redAccent,
         ),
       ),
@@ -86,15 +86,16 @@ class MyApp extends StatelessWidget {
 
           final defaultUser = User(
             userId: 'ai_assistant',
-            nickname: args?['title'] ?? 'AI 助手',
+            nickname: args?['title'] ?? 'AI Assistant',
             avatarPath: 'assets/images/normal_header.png',
-            description: '我是一个智能 AI 助手，可以回答您的各种问题。',
-            gender: '无',
+            description:
+                'I am an intelligent AI assistant that can answer your various questions.',
+            gender: 'None',
             age: 0,
             tags: [
-              UserTag(name: 'AI', color: Colors.blue),
-              UserTag(name: '助手', color: Colors.green),
-              UserTag(name: '智能', color: Colors.purple),
+              UserTag(name: 'AI', color: const Color(0xFF8BFFEA)),
+              UserTag(name: 'Assistant', color: const Color(0xFF5CDED0)),
+              UserTag(name: 'Smart', color: const Color(0xFF00D1B2)),
             ],
             isOnline: true,
             lastActive: DateTime.now(),

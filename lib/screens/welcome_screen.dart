@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:http/http.dart' as http;
 import '../colors.dart';
-import 'home_screen.dart';
 import 'dart:math' as math;
 import 'dart:async';
 
@@ -56,21 +54,29 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // 启动动画
     _controller.forward();
 
-    // 检查网络连接
-    _checkNetworkConnection();
+    // 使用Future.microtask确保在构建完成后再检查网络连接
+    Future.microtask(() {
+      if (mounted) {
+        _checkNetworkConnection();
+      }
+    });
   }
 
   // 检查网络连接
   Future<void> _checkNetworkConnection() async {
     try {
-      // 尝试访问网络
-      final response =
-          await http.get(Uri.parse('https://www.google.com')).timeout(
+      // 尝试访问网络，使用Apple的服务而不是Google的服务
+      final response = await http.get(
+        Uri.parse('https://www.apple.com/cn/'),
+        headers: {'Connection': 'close'}, // 添加这个头部可以避免保持连接
+      ).timeout(
         const Duration(seconds: 5),
         onTimeout: () {
-          throw TimeoutException('连接超时');
+          throw TimeoutException('Connection timeout');
         },
       );
+
+      if (!mounted) return; // 添加mounted检查，防止组件已销毁时调用setState
 
       setState(() {
         _isNetworkAvailable = response.statusCode == 200;
@@ -80,6 +86,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
         _showNetworkErrorDialog();
       }
     } catch (e) {
+      if (!mounted) return; // 添加mounted检查，防止组件已销毁时调用setState
+
       setState(() {
         _isNetworkAvailable = false;
       });
@@ -96,22 +104,22 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('网络连接错误'),
-        content: const Text('应用需要网络连接才能正常运行。请检查您的网络设置并重试。'),
+        title: const Text('Network Connection Error'),
+        content: const Text(
+            'Zyphra requires an internet connection to function properly. Please check your network settings and try again.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               _checkNetworkConnection();
             },
-            child: const Text('重试'),
+            child: const Text('Retry'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              openAppSettings();
             },
-            child: const Text('打开设置'),
+            child: const Text('Close'),
           ),
         ],
       ),
@@ -145,6 +153,20 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     }
   }
 
+  // 处理开始按钮点击
+  void _handleGetStarted() async {
+    if (!_isNetworkAvailable) {
+      await _checkNetworkConnection();
+      if (!_isNetworkAvailable) {
+        _showNetworkErrorDialog();
+        return; // 如果网络不可用，不继续
+      }
+    }
+
+    // 网络可用，导航到主页
+    Navigator.pushReplacementNamed(context, '/main');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,8 +176,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              const Color(0xFF1A237E), // 深蓝色
-              const Color(0xFF0D47A1), // 深蓝色
+              const Color(0xFF8BFFEA), // 浅青绿色（主色调）
+              const Color(0xFF00D1B2), // 深青绿色
             ],
           ),
         ),
@@ -221,7 +243,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: const Text(
-                        '探索AI新朋友，开始新对话',
+                        'Explore AI Friends, Start New Conversations',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
@@ -239,40 +261,41 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     opacity: _fadeAnimation,
                     child: SlideTransition(
                       position: _slideAnimation,
-                      child: Center(
-                        child: Wrap(
-                          alignment: WrapAlignment.center,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            SizedBox(
-                              width: 24,
-                              height: 24,
-                              child: Checkbox(
-                                value: _isAgreementChecked,
-                                activeColor: Colors.white,
-                                checkColor: Colors.blue,
-                                side: const BorderSide(color: Colors.white),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    _isAgreementChecked = value ?? false;
-                                  });
-                                },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: Checkbox(
+                              value: _isAgreementChecked,
+                              activeColor: Colors.white,
+                              checkColor: Colors.blue,
+                              side: const BorderSide(color: Colors.white),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
                               ),
+                              onChanged: (value) {
+                                setState(() {
+                                  _isAgreementChecked = value ?? false;
+                                });
+                              },
                             ),
-                            const SizedBox(width: 12),
-                            RichText(
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: RichText(
                               text: TextSpan(
                                 style: const TextStyle(
                                   fontSize: 14,
                                   color: Colors.white,
                                 ),
                                 children: [
-                                  const TextSpan(text: '我已阅读并同意'),
+                                  const TextSpan(
+                                      text: 'I have read and agree to the '),
                                   TextSpan(
-                                    text: '《用户最终协议》',
+                                    text: 'End User Agreement',
                                     style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
@@ -284,8 +307,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                                 ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -298,12 +321,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: ElevatedButton(
-                        onPressed: _isAgreementChecked
-                            ? () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/main');
-                              }
-                            : null,
+                        onPressed:
+                            _isAgreementChecked ? _handleGetStarted : null,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
                           foregroundColor: Colors.blue,
@@ -319,7 +338,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                           elevation: 5,
                         ),
                         child: const Text(
-                          '立即开始',
+                          'Get Started',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

@@ -87,8 +87,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(_isBlacklisted
-                ? '已将${user.nickname}加入黑名单'
-                : '已将${user.nickname}从黑名单中移除'),
+                ? '${user.nickname} has been added to blacklist'
+                : '${user.nickname} has been removed from blacklist'),
             duration: const Duration(seconds: 2),
           ),
         );
@@ -101,7 +101,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('操作失败，请稍后重试'),
+            content: Text('Operation failed, please try again later'),
             duration: Duration(seconds: 2),
           ),
         );
@@ -141,8 +141,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(_isFavorited
-                ? '已将${user.nickname}添加到收藏'
-                : '已将${user.nickname}从收藏中移除'),
+                ? '${user.nickname} has been added to favorites'
+                : '${user.nickname} has been removed from favorites'),
             duration: const Duration(seconds: 2),
             backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
@@ -156,7 +156,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('操作失败，请稍后重试'),
+            content: const Text('Operation failed, please try again later'),
             duration: const Duration(seconds: 2),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
@@ -171,30 +171,32 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('举报 ${user.nickname}'),
+        title: Text('Report ${user.nickname}'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('请选择举报原因：'),
+            const Text('Please select a reason:'),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
               runSpacing: 8,
               children: [
-                _buildReportReasonChip('色情低俗', _reasonController),
-                _buildReportReasonChip('政治敏感', _reasonController),
-                _buildReportReasonChip('暴力血腥', _reasonController),
-                _buildReportReasonChip('诈骗信息', _reasonController),
-                _buildReportReasonChip('侮辱谩骂', _reasonController),
-                _buildReportReasonChip('虚假信息', _reasonController),
+                _buildReportReasonChip(
+                    'Pornographic content', _reasonController),
+                _buildReportReasonChip(
+                    'Political sensitivity', _reasonController),
+                _buildReportReasonChip('Violence', _reasonController),
+                _buildReportReasonChip('Scam', _reasonController),
+                _buildReportReasonChip('Harassment', _reasonController),
+                _buildReportReasonChip('False information', _reasonController),
               ],
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _reasonController,
               decoration: const InputDecoration(
-                hintText: '其他原因（选填）',
+                hintText: 'Other reasons (optional)',
                 border: OutlineInputBorder(),
               ),
               maxLines: 3,
@@ -204,12 +206,12 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('取消'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
               final reason = _reasonController.text.trim().isEmpty
-                  ? '未指定原因'
+                  ? 'No reason specified'
                   : _reasonController.text.trim();
 
               // 先关闭对话框
@@ -218,7 +220,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
               // 然后在主界面处理举报逻辑
               _submitReport(user, reason);
             },
-            child: const Text('提交'),
+            child: const Text('Submit'),
           ),
         ],
       ),
@@ -253,7 +255,9 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(success ? '举报成功，感谢您的反馈' : '举报失败，请稍后重试'),
+          content: Text(success
+              ? 'Report submitted successfully, thank you for your feedback'
+              : 'Report failed, please try again later'),
           duration: const Duration(seconds: 2),
         ),
       );
@@ -295,7 +299,9 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                       _isFavorited ? Icons.favorite : Icons.favorite_border,
                       color: _isFavorited ? Colors.red : Colors.white,
                     ),
-                    tooltip: _isFavorited ? '取消收藏' : '添加到收藏',
+                    tooltip: _isFavorited
+                        ? 'Remove from Favorites'
+                        : 'Add to Favorites',
                     onPressed: _isLoading ? null : () => _toggleFavorite(user),
                   ),
                   // 拉黑按钮
@@ -306,7 +312,9 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                           : Icons.person_off_outlined,
                       color: _isBlacklisted ? Colors.red : Colors.white,
                     ),
-                    tooltip: _isBlacklisted ? '移出黑名单' : '加入黑名单',
+                    tooltip: _isBlacklisted
+                        ? 'Remove from Blacklist'
+                        : 'Add to Blacklist',
                     onPressed: _isLoading ? null : () => _toggleBlacklist(user),
                   ),
                   // 举报按钮
@@ -315,7 +323,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                       _isReported ? Icons.report : Icons.report_outlined,
                       color: _isReported ? Colors.orange : Colors.white,
                     ),
-                    tooltip: _isReported ? '已举报' : '举报',
+                    tooltip: _isReported ? 'Reported' : 'Report',
                     onPressed: _isLoading || _isReported
                         ? null
                         : () => _showReportDialog(user),
@@ -377,7 +385,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                                 ),
                                 const SizedBox(width: 16),
                                 Text(
-                                  '${user.age}岁',
+                                  '${user.age} years old',
                                   style: TextStyle(
                                     color: Colors.white.withOpacity(0.8),
                                     fontSize: 16,
@@ -418,7 +426,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                               const SizedBox(width: 8),
                               Expanded(
                                 child: Text(
-                                  '该用户已被您加入黑名单，您将不会再收到来自该用户的消息。',
+                                  'This user has been added to your blacklist. You will no longer receive messages from this user.',
                                   style: TextStyle(
                                     color: Colors.red.shade300,
                                   ),
@@ -430,7 +438,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
 
                       // 个人描述
                       Text(
-                        '个人描述',
+                        'Personal Description',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -454,7 +462,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
 
                       // 标签
                       Text(
-                        '标签',
+                        'Tags',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -491,7 +499,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
 
                       // AI生成内容
                       Text(
-                        'AI生成内容',
+                        'AI Generated Content',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -515,7 +523,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '这是一个AI生成的角色，不代表真实人物。该角色的所有信息、照片和对话内容均由人工智能创建，仅用于演示和娱乐目的。',
+                              'This is an AI-generated character and does not represent a real person. All information, photos, and conversation content for this character are created by artificial intelligence for demonstration and entertainment purposes only.',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context)
@@ -527,7 +535,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              '您可以与此AI角色进行互动，但请记住这只是一个虚拟角色。',
+                              'You can interact with this AI character, but please remember that it is only a virtual character.',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context)
@@ -544,7 +552,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
 
                       // 基本信息
                       Text(
-                        '基本信息',
+                        'Basic Information',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -553,23 +561,25 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                       ),
                       const SizedBox(height: 12),
                       _buildInfoItem(
-                          context, Icons.work, '职业', user.occupation),
-                      _buildInfoItem(context, Icons.person, '性别', user.gender),
-                      _buildInfoItem(context, Icons.cake, '年龄', '${user.age}岁'),
+                          context, Icons.work, 'Occupation', user.occupation),
                       _buildInfoItem(
-                          context, Icons.public, '民族', user.ethnicity),
+                          context, Icons.person, 'Gender', user.gender),
                       _buildInfoItem(
-                          context, Icons.location_city, '背景', user.background),
-                      _buildInfoItem(context, Icons.access_time, '最近活跃',
+                          context, Icons.cake, 'Age', '${user.age} years old'),
+                      _buildInfoItem(
+                          context, Icons.public, 'Ethnicity', user.ethnicity),
+                      _buildInfoItem(context, Icons.location_city, 'Background',
+                          user.background),
+                      _buildInfoItem(context, Icons.access_time, 'Last Active',
                           _formatLastActive(user.lastActive)),
-                      _buildInfoItem(context, Icons.message, '消息数',
-                          '${user.messageCount}条'),
+                      _buildInfoItem(context, Icons.message, 'Message Count',
+                          '${user.messageCount} messages'),
 
                       const SizedBox(height: 24),
 
                       // 互动选项
                       Text(
-                        '互动选项',
+                        'Interaction Options',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -603,7 +613,9 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                                 Colors.grey.withOpacity(0.3),
                           ),
                           child: Text(
-                            _isBlacklisted ? '已拉黑，无法对话' : '开始AI对话',
+                            _isBlacklisted
+                                ? 'Blacklisted, Cannot Chat'
+                                : 'Start AI Conversation',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -639,7 +651,9 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                _isFavorited ? '取消收藏' : '添加到收藏',
+                                _isFavorited
+                                    ? 'Remove from Favorites'
+                                    : 'Add to Favorites',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
@@ -670,7 +684,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '免责声明',
+                              'Disclaimer',
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -679,7 +693,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              '本应用中的所有AI角色均为虚构，任何与现实人物的相似之处纯属巧合。AI生成的内容可能存在不准确或不适当的情况，我们不对其准确性或适当性做任何保证。',
+                              'All AI characters in this application are fictional, and any resemblance to real persons is purely coincidental. AI-generated content may be inaccurate or inappropriate, and we make no guarantees regarding its accuracy or appropriateness.',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context)
@@ -752,13 +766,13 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
     final difference = now.difference(lastActive);
 
     if (difference.inMinutes < 1) {
-      return '刚刚';
+      return 'Just now';
     } else if (difference.inHours < 1) {
-      return '${difference.inMinutes}分钟前';
+      return '${difference.inMinutes} minutes ago';
     } else if (difference.inDays < 1) {
-      return '${difference.inHours}小时前';
+      return '${difference.inHours} hours ago';
     } else if (difference.inDays < 7) {
-      return '${difference.inDays}天前';
+      return '${difference.inDays} days ago';
     } else {
       return DateFormat('yyyy-MM-dd').format(lastActive);
     }

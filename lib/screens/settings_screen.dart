@@ -71,7 +71,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         });
       }
     } catch (e) {
-      print('加载用户偏好统计失败: $e');
+      print('Loading user preference statistics failed: $e');
     }
   }
 
@@ -90,7 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       }
     } catch (e) {
       // 错误处理，但不显示加载状态
-      print('加载用户信息失败: $e');
+      print('Loading user information failed: $e');
     }
   }
 
@@ -106,7 +106,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       }
     } catch (e) {
       // 错误处理，但不显示加载状态
-      print('加载设置失败: $e');
+      print('Loading settings failed: $e');
     }
   }
 
@@ -136,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('设置已保存')),
+          const SnackBar(content: Text('Settings saved')),
         );
       }
     } catch (e) {
@@ -146,7 +146,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       // 错误处理
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('保存设置失败，请稍后再试')),
+          const SnackBar(
+              content: Text('Failed to save settings, please try again later')),
         );
       }
     }
@@ -194,9 +195,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // 显示权限错误
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text('需要相册访问权限才能选择头像。请在设置中允许访问相册。'),
+              content: const Text(
+                  'Gallery access permission is required to select an avatar. Please allow access in settings.'),
               action: SnackBarAction(
-                label: '打开设置',
+                label: 'Open Settings',
                 onPressed: () {
                   openAppSettings();
                 },
@@ -206,7 +208,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         } else {
           // 显示一般错误
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('选择头像失败: ${e.toString()}')),
+            SnackBar(content: Text('Failed to select avatar: ${e.toString()}')),
           );
         }
       }
@@ -221,11 +223,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('编辑昵称'),
+          title: const Text('Edit Nickname'),
           content: TextField(
             controller: controller,
             decoration: const InputDecoration(
-              hintText: '请输入新昵称',
+              hintText: 'Enter new nickname',
               border: OutlineInputBorder(),
             ),
             maxLength: 20,
@@ -235,7 +237,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('取消'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () async {
@@ -262,12 +264,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
                   if (mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(success ? '昵称已更新' : '更新昵称失败')),
+                      SnackBar(
+                          content: Text(success
+                              ? 'Nickname updated'
+                              : 'Failed to update nickname')),
                     );
                   }
                 }
               },
-              child: const Text('保存'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -340,40 +345,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
               SliverList(
                 delegate: SliverChildListDelegate([
                   const SizedBox(height: 8),
-                  _buildSectionTitle('通用设置'),
+                  _buildSectionTitle('General Settings'),
                   _buildSwitchItem(
                     icon: Icons.notifications,
-                    title: '通知',
+                    title: 'Notifications',
                     value: _isNotificationEnabled,
                     onChanged: (value) {
                       _saveSettings('isNotificationEnabled', value);
                     },
                   ),
                   const Divider(),
-                  _buildSectionTitle('我的收藏与管理'),
+                  _buildSectionTitle('My Collections & Management'),
                   _buildSettingItem(
                     icon: Icons.favorite,
-                    title: '我的收藏',
-                    subtitle: '已收藏 $_favoritesCount 个AI角色',
+                    title: 'My Favorites',
+                    subtitle: '$_favoritesCount AI characters favorited',
                     onTap: _navigateToFavorites,
                   ),
                   _buildSettingItem(
                     icon: Icons.block,
-                    title: '黑名单',
-                    subtitle: '已拉黑 $_blacklistCount 个AI角色',
+                    title: 'Blacklist',
+                    subtitle: '$_blacklistCount AI characters blacklisted',
                     onTap: _navigateToBlacklist,
                   ),
                   _buildSettingItem(
                     icon: Icons.report,
-                    title: '举报记录',
-                    subtitle: '已举报 $_reportedCount 个AI角色',
+                    title: 'Report Records',
+                    subtitle: '$_reportedCount AI characters reported',
                     onTap: _navigateToReports,
                   ),
                   const Divider(),
-                  _buildSectionTitle('关于'),
+                  _buildSectionTitle('About'),
                   _buildSettingItem(
                     icon: Icons.info_outline,
-                    title: '版本信息',
+                    title: 'Version Info',
                     subtitle: 'v1.0.0',
                     onTap: () {
                       Navigator.of(context).push(
@@ -385,7 +390,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   _buildSettingItem(
                     icon: Icons.description_outlined,
-                    title: '用户协议',
+                    title: 'Terms of Service',
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -396,7 +401,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   _buildSettingItem(
                     icon: Icons.privacy_tip_outlined,
-                    title: '隐私政策',
+                    title: 'Privacy Policy',
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -490,7 +495,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 Text(
                   _nickname,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -498,7 +503,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 const SizedBox(width: 4),
                 const Icon(
                   Icons.edit,
-                  color: Colors.white,
+                  color: Colors.black,
                   size: 16,
                 ),
               ],
@@ -508,7 +513,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Text(
             _userId,
             style: TextStyle(
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.black.withOpacity(0.8),
               fontSize: 14,
             ),
           ),
@@ -581,21 +586,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('版本信息'),
+          title: const Text('Version Info'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
-              Text('当前版本: v1.0.0'),
+              Text('Current Version: v1.0.0'),
               SizedBox(height: 8),
-              Text('构建日期: 2025-03-15'),
+              Text('Build Date: 2025-03-15'),
               SizedBox(height: 16),
-              Text('新功能:'),
+              Text('New Features:'),
               SizedBox(height: 4),
-              Text('• 全新的用户界面'),
-              Text('• 优化的AI聊天体验'),
-              Text('• 增加更多AI角色'),
-              Text('• 修复已知问题'),
+              Text('• Brand new user interface'),
+              Text('• Optimized AI chat experience'),
+              Text('• More AI characters added'),
+              Text('• Fixed known issues'),
             ],
           ),
           actions: [
@@ -603,7 +608,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('确定'),
+              child: const Text('OK'),
             ),
             TextButton(
               onPressed: () {
@@ -614,7 +619,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 );
               },
-              child: const Text('查看详情'),
+              child: const Text('View Details'),
             ),
           ],
         );

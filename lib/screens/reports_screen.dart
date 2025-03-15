@@ -50,7 +50,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
 
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('加载举报记录失败，请稍后再试')),
+          const SnackBar(
+              content: Text(
+                  'Failed to load report records, please try again later')),
         );
       }
     }
@@ -60,9 +62,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('举报记录'),
+        title: const Text('Report Records'),
         backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: Stack(
@@ -94,7 +96,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            '您还没有举报任何AI角色',
+            'You have not reported any AI characters',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
@@ -102,11 +104,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            '在AI角色详情页点击举报按钮提交举报',
+            'Click the report button on the AI character detail page to report inappropriate content',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[500],
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -139,8 +142,8 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   ? const Icon(Icons.report, color: Colors.white, size: 20)
                   : null,
             ),
-            title: Text(user?.nickname ?? 'AI角色 $userId'),
-            subtitle: Text('${reasons.length}个举报'),
+            title: Text(user?.nickname ?? 'AI character $userId'),
+            subtitle: Text('${reasons.length} reports'),
             children: [
               ListView.separated(
                 shrinkWrap: true,
@@ -150,13 +153,14 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 itemBuilder: (context, index) {
                   final parts = reasons[index].split(': ');
                   final timestamp = parts.first;
-                  final reason = parts.length > 1 ? parts.last : '未知原因';
+                  final reason =
+                      parts.length > 1 ? parts.last : 'Unknown reason';
 
                   return ListTile(
                     dense: true,
                     title: Text(reason),
                     subtitle: Text(
-                      '举报时间: $timestamp',
+                      'Report time: $timestamp',
                       style: const TextStyle(fontSize: 12),
                     ),
                     leading: const Icon(Icons.warning, color: Colors.orange),

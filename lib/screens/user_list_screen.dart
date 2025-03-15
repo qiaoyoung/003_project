@@ -77,7 +77,7 @@ class _UserListScreenState extends State<UserListScreen> {
 
     // 如果没有足够的分组，添加一个"其他职业"分组
     if (groupedUsers.isEmpty) {
-      groupedUsers['其他职业'] = users;
+      groupedUsers['Other Professions'] = users;
     }
   }
 
@@ -85,7 +85,7 @@ class _UserListScreenState extends State<UserListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI 人物'),
+        title: const Text('AI Characters'),
         elevation: 0,
       ),
       body: RefreshIndicator(
@@ -136,7 +136,7 @@ class _UserListScreenState extends State<UserListScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    '${occupationUsers.length}人',
+                    '${occupationUsers.length} people',
                     style: TextStyle(
                       fontSize: 14,
                       color: Theme.of(context).colorScheme.primary,
@@ -279,7 +279,7 @@ class _UserListScreenState extends State<UserListScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    '${user.age}岁 · ${user.location}',
+                    '${user.age} years · ${user.location}',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.white70,
@@ -380,7 +380,7 @@ class _UserListScreenState extends State<UserListScreen> {
                           Row(
                             children: [
                               Text(
-                                '${user.age}岁',
+                                '${user.age} years',
                                 style: const TextStyle(
                                   fontSize: 12,
                                   color: Colors.white70,
