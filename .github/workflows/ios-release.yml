@@ -78,7 +78,7 @@ jobs:
 
       - name: Upload to App Store using altool
         env:
-          IPA_PATH: "build/ios/ipa/zyphra.ipa"
+          IPA_PATH: "build/ios/ipa/qintar.ipa"
           APPLE_ID: "HappyCode2025111@outlook.com"
           APP_SPECIFIC_PASSWORD: "qdlh-ndym-duye-jlms"
         run: |

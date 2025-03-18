@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
   const PrivacyPolicyScreen({Key? key}) : super(key: key);
@@ -26,16 +27,16 @@ class PrivacyPolicyScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Last Updated: May 15, 2025',
+            Text(
+              'Last updated: March 15, 2025',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.grey,
+                color: Colors.grey[500],
               ),
             ),
             const SizedBox(height: 24),
             const Text(
-              'Zyphra Team ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Zyphra.',
+              'Qintar Team ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Qintar.',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
@@ -74,7 +75,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             _buildSection(
               '5. Your Choices',
-              'Account Information: You may update, correct, or delete your account information at any time by logging into your account. If you wish to delete your account, please contact us at privacy@zyphra.com.\n\n'
+              'Account Information: You may update, correct, or delete your account information at any time by logging into your account. If you wish to delete your account, please contact us at privacy@qintar.com.\n\n'
                   'Cookies: Most web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove or reject browser cookies.\n\n'
                   'Promotional Communications: You may opt out of receiving promotional emails from us by following the instructions in those emails. If you opt out, we may still send you non-promotional emails, such as those about your account or our ongoing business relations.',
             ),
@@ -92,15 +93,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             _buildSection(
               '9. Contact Us',
-              'If you have any questions about this Privacy Policy, please contact us at privacy@zyphra.com.',
+              'If you have any questions about this Privacy Policy, please contact us at privacy@qintar.com.',
             ),
             const SizedBox(height: 32),
-            const Center(
+            Center(
               child: Text(
-                '© 2025 Zyphra. All rights reserved.',
+                '© 2025 Qintar. All rights reserved.',
                 style: TextStyle(
                   fontSize: 14,
-                  color: Colors.grey,
+                  color: Colors.grey[500],
                 ),
               ),
             ),

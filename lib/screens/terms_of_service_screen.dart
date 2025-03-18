@@ -23,103 +23,84 @@ class TermsOfServiceScreen extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
             ),
             const SizedBox(height: 8),
-            const Text(
-              'Last Updated: May 15, 2025',
+            Text(
+              'Last updated: March 15, 2025',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.grey,
+                color: Colors.grey[400],
               ),
             ),
             const SizedBox(height: 24),
             const Text(
-              'Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Zyphra mobile application (the "Service") operated by Zyphra Team ("us", "we", or "our").',
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-            _buildSection(
-              '1. Acceptance of Terms',
-              'By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.',
-            ),
-            _buildSection(
-              '2. Changes to Terms',
-              'We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days\' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.',
-            ),
-            _buildSection(
-              '3. User Accounts',
-              'When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.',
-            ),
-            _buildSection(
-              '4. Intellectual Property',
-              'The Service and its original content, features, and functionality are and will remain the exclusive property of Zyphra Team and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Zyphra Team.',
-            ),
-            _buildSection(
-              '5. User Content',
-              'Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material. You are responsible for the content you post to the Service, including its legality, reliability, and appropriateness.',
-            ),
-            _buildSection(
-              '6. Prohibited Uses',
-              'You may use the Service only for lawful purposes and in accordance with the Terms. You agree not to use the Service:\n\n'
-                  '• In any way that violates any applicable national or international law or regulation.\n'
-                  '• For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way.\n'
-                  '• To transmit, or procure the sending of, any advertising or promotional material, including any "junk mail", "chain letter," "spam," or any other similar solicitation.\n'
-                  '• To impersonate or attempt to impersonate the Company, a Company employee, another user, or any other person or entity.',
-            ),
-            _buildSection(
-              '7. Termination',
-              'We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Service will immediately cease.',
-            ),
-            _buildSection(
-              '8. Limitation of Liability',
-              'In no event shall Zyphra Team, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage.',
-            ),
-            _buildSection(
-              '9. Governing Law',
-              'These Terms shall be governed and construed in accordance with the laws of the United States, without regard to its conflict of law provisions. Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights.',
-            ),
-            _buildSection(
-              '10. Contact Us',
-              'If you have any questions about these Terms, please contact us at support@zyphra.com.',
-            ),
-            const SizedBox(height: 32),
-            const Center(
-              child: Text(
-                '© 2025 Zyphra. All rights reserved.',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey,
-                ),
+              'Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the Qintar mobile application (the "Service") operated by Qintar Team ("us", "we", or "our").',
+              style: TextStyle(
+                fontSize: 16,
+                color: Colors.white,
               ),
             ),
             const SizedBox(height: 16),
+            _buildSectionTitle('1. Your Use of the Service'),
+            _buildSectionContent(
+                'By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Service.\n\nYou must be at least 13 years old to use the Service. By using the Service, you represent and warrant that you meet all eligibility requirements.'),
+            _buildSectionTitle('2. Content'),
+            _buildSectionContent(
+                'Our Service allows you to engage with AI characters, share and obtain information. You are responsible for the data you share with the Service.\n\nBy using the Service, you grant us a non-exclusive, transferable, sub-licensable, royalty-free, worldwide license to use, modify, and analyze any content that you submit through the Service.'),
+            _buildSectionTitle('3. Intellectual Property'),
+            _buildSectionContent(
+                'The Service and its original content, features, and functionality are and will remain the exclusive property of Qintar Team and its licensors. The Service is protected by copyright, trademark, and other laws of both the United States and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Qintar Team.'),
+            _buildSectionTitle('4. Termination'),
+            _buildSectionContent(
+                'We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.\n\nAll provisions of the Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.'),
+            _buildSectionTitle('5. Disclaimer'),
+            _buildSectionContent(
+                'Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied.\n\nAI characters are simulations and do not represent real individuals or entities. Responses generated by AI characters are based on patterns in training data and may not always be accurate, complete, or appropriate.'),
+            _buildSectionTitle('6. Limitation of Liability'),
+            _buildSectionContent(
+                'In no event shall Qintar Team, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.'),
+            _buildSectionTitle('7. Changes'),
+            _buildSectionContent(
+                'We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.'),
+            _buildSectionTitle('8. Contact Us'),
+            _buildSectionContent(
+                'If you have any questions about these Terms, please contact us at support@qintar.com.'),
+            const SizedBox(height: 24),
+            Center(
+              child: Text(
+                '© 2025 Qintar. All rights reserved.',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.grey[400],
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSection(String title, String content) {
+  Widget _buildSectionTitle(String title) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            content,
-            style: const TextStyle(fontSize: 16),
-          ),
-        ],
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
       ),
+    );
+  }
+
+  Widget _buildSectionContent(String content) {
+    return Text(
+      content,
+      style: const TextStyle(fontSize: 16),
     );
   }
 }

@@ -8,9 +8,12 @@ class VersionInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Version Information'),
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: Colors.white,
+        title: const Text(
+          'Version Information',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -23,13 +26,13 @@ class VersionInfoScreen extends StatelessWidget {
                 children: [
                   SizedBox(height: 24),
                   Icon(
-                    Icons.info_outline,
-                    size: 64,
-                    color: AppColors.primaryColor,
+                    Icons.chat_rounded,
+                    size: 80,
+                    color: Colors.blue,
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Zyphra',
+                    'Qintar',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -88,14 +91,14 @@ class VersionInfoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            _buildInfoItem('Developer', 'Zyphra Team'),
+            _buildInfoItem('Developer', 'Qintar Team'),
             _buildInfoItem('Category', 'Social Networking'),
             _buildInfoItem('Age Rating', '12+'),
             _buildInfoItem('Languages', 'English'),
             const SizedBox(height: 32),
             const Center(
               child: Text(
-                '© 2025 Zyphra. All rights reserved.',
+                '© 2025 Qintar. All rights reserved.',
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
