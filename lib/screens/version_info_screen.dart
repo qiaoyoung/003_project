@@ -14,6 +14,7 @@ class VersionInfoScreen extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: SingleChildScrollView(

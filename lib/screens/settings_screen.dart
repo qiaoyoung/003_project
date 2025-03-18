@@ -13,6 +13,7 @@ import 'reports_screen.dart';
 import 'version_info_screen.dart';
 import 'terms_of_service_screen.dart';
 import 'privacy_policy_screen.dart';
+import 'profile_edit_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -48,12 +49,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Future<void> _initializeData() async {
     if (!_isInitialized) {
-      await _loadUserInfo();
-      await _loadSettings();
-      await _loadPreferenceStats();
       setState(() {
+        _isUserInfoLoading = true;
+      });
+
+      // 加载用户设置数据
+      final prefs = await SharedPreferences.getInstance();
+      setState(() {
+        _isNotificationEnabled = prefs.getBool('notification_enabled') ?? true;
+        _nickname = prefs.getString('user_nickname') ?? 'Alex Johnson';
+        _userId = prefs.getString('user_id') ??
+            'Account${DateTime.now().millisecondsSinceEpoch % 100000000}';
+        final String? avatarPath = prefs.getString('user_avatar_path');
+        if (avatarPath != null && avatarPath.isNotEmpty) {
+          _avatarFile = File(avatarPath);
+        }
+        _isUserInfoLoading = false;
         _isInitialized = true;
       });
+
+      // 加载统计数据
+      _loadStatistics();
     }
   }
 
@@ -75,39 +91,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  Future<void> _loadUserInfo() async {
-    try {
-      // 获取用户信息
-      final userInfo = await UserService.getUserInfo();
-      final avatarFile = await UserService.getAvatarFile();
-
-      if (mounted) {
-        setState(() {
-          _nickname = userInfo['nickname'];
-          _userId = userInfo['userId'];
-          _avatarFile = avatarFile;
-        });
-      }
-    } catch (e) {
-      // 错误处理，但不显示加载状态
-      print('Loading user information failed: $e');
-    }
-  }
-
-  Future<void> _loadSettings() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-
-      if (mounted) {
-        setState(() {
-          _isNotificationEnabled =
-              prefs.getBool('isNotificationEnabled') ?? true;
-        });
-      }
-    } catch (e) {
-      // 错误处理，但不显示加载状态
-      print('Loading settings failed: $e');
-    }
+  Future<void> _loadStatistics() async {
+    await _loadPreferenceStats();
   }
 
   Future<void> _saveSettings(String key, dynamic value) async {
@@ -153,130 +138,173 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImage(ImageSource source) async {
     try {
-      setState(() {
-        _isUserInfoLoading = true;
-      });
-
-      // 直接使用ImagePicker，它会自动处理权限请求
-      final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(
-        source: ImageSource.gallery,
-        maxWidth: 800,
-        maxHeight: 800,
-        imageQuality: 85,
+      final imagePicker = ImagePicker();
+      final pickedFile = await imagePicker.pickImage(
+        source: source,
+        imageQuality: 70,
+        maxWidth: 512,
+        maxHeight: 512,
       );
 
-      // 如果用户取消了选择，image将为null
-      if (image != null) {
-        // 保存图片
-        final savedPath = await UserService.saveCustomAvatar(File(image.path));
-        if (savedPath != null) {
-          setState(() {
-            _avatarFile = File(savedPath);
-          });
-        }
+      if (pickedFile != null) {
+        setState(() {
+          _avatarFile = File(pickedFile.path);
+        });
+
+        // 保存头像路径
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('user_avatar_path', pickedFile.path);
       }
-
-      setState(() {
-        _isUserInfoLoading = false;
-      });
     } catch (e) {
-      setState(() {
-        _isUserInfoLoading = false;
-      });
-
-      if (mounted) {
-        // 检查错误是否与权限相关
-        if (e.toString().toLowerCase().contains('permission') ||
-            e.toString().toLowerCase().contains('access') ||
-            e.toString().toLowerCase().contains('denied')) {
-          // 显示权限错误
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text(
-                  'Gallery access permission is required to select an avatar. Please allow access in settings.'),
-              action: SnackBarAction(
-                label: 'Open Settings',
+      if (e.toString().contains('permission')) {
+        // 权限错误处理
+        showDialog(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Permission Denied'),
+            content: Text(source == ImageSource.camera
+                ? 'Please grant camera access in your device settings to take a profile picture.'
+                : 'Please grant photo library access in your device settings to select a profile picture.'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   openAppSettings();
                 },
+                child: const Text('Open Settings'),
               ),
-            ),
-          );
-        } else {
-          // 显示一般错误
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Failed to select avatar: ${e.toString()}')),
-          );
-        }
+            ],
+          ),
+        );
+      } else {
+        // 其他错误处理
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error picking image: $e')),
+        );
       }
     }
   }
 
-  void _editNickname() {
+  void _showAvatarOptions() {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
+      ),
+      builder: (context) {
+        return SafeArea(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.photo_camera),
+                title: const Text('Take a photo'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.camera);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Choose from gallery'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _pickImage(ImageSource.gallery);
+                },
+              ),
+              if (_avatarFile != null)
+                ListTile(
+                  leading: const Icon(Icons.delete, color: Colors.red),
+                  title: const Text('Remove photo',
+                      style: TextStyle(color: Colors.red)),
+                  onTap: () async {
+                    Navigator.pop(context);
+                    setState(() {
+                      _avatarFile = null;
+                    });
+
+                    final prefs = await SharedPreferences.getInstance();
+                    await prefs.remove('user_avatar_path');
+                  },
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showEditNicknameDialog() {
     final TextEditingController controller =
         TextEditingController(text: _nickname);
 
     showDialog(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Edit Nickname'),
-          content: TextField(
-            controller: controller,
-            decoration: const InputDecoration(
-              hintText: 'Enter new nickname',
-              border: OutlineInputBorder(),
-            ),
-            maxLength: 20,
+      builder: (context) => AlertDialog(
+        title: const Text('Edit Nickname'),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(
+            hintText: 'Enter your nickname',
           ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () async {
-                final newNickname = controller.text.trim();
-                if (newNickname.isNotEmpty) {
-                  Navigator.of(context).pop();
+          autofocus: true,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () async {
+              if (controller.text.trim().isNotEmpty) {
+                setState(() {
+                  _nickname = controller.text.trim();
+                });
 
-                  setState(() {
-                    _isUserInfoLoading = true;
-                  });
+                // 保存昵称
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString('user_nickname', _nickname);
 
-                  // 模拟网络延迟
-                  await Future.delayed(const Duration(milliseconds: 800));
+                Navigator.pop(context);
+              }
+            },
+            child: const Text('Save'),
+          ),
+        ],
+      ),
+    );
+  }
 
-                  // 保存新昵称
-                  final success = await UserService.updateNickname(newNickname);
+  void _editProfile() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProfileEditScreen(
+          initialNickname: _nickname,
+          initialAvatarFile: _avatarFile,
+          onProfileUpdated: (nickname, avatarFile) async {
+            setState(() {
+              _nickname = nickname;
+              _avatarFile = avatarFile;
+            });
 
-                  setState(() {
-                    if (success) {
-                      _nickname = newNickname;
-                    }
-                    _isUserInfoLoading = false;
-                  });
-
-                  if (mounted) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                          content: Text(success
-                              ? 'Nickname updated'
-                              : 'Failed to update nickname')),
-                    );
-                  }
-                }
-              },
-              child: const Text('Save'),
-            ),
-          ],
-        );
-      },
+            // 保存数据
+            final prefs = await SharedPreferences.getInstance();
+            await prefs.setString('user_nickname', nickname);
+            if (avatarFile != null) {
+              await prefs.setString('user_avatar_path', avatarFile.path);
+            } else {
+              await prefs.remove('user_avatar_path');
+            }
+          },
+        ),
+      ),
     );
   }
 
@@ -306,218 +334,204 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 确保数据已初始化
-    _initializeData();
-
     return Scaffold(
-      body: Stack(
-        children: [
-          // 主内容
-          CustomScrollView(
-            slivers: [
-              // 顶部AppBar - 移除标题
-              SliverAppBar(
-                expandedHeight: 200.0,
-                floating: false,
-                pinned: true,
-                backgroundColor: AppColors.primaryColor,
-                foregroundColor: Colors.white,
-                automaticallyImplyLeading: false, // 移除返回按钮
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          AppColors.primaryColor,
-                          AppColors.primaryColor.withOpacity(0.8),
-                        ],
+      appBar: AppBar(
+        title: const Text('Settings'),
+        elevation: 0,
+      ),
+      body: _isUserInfoLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildProfileSection(),
+                  // 设置列表
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 8),
+                      _buildSectionTitle('General Settings'),
+                      _buildSwitchItem(
+                        icon: Icons.notifications,
+                        title: 'Notifications',
+                        value: _isNotificationEnabled,
+                        onChanged: (value) {
+                          _saveSettings('isNotificationEnabled', value);
+                        },
                       ),
-                    ),
-                    child: _buildUserInfoHeader(),
+                      const Divider(),
+                      _buildSectionTitle('My Collections & Management'),
+                      _buildSettingItem(
+                        icon: Icons.favorite,
+                        title: 'My Favorites',
+                        subtitle: '$_favoritesCount AI characters favorited',
+                        onTap: _navigateToFavorites,
+                      ),
+                      _buildSettingItem(
+                        icon: Icons.block,
+                        title: 'Blacklist',
+                        subtitle: '$_blacklistCount AI characters blacklisted',
+                        onTap: _navigateToBlacklist,
+                      ),
+                      _buildSettingItem(
+                        icon: Icons.report,
+                        title: 'Report Records',
+                        subtitle: '$_reportedCount AI characters reported',
+                        onTap: _navigateToReports,
+                      ),
+                      const Divider(),
+                      _buildSectionTitle('About'),
+                      _buildSettingItem(
+                        icon: Icons.info_outline,
+                        title: 'Version Info',
+                        subtitle: 'v1.0.0',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const VersionInfoScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildSettingItem(
+                        icon: Icons.description_outlined,
+                        title: 'Terms of Service',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const TermsOfServiceScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      _buildSettingItem(
+                        icon: Icons.privacy_tip_outlined,
+                        title: 'Privacy Policy',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const PrivacyPolicyScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 24),
+                    ],
                   ),
-                ),
-                // 移除标题
-              ),
-
-              // 设置列表
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  const SizedBox(height: 8),
-                  _buildSectionTitle('General Settings'),
-                  _buildSwitchItem(
-                    icon: Icons.notifications,
-                    title: 'Notifications',
-                    value: _isNotificationEnabled,
-                    onChanged: (value) {
-                      _saveSettings('isNotificationEnabled', value);
-                    },
-                  ),
-                  const Divider(),
-                  _buildSectionTitle('My Collections & Management'),
-                  _buildSettingItem(
-                    icon: Icons.favorite,
-                    title: 'My Favorites',
-                    subtitle: '$_favoritesCount AI characters favorited',
-                    onTap: _navigateToFavorites,
-                  ),
-                  _buildSettingItem(
-                    icon: Icons.block,
-                    title: 'Blacklist',
-                    subtitle: '$_blacklistCount AI characters blacklisted',
-                    onTap: _navigateToBlacklist,
-                  ),
-                  _buildSettingItem(
-                    icon: Icons.report,
-                    title: 'Report Records',
-                    subtitle: '$_reportedCount AI characters reported',
-                    onTap: _navigateToReports,
-                  ),
-                  const Divider(),
-                  _buildSectionTitle('About'),
-                  _buildSettingItem(
-                    icon: Icons.info_outline,
-                    title: 'Version Info',
-                    subtitle: 'v1.0.0',
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const VersionInfoScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  _buildSettingItem(
-                    icon: Icons.description_outlined,
-                    title: 'Terms of Service',
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const TermsOfServiceScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  _buildSettingItem(
-                    icon: Icons.privacy_tip_outlined,
-                    title: 'Privacy Policy',
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const PrivacyPolicyScreen(),
-                        ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 24),
-                ]),
-              ),
-            ],
-          ),
-
-          // 加载指示器 - 仅在特定操作时显示
-          if (_isLoading || _isUserInfoLoading)
-            Container(
-              color: Colors.black.withOpacity(0.3),
-              child: const Center(
-                child: CircularProgressIndicator(),
+                ],
               ),
             ),
-        ],
-      ),
     );
   }
 
-  Widget _buildUserInfoHeader() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          GestureDetector(
-            onTap: _pickImage,
-            child: Stack(
-              alignment: Alignment.bottomRight,
+  Widget _buildProfileSection() {
+    return Card(
+      margin: const EdgeInsets.all(16.0),
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Profile',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Row(
               children: [
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 2),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
+                GestureDetector(
+                  onTap: _showAvatarOptions,
+                  child: Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 40.0,
+                        backgroundColor: Colors.grey[200],
+                        backgroundImage: _avatarFile != null
+                            ? FileImage(_avatarFile!)
+                            : const AssetImage('assets/images/avatars/1.png')
+                                as ImageProvider,
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          padding: const EdgeInsets.all(4.0),
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryColor,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.edit,
+                            size: 16.0,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  child: ClipOval(
-                    child: _avatarFile != null
-                        ? Image.file(
-                            _avatarFile!,
-                            fit: BoxFit.cover,
-                            width: 80,
-                            height: 80,
-                          )
-                        : Image.asset(
-                            'assets/images/normal_header.png',
-                            fit: BoxFit.cover,
-                            width: 80,
-                            height: 80,
+                ),
+                const SizedBox(width: 16.0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _nickname,
+                              style: const TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    color: AppColors.accentColor,
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white, width: 1.5),
-                  ),
-                  child: const Icon(
-                    Icons.camera_alt,
-                    color: Colors.white,
-                    size: 14,
+                          IconButton(
+                            icon: const Icon(Icons.edit, size: 20),
+                            onPressed: _showEditNicknameDialog,
+                            color: AppColors.primaryColor,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(
+                        'ID: $_userId',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 12),
-          GestureDetector(
-            onTap: _editNickname,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  _nickname,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+            const SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: _editProfile,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryColor,
+                foregroundColor: Colors.black,
+                minimumSize: const Size(double.infinity, 45),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
-                const SizedBox(width: 4),
-                const Icon(
-                  Icons.edit,
-                  color: Colors.black,
-                  size: 16,
-                ),
-              ],
+              ),
+              child: const Text('Edit Profile'),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            _userId,
-            style: TextStyle(
-              color: Colors.black.withOpacity(0.8),
-              fontSize: 14,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
