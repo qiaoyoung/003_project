@@ -3,7 +3,6 @@ import 'screens/welcome_screen.dart';
 import 'screens/user_list_screen.dart';
 import 'screens/user_detail_screen.dart';
 import 'screens/main_screen.dart';
-import 'screens/image_generator_screen.dart';
 import 'screens/text_summarizer_screen.dart';
 import 'screens/translator_screen.dart';
 import 'screens/chat_screen.dart';
@@ -76,7 +75,6 @@ class MyApp extends StatelessWidget {
         '/main': (context) => const MainScreen(),
         '/user_list': (context) => const UserListScreen(),
         '/user_detail': (context) => const UserDetailScreen(),
-        '/image_generator': (context) => const ImageGeneratorScreen(),
         '/text_summarizer': (context) => const TextSummarizerScreen(),
         '/translator': (context) => const TranslatorScreen(),
       },

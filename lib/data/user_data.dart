@@ -238,7 +238,6 @@ class UserData {
       'Energetic',
       'Dreamy',
       'Creative',
-      'Free',
       'Starlight',
       'Ocean',
       'Mountain',
@@ -714,6 +713,11 @@ class UserData {
     return templates[_random.nextInt(templates.length)];
   }
 
+  // Get avatar path based on index
+  static String _getAvatarPath(int index) {
+    return 'assets/images/avatars/$index.png';
+  }
+
   // Generate user list
   static List<User> getUsers() {
     // If there's already cached data, return it directly
@@ -799,29 +803,30 @@ class UserData {
       final String description =
           _generateDescription(info, gender, age, ethnicity, occupation);
 
-      // Use fixed online status and last active time, rather than generating randomly
-      final bool isOnline =
-          i % 3 == 0; // One out of every three users is online
-      final DateTime lastActive = DateTime.now().subtract(
-          Duration(minutes: (i + 1) * 30)); // Incrementing last active time
-
-      users.add(User(
-        userId: 'user_${i + 1}',
+      // Create user object
+      final User user = User(
+        userId: 'user$i',
         nickname: nickname,
-        avatarPath: 'assets/images/avatars/${i + 1}.png',
+        avatarPath: _getAvatarPath(i + 1),
         gender: gender,
         age: age,
         description: description,
         tags: tags,
         occupation: occupation,
         location: location,
-        isOnline: isOnline,
-        lastActive: lastActive,
-        messageCount: (i + 1) * 3, // Incrementing message count
-        isPremium: false, // Remove VIP feature, all users are not premium users
+        isOnline: _random.nextBool(),
+        lastActive: DateTime.now().subtract(
+          Duration(
+            hours: _random.nextInt(72),
+            minutes: _random.nextInt(60),
+          ),
+        ),
+        messageCount: _random.nextInt(100),
         ethnicity: ethnicity,
         background: background,
-      ));
+      );
+
+      users.add(user);
     }
 
     // Cache generated user data

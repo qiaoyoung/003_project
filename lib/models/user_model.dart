@@ -20,7 +20,6 @@ class User {
   final bool isOnline;
   final DateTime lastActive;
   final int messageCount;
-  final bool isPremium;
   final String ethnicity;
   final String background;
 
@@ -37,7 +36,6 @@ class User {
     this.isOnline = false,
     DateTime? lastActive,
     this.messageCount = 0,
-    this.isPremium = false,
     this.ethnicity = '',
     this.background = '',
   }) : lastActive = lastActive ?? DateTime.now();
@@ -55,7 +53,6 @@ class User {
     bool? isOnline,
     DateTime? lastActive,
     int? messageCount,
-    bool? isPremium,
     String? ethnicity,
     String? background,
   }) {
@@ -72,7 +69,6 @@ class User {
       isOnline: isOnline ?? this.isOnline,
       lastActive: lastActive ?? this.lastActive,
       messageCount: messageCount ?? this.messageCount,
-      isPremium: isPremium ?? this.isPremium,
       ethnicity: ethnicity ?? this.ethnicity,
       background: background ?? this.background,
     );
@@ -94,7 +90,6 @@ class User {
       'isOnline': isOnline,
       'lastActive': lastActive.toIso8601String(),
       'messageCount': messageCount,
-      'isPremium': isPremium,
       'ethnicity': ethnicity,
       'background': background,
     };
@@ -121,7 +116,6 @@ class User {
           ? DateTime.parse(json['lastActive'])
           : DateTime.now(),
       messageCount: json['messageCount'] ?? 0,
-      isPremium: json['isPremium'] ?? false,
       ethnicity: json['ethnicity'] ?? '',
       background: json['background'] ?? '',
     );

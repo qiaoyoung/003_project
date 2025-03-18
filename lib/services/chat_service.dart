@@ -255,14 +255,15 @@ class ChatService {
 
       final String jsonString = jsonEncode(messageJsonList);
       await prefs.setString('chat_history_$userId', jsonString);
-      developer.log('保存用户 $userId 的聊天历史: ${messages.length} 条消息');
+      developer.log(
+          'Saved chat history for user $userId: ${messages.length} messages');
 
-      // 打印所有键，用于调试
-      final keys = prefs.getKeys();
-      developer.log('SharedPreferences 中的所有键: $keys');
+      // Comment out debug code for production
+      // final keys = prefs.getKeys();
+      // developer.log('All keys in SharedPreferences: $keys');
     } catch (e) {
-      // 保存失败时记录错误
-      developer.log('保存聊天历史失败', error: e);
+      // Log error when saving fails
+      developer.log('Failed to save chat history', error: e);
     }
   }
 

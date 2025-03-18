@@ -58,7 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.dispose();
   }
 
-  // 滚动到底部的辅助方法
+  // Scroll to bottom of the chat
   void _scrollToBottom() {
     if (_scrollController.hasClients) {
       try {
@@ -68,8 +68,8 @@ class _ChatScreenState extends State<ChatScreen> {
           curve: Curves.easeOut,
         );
       } catch (e) {
-        // 忽略滚动错误
-        debugPrint('滚动错误: $e');
+        // Ignore scroll errors
+        debugPrint('Scroll error: $e');
       }
     }
   }
@@ -77,10 +77,54 @@ class _ChatScreenState extends State<ChatScreen> {
   // 发送系统消息，告知用户当前助手的功能
   void _sendSystemMessage() {
     final title = widget.title ?? 'AI Assistant';
+
+    // 基于不同工具类型生成专业欢迎语
+    String welcomeMessage;
+
+    if (title.contains('Chat')) {
+      welcomeMessage =
+          'Hello! I\'m your AI chat assistant. How can I help you today?';
+    } else if (title.contains('Text Summarizer')) {
+      welcomeMessage =
+          'Welcome to the Text Summarizer. Please paste the content you\'d like me to summarize, and I\'ll create a concise summary highlighting the key points.';
+    } else if (title.contains('Translator')) {
+      welcomeMessage =
+          'Welcome to the Language Translator. Please provide the text you want to translate and specify the target language if needed.';
+    } else if (title.contains('Code')) {
+      welcomeMessage =
+          'Welcome to the Code Assistant. I can help you with programming tasks, code generation, debugging, or explaining code concepts. What would you like help with?';
+    } else if (title.contains('Travel')) {
+      welcomeMessage =
+          'Welcome to Travel Planning! Share your destination interests and preferences, and I\'ll help create a personalized travel itinerary for you.';
+    } else if (title.contains('Recipe')) {
+      welcomeMessage =
+          'Welcome to the Recipe Assistant! Let me know what ingredients you have or what type of dish you\'d like to make, and I\'ll provide recipe suggestions.';
+    } else if (title.contains('Writing')) {
+      welcomeMessage =
+          'Welcome to Creative Writing! I\'m here to help with your writing projects. What kind of creative content would you like to work on today?';
+    } else if (title.contains('Interview')) {
+      welcomeMessage =
+          'Welcome to Interview Preparation! Please tell me about the position you\'re interviewing for, and I\'ll help you prepare with relevant questions and advice.';
+    } else if (title.contains('Math')) {
+      welcomeMessage =
+          'Welcome to the Math Solver. Please share the math problem you\'re working on, and I\'ll guide you through the solution step by step.';
+    } else if (title.contains('English')) {
+      welcomeMessage =
+          'Welcome to English Learning! I can help with grammar, vocabulary, writing, or conversation practice. What aspect of English would you like to work on?';
+    } else if (title.contains('History')) {
+      welcomeMessage =
+          'Welcome to History Explorer! What historical period, event, or figure would you like to learn more about?';
+    } else if (title.contains('Science')) {
+      welcomeMessage =
+          'Welcome to Science Experiments! I can suggest experiments and explain scientific concepts. What scientific topic are you interested in exploring?';
+    } else {
+      welcomeMessage =
+          'Welcome to $title! Please enter your question, and I\'ll provide specialized assistance based on my knowledge.';
+    }
+
     final systemMessage = Message(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
-      text:
-          'Welcome to $title! Please enter your question, and I\'ll provide professional assistance based on my knowledge.',
+      text: welcomeMessage,
       isUser: false,
       timestamp: DateTime.now(),
     );
@@ -93,7 +137,7 @@ class _ChatScreenState extends State<ChatScreen> {
       _chatService.saveChatHistory(widget.user.userId, _messages);
     }
 
-    // 滚动到底部
+    // Scroll to bottom
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollToBottom();
     });
@@ -114,7 +158,7 @@ class _ChatScreenState extends State<ChatScreen> {
           _isLoading = false;
         });
 
-        // 滚动到底部
+        // Scroll to bottom
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _scrollToBottom();
         });
@@ -123,7 +167,7 @@ class _ChatScreenState extends State<ChatScreen> {
       if (mounted) {
         setState(() {
           _isLoading = false;
-          _errorMessage = '加载聊天记录失败: $e';
+          _errorMessage = 'Failed to load chat history: $e';
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(_errorMessage)),
@@ -154,21 +198,21 @@ class _ChatScreenState extends State<ChatScreen> {
       await _chatService.saveChatHistory(widget.user.userId, _messages);
     }
 
-    // 滚动到底部
+    // Scroll to bottom
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scrollToBottom();
     });
 
     try {
-      // 模拟AI思考时间
+      // Simulate AI thinking time
       await Future.delayed(
           Duration(milliseconds: 1000 + math.Random().nextInt(2000)));
 
-      // 调用智谱AI API获取回复，传递自定义提示词
+      // Call ZhiPu AI API to get a response, passing custom prompt
       final aiResponse = await _chatService.getAIResponse(
           text, widget.user.description, widget.user.userId, _customPrompt);
 
-      // 创建AI消息对象
+      // Create AI message object
       final aiMessage = Message(
         id: DateTime.now().millisecondsSinceEpoch.toString(),
         text: aiResponse,
@@ -176,7 +220,7 @@ class _ChatScreenState extends State<ChatScreen> {
         timestamp: DateTime.now(),
       );
 
-      // 直接添加AI消息到列表
+      // Directly add AI message to list
       if (mounted) {
         setState(() {
           _messages.add(aiMessage);
@@ -187,7 +231,7 @@ class _ChatScreenState extends State<ChatScreen> {
           await _chatService.saveChatHistory(widget.user.userId, _messages);
         }
 
-        // 滚动到底部
+        // Scroll to bottom
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _scrollToBottom();
         });
@@ -196,7 +240,7 @@ class _ChatScreenState extends State<ChatScreen> {
       if (mounted) {
         setState(() {
           _isTyping = false;
-          _errorMessage = '获取AI回复失败: $e';
+          _errorMessage = 'Failed to get AI response: $e';
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(_errorMessage)),
@@ -205,10 +249,10 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  // 获取AI头像
+  // Get AI avatar
   Widget _getAIAvatar() {
     if (widget.useSystemAvatar) {
-      // 使用系统机器人图标
+      // Use system robot icon
       return CircleAvatar(
         backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
         child: Icon(
@@ -217,7 +261,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       );
     } else {
-      // 使用自定义头像
+      // Use custom avatar
       return CircleAvatar(
         backgroundImage: AssetImage(widget.user.avatarPath),
       );
@@ -226,7 +270,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // 获取从路由参数传递的标题
+    // Get title from route parameters
     final screenTitle = widget.title ?? widget.user.nickname;
 
     return Scaffold(
@@ -254,7 +298,7 @@ class _ChatScreenState extends State<ChatScreen> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  title: const Text('AI角色信息'),
+                  title: const Text('AI Character Information'),
                   content: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -263,7 +307,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         Text(widget.user.description),
                         const SizedBox(height: 16),
                         const Text(
-                          '这是一个AI生成的角色，不代表真实人物。该角色的所有信息、照片和对话内容均由人工智能创建，仅用于演示和娱乐目的。',
+                          'This is an AI-generated character and does not represent a real person. All information, photos, and conversations with this character are created by artificial intelligence for demonstration and entertainment purposes only.',
                           style: TextStyle(
                             fontSize: 12,
                             fontStyle: FontStyle.italic,
@@ -276,7 +320,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.of(context).pop(),
-                      child: const Text('关闭'),
+                      child: const Text('Close'),
                     ),
                   ],
                 ),
@@ -287,7 +331,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
-          // 错误消息
+          // Error message
           if (_errorMessage.isNotEmpty)
             Container(
               padding: const EdgeInsets.all(8),
@@ -299,7 +343,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-          // 消息列表
+          // Message list
           Expanded(
             child: _isLoading && _messages.isEmpty
                 ? const Center(child: CircularProgressIndicator())
@@ -316,7 +360,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
           ),
 
-          // 正在输入指示器
+          // Typing indicator
           if (_isTyping)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -333,7 +377,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
 
-          // 输入框
+          // Input box
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(

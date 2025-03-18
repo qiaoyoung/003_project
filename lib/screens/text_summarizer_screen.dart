@@ -25,7 +25,7 @@ class TextSummarizerScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               const Text(
-                'AI Text Summarizer',
+                'Under Construction',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -34,7 +34,7 @@ class TextSummarizerScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               const Text(
-                'This feature is coming soon! Our team is working hard to bring you the ability to summarize long texts using AI technology.',
+                'This section is currently under development. We are enhancing the app experience and will update this soon.',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey,

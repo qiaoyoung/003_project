@@ -45,20 +45,18 @@ class PrivacyPolicyScreen extends StatelessWidget {
               'We collect information that you provide directly to us, such as when you create an account, update your profile, use interactive features, participate in contests, promotions, or surveys, request customer support or otherwise communicate with us. The types of information we may collect include:\n\n'
                   '• Account Information: When you create an account, we collect your name, email address, username, password, and profile information.\n'
                   '• User Content: Information you provide through our Service, including your chat messages, preferences, and feedback.\n'
-                  '• Transaction Information: If you make a purchase, we collect information about the transaction, such as product details, purchase price, and date of purchase.\n'
                   '• Device Information: We collect information about the device you use to access our Service, including hardware model, operating system, unique device identifiers, and mobile network information.',
             ),
             _buildSection(
               '2. How We Use Your Information',
               'We use the information we collect to:\n\n'
                   '• Provide, maintain, and improve our Service\n'
-                  '• Process transactions and send related information\n'
                   '• Send you technical notices, updates, security alerts, and support messages\n'
                   '• Respond to your comments, questions, and requests\n'
-                  '• Develop new products and services\n'
+                  '• Develop new features and services\n'
                   '• Monitor and analyze trends, usage, and activities in connection with our Service\n'
-                  '• Detect, investigate, and prevent fraudulent transactions and other illegal activities\n'
-                  '• Personalize and improve the Service and provide content or features that match user profiles or interests',
+                  '• Protect the security and integrity of our Service\n'
+                  '• Personalize the Service and provide content that matches user preferences',
             ),
             _buildSection(
               '3. Sharing of Information',
@@ -77,7 +75,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
               '5. Your Choices',
               'Account Information: You may update, correct, or delete your account information at any time by logging into your account. If you wish to delete your account, please contact us at privacy@qintar.com.\n\n'
                   'Cookies: Most web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove or reject browser cookies.\n\n'
-                  'Promotional Communications: You may opt out of receiving promotional emails from us by following the instructions in those emails. If you opt out, we may still send you non-promotional emails, such as those about your account or our ongoing business relations.',
+                  'Communications: You may opt out of receiving communications from us by following the instructions in those messages. If you opt out, we may still send you important administrative messages, such as those about your account or our ongoing relationship.',
             ),
             _buildSection(
               '6. Children\'s Privacy',

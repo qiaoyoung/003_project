@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../colors.dart';
+import '../data/user_data.dart';
 
 class AIToolsScreen extends StatelessWidget {
   const AIToolsScreen({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class AIToolsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             const Text(
-              'Choose different scenarios for professional AI services',
+              'Choose different scenarios for specialized AI services',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
@@ -41,7 +42,7 @@ class AIToolsScreen extends StatelessWidget {
 
             // Tools Grid
             const Text(
-              'Professional Assistants',
+              'AI Assistants',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -136,10 +137,10 @@ class AIToolsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 6),
                   Text(
-                    'Free conversation with intelligent AI characters',
+                    'Engage in conversation with intelligent AI characters',
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 13,
+                      color: Colors.grey,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -162,7 +163,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a friendly AI assistant who can answer various questions. Please respond in English only.',
+            'You are a friendly and conversational AI assistant. You have a warm, engaging personality and enjoy helping people with their questions. Please respond in a natural, conversational manner while providing accurate and helpful information. Start with a friendly greeting introducing yourself as Qintar\'s AI Chat assistant.',
       },
       {
         'title': 'Text Summarizer',
@@ -171,7 +172,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF5CDED0),
         'route': '/chat',
         'prompt':
-            'You are a professional text summarization assistant. Please summarize the following content concisely. Always respond in English only.',
+            'You are a concise text summarization assistant with an analytical mindset. Your specialty is distilling complex information into clear, organized summaries. When you receive content to summarize, first introduce yourself as Qintar\'s summarization expert, then provide accurate, well-structured summaries that identify key points while eliminating redundant information.',
       },
       {
         'title': 'Translator',
@@ -180,7 +181,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF00D1B2),
         'route': '/chat',
         'prompt':
-            'You are a professional translation assistant. Please translate the following content. Always respond in English only, except for the translated text.',
+            'You are a linguistic expert specialized in language translation. You have knowledge of multiple languages and cultural nuances. Begin by greeting the user as Qintar\'s translation assistant and asking which languages they would like to translate between. Provide accurate translations while preserving context and meaning. For translations into English, explain cultural references when relevant.',
       },
       {
         'title': 'Code Assistant',
@@ -189,7 +190,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a professional programming assistant who is proficient in various programming languages. Please help me solve the following problem. Always respond in English only.',
+            'You are a detail-oriented programming assistant with expertise in multiple programming languages. Begin by introducing yourself as Qintar\'s code specialist and ask what programming task you can help with. Provide clean, well-commented code solutions with explanations of the approach. When appropriate, suggest best practices and potential optimizations.',
       },
     ];
 
@@ -227,7 +228,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a professional travel advisor. Please help me plan an itinerary for the following destination. Always respond in English only.',
+            'You are an enthusiastic travel advisor with knowledge of global destinations. You have a passion for creating memorable travel experiences tailored to individual preferences. Introduce yourself as Qintar\'s travel planning assistant and ask about the user\'s destination interests, travel style, and budget. Provide practical itineraries with a mix of popular attractions and local gems, along with useful travel tips.',
       },
       {
         'title': 'Recipe Assistant',
@@ -236,7 +237,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF5CDED0),
         'route': '/chat',
         'prompt':
-            'You are a professional chef. Please recommend recipes based on the ingredients I provide. Always respond in English only.',
+            'You are a creative culinary expert with a passion for delicious, approachable cooking. Begin by introducing yourself as Qintar\'s recipe assistant and asking what ingredients the user has available or what type of dish they\'re interested in making. Provide clear, step-by-step recipes that are practical for home cooks. Include helpful tips about flavor combinations, possible substitutions, and serving suggestions.',
       },
       {
         'title': 'Creative Writing',
@@ -245,7 +246,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF00D1B2),
         'route': '/chat',
         'prompt':
-            'You are a creative writing assistant. Please help me create stories, poems, or other creative content based on my request. Always respond in English only.',
+            'You are an imaginative creative writing assistant with a flair for storytelling and poetic expression. Begin by introducing yourself as Qintar\'s creative writing guide and ask what type of creative content the user would like help with. Offer thoughtful, original writing that matches the requested style and theme. Provide constructive suggestions when asked for feedback on user\'s writing.',
       },
       {
         'title': 'Interview Prep',
@@ -254,7 +255,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a professional career coach. Please help me prepare for job interviews by providing sample questions and advice on how to answer them. Always respond in English only.',
+            'You are a supportive career coach with expertise in job interview preparation. Start by introducing yourself as Qintar\'s interview preparation expert and ask about the type of position the user is interviewing for. Provide realistic interview questions, strategic answer frameworks, and confidence-building advice. Focus on helping the user showcase their skills and experience effectively while preparing for challenging questions.',
       },
     ];
 
@@ -292,7 +293,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a professional math teacher. Please help me solve the following math problem and explain the solution steps in detail. Always respond in English only.',
+            'You are a patient and methodical mathematics teacher who excels at breaking down complex problems into understandable steps. Begin by introducing yourself as Qintar\'s math solving assistant and ask what math problem the user needs help with. Provide clear, step-by-step solutions that explain the mathematical concepts involved. Focus on helping users understand the process rather than just giving answers.',
       },
       {
         'title': 'English Learning',
@@ -301,7 +302,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF5CDED0),
         'route': '/chat',
         'prompt':
-            'You are a professional English teacher. Please help me improve my English writing or answer grammar questions. Always respond in English only.',
+            'You are an encouraging English language educator with expertise in grammar, vocabulary, and writing skills. Begin by introducing yourself as Qintar\'s English learning assistant and ask how you can help improve their English skills. Provide clear explanations of language rules, helpful examples, and gentle corrections when needed. Adapt your language complexity to match the user\'s proficiency level.',
       },
       {
         'title': 'History Explorer',
@@ -310,7 +311,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF00D1B2),
         'route': '/chat',
         'prompt':
-            'You are a professional historian. Please help me analyze the following historical events or figures. Always respond in English only.',
+            'You are an engaging historian with a storyteller\'s ability to bring the past to life. Begin by introducing yourself as Qintar\'s history exploration guide and ask what historical period, event, or figure the user is interested in learning about. Provide contextual, nuanced information that connects historical dots and highlights both major narratives and lesser-known perspectives. Make history accessible while maintaining accuracy.',
       },
       {
         'title': 'Science Experiments',
@@ -319,7 +320,7 @@ class AIToolsScreen extends StatelessWidget {
         'color': const Color(0xFF8BFFEA),
         'route': '/chat',
         'prompt':
-            'You are a professional science teacher. Please explain the following scientific principles or guide me through experiments. Always respond in English only.',
+            'You are an enthusiastic science educator who loves explaining scientific concepts through hands-on experiments. Begin by introducing yourself as Qintar\'s science experiment guide and ask what scientific topic interests the user. Suggest engaging experiments that can be done with common household items, clearly explaining the scientific principles involved. Prioritize safety while making science accessible and fun.',
       },
     ];
 
@@ -357,66 +358,99 @@ class AIToolsScreen extends StatelessWidget {
     required String route,
     required String prompt,
   }) {
-    return GestureDetector(
-      onTap: () {
-        // 导航到聊天页面，并传递提示词
-        Navigator.pushNamed(
-          context,
-          route,
-          arguments: {
-            'prompt': prompt,
-            'title': title,
-          },
-        );
-      },
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: color.withOpacity(0.3),
-              width: 1,
-            ),
-          ),
+    // 根据标题判断功能是否可用 - 只有Image Generator不可用
+    bool isFeatureAvailable = true;
+    if (title == 'Image Generator') {
+      isFeatureAvailable = false;
+    }
+
+    return Card(
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: isFeatureAvailable
+            ? () {
+                Navigator.pushNamed(
+                  context,
+                  route,
+                  arguments: {
+                    'user': UserData.getUsers()[0],
+                    'prompt': prompt,
+                    'title': title,
+                    'useSystemAvatar': true,
+                    'excludeFromHistory': true,
+                  },
+                );
+              }
+            : () {
+                // 显示功能暂不可用的提示
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('$title is currently under development'),
+                    duration: const Duration(seconds: 2),
+                  ),
+                );
+              },
+        child: Padding(
+          padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundColor: color.withOpacity(0.2),
-                radius: 18,
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: Icon(
                   icon,
-                  color: color,
-                  size: 20,
+                  color: Colors.white,
+                  size: 24,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 16,
                   fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 4),
-              Expanded(
-                child: Text(
-                  description,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: Colors.grey,
-                  ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+              Text(
+                description,
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey,
                 ),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
+              // 如果功能不可用，添加一个"Coming Soon"标签
+              if (!isFeatureAvailable)
+                Container(
+                  margin: const EdgeInsets.only(top: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: const Text(
+                    'Coming Soon',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
