@@ -523,7 +523,7 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'This is an AI-generated character and does not represent a real person. All information, photos, and conversation content for this character are created by artificial intelligence for demonstration and entertainment purposes only.',
+                              'This is an AI-generated character and does not represent a real person. All information, photos, and conversation content for this character are created by artificial intelligence for educational and entertainment purposes only.',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context)

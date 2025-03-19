@@ -1,0 +1,15 @@
+
+/* Class = "UISegmentedControl"; 1P0-ww-YH4.segmentTitles[0] = "默认"; ObjectID = "1P0-ww-YH4"; */
+"1P0-ww-YH4.segmentTitles[0]" = "默认";
+
+/* Class = "UISegmentedControl"; 1P0-ww-YH4.segmentTitles[1] = "动态Token"; ObjectID = "1P0-ww-YH4"; */
+"1P0-ww-YH4.segmentTitles[1]" = "动态Token";
+
+/* Class = "UISegmentedControl"; 1P0-ww-YH4.segmentTitles[2] = "第三方认证"; ObjectID = "1P0-ww-YH4"; */
+"1P0-ww-YH4.segmentTitles[2]" = "第三方认证";
+
+/* Class = "UITextField"; placeholder = "自定义字段"; ObjectID = "Ihk-Zb-qgb"; */
+"Ihk-Zb-qgb.placeholder" = "自定义字段";
+
+/* Class = "UITextField"; placeholder = "请输入帐号"; ObjectID = "ftX-lV-dvr"; */
+"ftX-lV-dvr.placeholder" = "请输入帐号";

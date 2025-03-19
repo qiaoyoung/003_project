@@ -307,7 +307,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         Text(widget.user.description),
                         const SizedBox(height: 16),
                         const Text(
-                          'This is an AI-generated character and does not represent a real person. All information, photos, and conversations with this character are created by artificial intelligence for demonstration and entertainment purposes only.',
+                          'This is an AI-generated character and does not represent a real person. All information, photos, and conversations with this character are created by artificial intelligence for educational and entertainment purposes only.',
                           style: TextStyle(
                             fontSize: 12,
                             fontStyle: FontStyle.italic,
