@@ -2,7 +2,6 @@
 #import "NTESMigrateHeader.h"
 
 #define kSSZipArchiveManagerVersionKey @"kSSZipArchiveManagerVersionKey"
-#define kAppleProjectEmoticon @"AppleProjectEmoticon"
 
 @interface SSZipArchiveManager()
 

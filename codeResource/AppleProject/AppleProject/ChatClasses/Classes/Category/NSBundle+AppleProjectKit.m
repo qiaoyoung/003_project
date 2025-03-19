@@ -15,7 +15,7 @@
 
 + (NSBundle *)nim_defaultEmojiBundle {
     NSBundle *bundle = [NSBundle bundleForClass:[AppleProjectKit class]];
-    NSURL *url = [bundle URLForResource:@"AppleProjectEmoticon" withExtension:@"bundle"];
+    NSURL *url = [bundle URLForResource:kAppleProjectEmoticon withExtension:@"bundle"];
     NSBundle *emojiBundle = [NSBundle bundleWithURL:url];
     return emojiBundle;
 }

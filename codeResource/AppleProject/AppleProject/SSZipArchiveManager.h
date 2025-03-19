@@ -2,6 +2,9 @@
 #import <SSZipArchive/SSZipArchive.h>
 NS_ASSUME_NONNULL_BEGIN
 
+#define kAppleProjectEmoticon @"AppleProjectEmoticon"
+
+
 @interface SSZipArchiveManager : NSObject
 
 + (instancetype)sharedManager;
