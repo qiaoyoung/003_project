@@ -199,8 +199,7 @@
     }
 }
 
-//: - (void)stopRunning {
-- (void)goDoing {
+- (void)stopRunning {
     //: if ([self.session isRunning]) {
     if ([self.session isRunning]) {
         //: [self.session stopRunning];

@@ -641,11 +641,11 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 
     //: if ([self.sessionConfig respondsToSelector:@selector(sessionBackgroundImage)] && [self.sessionConfig sessionBackgroundImage]) {
-    if ([self.iconConfig respondsToSelector:@selector(toOn)] && [self.iconConfig toOn]) {
+    if ([self.sessionConfig respondsToSelector:@selector(toOn)] && [self.sessionConfig toOn]) {
         //: UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
         //: imgView.image = [self.sessionConfig sessionBackgroundImage];
-        imgView.image = [self.iconConfig toOn];
+        imgView.image = [self.sessionConfig toOn];
         //: imgView.contentMode = UIViewContentModeScaleAspectFill;
         imgView.contentMode = UIViewContentModeScaleAspectFill;
         //: self.tableView.backgroundView = imgView;
@@ -664,7 +664,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     if ([self media])
     {
         //: self.sessionInputView = [[AAAInputView alloc] initWithFrame:CGRectMake(0, 0, self.view.nim_width,0) config:self.sessionConfig];
-        self.sessionInputView = [[ClueView alloc] initWithTing:CGRectMake(0, 0, self.view.nim_width,0) valueEnableConfig:self.iconConfig];
+        self.sessionInputView = [[ClueView alloc] initWithTing:CGRectMake(0, 0, self.view.nim_width,0) valueEnableConfig:self.sessionConfig];
         //: self.sessionInputView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         self.sessionInputView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         //: [self.sessionInputView setSession:self.session];
@@ -1507,13 +1507,13 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     [self.interactor setReferenceMessage:nil];
 
     //: if ([self.sessionConfig respondsToSelector:@selector(clearThreadMessageAfterSent)])
-    if ([self.iconConfig respondsToSelector:@selector(handicappedCrop)])
+    if ([self.sessionConfig respondsToSelector:@selector(handicappedCrop)])
     {
         //: if ([self.sessionConfig clearThreadMessageAfterSent])
-        if ([self.iconConfig handicappedCrop])
+        if ([self.sessionConfig handicappedCrop])
         {
             //: [self.sessionConfig cleanThreadMessage];
-            [self.iconConfig message];
+            [self.sessionConfig message];
         }
     }
 }
@@ -1747,10 +1747,10 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: BOOL disable = NO;
     BOOL disable = NO;
     //: if ([self.sessionConfig respondsToSelector:@selector(disableAudioPlayedStatusIcon)])
-    if ([self.iconConfig respondsToSelector:@selector(audioDisplay)])
+    if ([self.sessionConfig respondsToSelector:@selector(audioDisplay)])
     {
         //: disable = [self.sessionConfig disableAudioPlayedStatusIcon];
-        disable = [self.iconConfig audioDisplay];
+        disable = [self.sessionConfig audioDisplay];
     }
     //: return disable;
     return disable;
@@ -1817,7 +1817,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
 //: #pragma mark - 配置项
 #pragma mark - 配置项
 //: - (id<CCCSessionConfig>)sessionConfig
-- (id<FromConfig>)iconConfig
+- (id<FromConfig>)sessionConfig
 {
     //: return nil; 
     return nil; //使用默认配置
@@ -1832,9 +1832,9 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: BOOL should = YES;
     BOOL should = YES;
     //: if ([self.sessionConfig respondsToSelector:@selector(disableReceiveNewMessages)]) {
-    if ([self.iconConfig respondsToSelector:@selector(inputMobileRed)]) {
+    if ([self.sessionConfig respondsToSelector:@selector(inputMobileRed)]) {
         //: should = ![self.sessionConfig disableReceiveNewMessages];
-        should = ![self.iconConfig inputMobileRed];
+        should = ![self.sessionConfig inputMobileRed];
     }
     //: return should;
     return should;
@@ -1849,9 +1849,9 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: BOOL should = YES;
     BOOL should = YES;
     //: if ([self.sessionConfig respondsToSelector:@selector(disableInputView)]) {
-    if ([self.iconConfig respondsToSelector:@selector(recentTitle)]) {
+    if ([self.sessionConfig respondsToSelector:@selector(recentTitle)]) {
         //: should = ![self.sessionConfig disableInputView];
-        should = ![self.iconConfig recentTitle];
+        should = ![self.sessionConfig recentTitle];
     }
     //: return should;
     return should;
@@ -1865,9 +1865,9 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: NIMAudioType type = NIMAudioTypeAAC;
     NIMAudioType type = NIMAudioTypeAAC;
     //: if ([self.sessionConfig respondsToSelector:@selector(recordType)]) {
-    if ([self.iconConfig respondsToSelector:@selector(appOn)]) {
+    if ([self.sessionConfig respondsToSelector:@selector(appOn)]) {
         //: type = [self.sessionConfig recordType];
-        type = [self.iconConfig appOn];
+        type = [self.sessionConfig appOn];
     }
     //: return type;
     return type;
@@ -1880,9 +1880,9 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: BOOL needProximityMonitor = YES;
     BOOL needProximityMonitor = YES;
     //: if ([self.sessionConfig respondsToSelector:@selector(disableProximityMonitor)]) {
-    if ([self.iconConfig respondsToSelector:@selector(textName)]) {
+    if ([self.sessionConfig respondsToSelector:@selector(textName)]) {
         //: needProximityMonitor = !self.sessionConfig.disableProximityMonitor;
-        needProximityMonitor = !self.iconConfig.textName;
+        needProximityMonitor = !self.sessionConfig.textName;
     }
     //: return needProximityMonitor;
     return needProximityMonitor;
@@ -2396,16 +2396,16 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: NSArray *items;
     NSArray *items;
     //: if (!self.sessionConfig)
-    if (!self.iconConfig)
+    if (!self.sessionConfig)
     {
         //: items = [[AppleProjectKit sharedKit].config defaultMenuItemsWithMessage:message];
         items = [[Indicator reach].config keySize:message];
     }
     //: else if([self.sessionConfig respondsToSelector:@selector(menuItemsWithMessage:)])
-    else if([self.iconConfig respondsToSelector:@selector(oned:)])
+    else if([self.sessionConfig respondsToSelector:@selector(oned:)])
     {
         //: items = [self.sessionConfig menuItemsWithMessage:message];
-        items = [self.iconConfig oned:message];
+        items = [self.sessionConfig oned:message];
     }
 
     //: [items enumerateObjectsUsingBlock:^(BBBMediaItem *item, NSUInteger idx, BOOL *stop) {

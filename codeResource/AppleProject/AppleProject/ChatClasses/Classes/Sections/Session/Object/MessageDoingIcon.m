@@ -78,7 +78,7 @@
     //: NIMSession *session = vc.session;
     NIMSession *session = vc.session;
     //: id<CCCSessionConfig> sessionConfig = vc.sessionConfig;
-    id<FromConfig> sessionConfig = vc.iconConfig;
+    id<FromConfig> sessionConfig = vc.sessionConfig;
     //: UITableView *tableView = vc.tableView;
     UITableView *tableView = vc.tableView;
     //: AAAInputView *inputView = vc.sessionInputView;

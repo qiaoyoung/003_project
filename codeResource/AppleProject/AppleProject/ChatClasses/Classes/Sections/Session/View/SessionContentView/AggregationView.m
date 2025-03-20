@@ -106,7 +106,7 @@ NSString *const k_sizeCurrentTitle = @"NIMTextMessageLabelLinkData";
                 //: NSString *text = [self.textView.text substringWithRange:self.textView.selectedRange];
                 NSString *text = [self.textView.text substringWithRange:self.textView.selectedRange];
                 //: self.model.message.tyl_internalIdentifier = text;
-                self.model.message.Ting = text;
+                self.model.message.ting = text;
                 //: [self.delegate onLongTap:self.model.message];
                 [self.delegate tables:self.model.message];
                 //: if (self.textView.actionDelegate && [self.textView.actionDelegate respondsToSelector:@selector(onTapMediaItem:)]) {
@@ -213,7 +213,7 @@ NSString *const k_sizeCurrentTitle = @"NIMTextMessageLabelLinkData";
                 //: self.textView.actionDelegate = vc;
                 self.textView.actionDelegate = vc;
                 //: self.textView.config = vc.sessionConfig;
-                self.textView.config = vc.iconConfig;
+                self.textView.config = vc.sessionConfig;
             }
         //: }];
         }];

@@ -138,8 +138,7 @@ TingData str_statusCellName = (TingData){182, (Byte []){213, 217, 210, 211, 153}
 
 //: - (void)stop {
 - (void)action {
-    //: [scanCode stopRunning];
-    [scanCode goDoing];
+    [scanCode stopRunning];
     //: [self.scanView stopScanning];
     [self.scanView infoVertical];
 }

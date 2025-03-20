@@ -137,7 +137,7 @@
  *  会话页详细配置
  */
 //: - (id<CCCSessionConfig>)sessionConfig;
-- (id<FromConfig>)iconConfig;
+- (id<FromConfig>)sessionConfig;
 
 
 //: #pragma mark - 消息接口
