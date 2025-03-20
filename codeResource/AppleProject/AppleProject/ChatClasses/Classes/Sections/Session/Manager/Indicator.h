@@ -24,14 +24,14 @@
 #import "AccumulationCenter.h"         //message Wrapper
 //: #import "CCCKitMessageProvider.h"
 #import "ShowFlush.h"
-//: #import "CCCCellConfig.h"           //message cell配置协议
-#import "CCCCellConfig.h"           //message cell配置协议
-//: #import "CCCInputProtocol.h"        //输入框回调
-#import "CCCInputProtocol.h"        //输入框回调
+//: #import "UserCellConfig.h"           //message cell配置协议
+#import "UserCellConfig.h"           //message cell配置协议
+//: #import "UserInputProtocol.h"        //输入框回调
+#import "UserInputProtocol.h"        //输入框回调
 //: #import "CCCKitDataProvider.h"      //APP内容提供器
 #import "IronedMode.h"      //APP内容提供器
-//: #import "CCCMessageCellProtocol.h"  //message cell事件回调
-#import "CCCMessageCellProtocol.h"  //message cell事件回调
+//: #import "UserMessageCellProtocol.h"  //message cell事件回调
+#import "UserMessageCellProtocol.h"  //message cell事件回调
 //: #import "CCCSessionConfig.h"        //会话页面配置
 #import "FromConfig.h"        //会话页面配置
 //: #import "BBBKitEvent.h"             //点击事件封装类
@@ -48,8 +48,8 @@
 #import "ShouldViewController.h"
 //: #import "CCCKitIndependentModeExtraInfo.h"
 #import "FromInfo.h"
-//: #import "CCCChatUIManagerProtocol.h"
-#import "CCCChatUIManagerProtocol.h"
+//: #import "UserChatUIManagerProtocol.h"
+#import "UserChatUIManagerProtocol.h"
 //: #import "CCCCollectionViewLeftAlignedLayout.h"
 #import "MinFlowLayout.h"
 //: #import "AAAKitQuickCommentUtil.h"

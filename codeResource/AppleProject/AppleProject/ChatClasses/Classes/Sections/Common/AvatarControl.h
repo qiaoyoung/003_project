@@ -13,8 +13,8 @@
 #import <UIKit/UIKit.h>
 //: #import <NIMSDK/NIMSDK.h>
 #import <NIMSDK/NIMSDK.h>
-//: #import "CCCKitDependency.h"
-#import "CCCKitDependency.h"
+//: #import "UserKitDependency.h"
+#import "UserKitDependency.h"
 
 //: @interface BBBAvatarImageView : UIControl
 @interface AvatarControl : UIControl

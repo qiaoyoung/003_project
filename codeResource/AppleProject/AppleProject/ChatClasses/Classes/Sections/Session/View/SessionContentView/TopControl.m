@@ -21,8 +21,8 @@
 #import "Indicator.h"
 //: #import "NSString+AppleProjectKit.h"
 #import "NSString+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface CCCSessionUnknowContentView()
 @interface TopControl()

@@ -128,8 +128,8 @@ Byte str_excitedData[] = {79, 11, 64, 4, 59, 249, 236, 241, 241, 236, 240, 236, 
 // __M_A_C_R_O__
 //: #import "CCCKitConfig.h"
 #import "KitConfig.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "BBBMediaItem.h"
 #import "WithMin.h"
 //: #import "UIImage+AppleProjectKit.h"

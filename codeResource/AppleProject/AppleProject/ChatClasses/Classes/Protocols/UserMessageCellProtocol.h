@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCMessageCellProtocol.h
+//  UserMessageCellProtocol.h
 // Indicator
 //
 //  Created by NetEase.
@@ -9,8 +9,8 @@
 //
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
 
 // __M_A_C_R_O__
 

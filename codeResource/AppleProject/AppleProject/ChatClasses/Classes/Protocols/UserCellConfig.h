@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCCellConfig.h
+//  UserCellConfig.h
 // Indicator
 //
 //  Created by chris.

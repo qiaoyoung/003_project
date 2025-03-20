@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  AAAGroupedUsrInfo.h
+//  UserGroupedUsrInfo.h
 //  NIM
 //
 //  Created by Xuhui on 15/3/24.
@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "AAAContactDefines.h"
-#import "AAAContactDefines.h"
+//: #import "UserContactDefines.h"
+#import "UserContactDefines.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
 

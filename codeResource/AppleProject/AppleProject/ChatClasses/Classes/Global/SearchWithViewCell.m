@@ -36,8 +36,8 @@ UnpopularData str_helloManipulateValue = (UnpopularData){238, (Byte []){205, 175
 #import "SearchWithViewCell.h"
 //: #import "UIViewNimKit.h"
 #import "UIViewNimKit.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
 

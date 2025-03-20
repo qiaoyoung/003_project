@@ -11,10 +11,10 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCSessionPrivateProtocol.h"
-#import "CCCSessionPrivateProtocol.h"
-//: #import "CCCSessionConfigurateProtocol.h"
-#import "CCCSessionConfigurateProtocol.h"
+//: #import "UserSessionPrivateProtocol.h"
+#import "UserSessionPrivateProtocol.h"
+//: #import "UserSessionConfigurateProtocol.h"
+#import "UserSessionConfigurateProtocol.h"
 
 //: @interface CCCSessionInteractorImpl : NSObject<NIMSessionInteractor,NIMSessionLayoutDelegate>
 @interface OfImpl : NSObject<WriterSContentSumeractor,ShowHideFrom>

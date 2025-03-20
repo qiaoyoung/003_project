@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "AAAGroupedUsrInfo.h"
-#import "AAAGroupedUsrInfo.h"
+//: #import "UserGroupedUsrInfo.h"
+#import "UserGroupedUsrInfo.h"
 //: #import "AAASpellingCenter.h"
 #import "CenterMessagePressed.h"
 //: #import "BBBKitInfoFetchOption.h"

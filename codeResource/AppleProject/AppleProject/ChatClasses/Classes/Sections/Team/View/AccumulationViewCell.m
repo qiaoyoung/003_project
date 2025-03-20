@@ -44,8 +44,8 @@ Byte str_refugeNumberTitle[] = {89, 7, 48, 14, 215, 89, 202, 131, 102, 213, 27, 
 // __M_A_C_R_O__
 //: #import "BBBTeamAnnouncementListCell.h"
 #import "AccumulationViewCell.h"
-//: #import "BBBUsrInfoData.h"
-#import "BBBUsrInfoData.h"
+//: #import "UserUsrInfoData.h"
+#import "UserUsrInfoData.h"
 //: #import "AAAKitUtil.h"
 #import "TypicalCenter.h"
 //: #import "M80AttributedLabel.h"

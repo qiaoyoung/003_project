@@ -72,8 +72,8 @@ Byte str_cedeAttractName[] = {98, 15, 70, 11, 64, 1, 192, 171, 17, 100, 121, 159
 // __M_A_C_R_O__
 //: #import "NTESMigrateMessageViewController.h"
 #import "OfPressedViewController.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "CCCCommonTableDelegate.h"
 #import "StreetwiseDelegate.h"
 //: #import "SVProgressHUD.h"

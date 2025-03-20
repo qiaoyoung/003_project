@@ -35,8 +35,8 @@ LimbData str_establishContent = (LimbData){119, (Byte []){20, 24, 25, 3, 18, 25,
 // __M_A_C_R_O__
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCInputEmoticonDefine.h"
-#import "CCCInputEmoticonDefine.h"
+//: #import "UserInputEmoticonDefine.h"
+#import "UserInputEmoticonDefine.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
 //: #import "AAAKitDevice.h"

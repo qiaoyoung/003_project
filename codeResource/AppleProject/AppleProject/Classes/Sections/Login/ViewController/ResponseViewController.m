@@ -234,8 +234,8 @@ Byte str_fessText[] = {13, 11, 13, 45, 175, 78, 238, 14, 43, 136, 112, 12, 106, 
 #import "ContentManager.h"
 //: #import <CoreTelephony/CTCellularData.h>
 #import <CoreTelephony/CTCellularData.h>
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "CCCAppDelegate.h"
 #import "FromDelegate.h"
 //: #import "CCCAutoLoginManager.h"

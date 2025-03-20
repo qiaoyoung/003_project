@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "BBBUsrInfoData.h"
-#import "BBBUsrInfoData.h"
+//: #import "UserUsrInfoData.h"
+#import "UserUsrInfoData.h"
 //: #import "AAASpellingCenter.h"
 #import "CenterMessagePressed.h"
 //: #import "AppleProjectKit.h"

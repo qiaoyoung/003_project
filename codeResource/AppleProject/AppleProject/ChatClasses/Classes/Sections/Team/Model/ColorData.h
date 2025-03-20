@@ -13,8 +13,8 @@
 #import <Foundation/Foundation.h>
 //: #import <NIMSDK/NIMSDK.h>
 #import <NIMSDK/NIMSDK.h>
-//: #import "BBBUsrInfoData.h"
-#import "BBBUsrInfoData.h"
+//: #import "UserUsrInfoData.h"
+#import "UserUsrInfoData.h"
 
 //: @interface BBBTeamInfoData : NSObject<NIMGroupMemberProtocol>
 @interface ColorData : NSObject<UpProtocol>

@@ -52,8 +52,8 @@ Byte str_railBottomName[] = {44, 7, 5, 57, 227, 100, 101, 115, 115, 101, 114, 11
 // __M_A_C_R_O__
 //: #import "AAAInputEmoticonManager.h"
 #import "DataOf.h"
-//: #import "CCCInputEmoticonDefine.h"
-#import "CCCInputEmoticonDefine.h"
+//: #import "UserInputEmoticonDefine.h"
+#import "UserInputEmoticonDefine.h"
 //: #import "NSString+AppleProjectKit.h"
 #import "NSString+Indicator.h"
 //: #import "AppleProjectKit.h"

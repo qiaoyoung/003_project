@@ -24,8 +24,8 @@ Byte str_sendValue[] = {26, 25, 94, 8, 17, 38, 213, 98, 191, 193, 210, 199, 212,
 // __M_A_C_R_O__
 //: #import "NTESCardVerificationCell.h"
 #import "ChildView.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 
 //: @interface NTESCardVerificationCell ()<UITextViewDelegate>
 @interface ChildView ()<UITextViewDelegate>

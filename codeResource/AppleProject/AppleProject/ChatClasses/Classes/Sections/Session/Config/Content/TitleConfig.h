@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCBaseSessionContentConfig.h"
-#import "CCCBaseSessionContentConfig.h"
+//: #import "UserBaseSessionContentConfig.h"
+#import "UserBaseSessionContentConfig.h"
 
 //: @interface CCCUnsupportContentConfig : NSObject<CCCSessionContentConfig>
 @interface TitleConfig : NSObject<TopTing>

@@ -45,8 +45,8 @@ SuspectData str_egretValue = (SuspectData){2, (Byte []){107, 97, 109, 108, 93, 1
 #import "ColorInformationView.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface AAAInputAudioRecordIndicatorView(){
 @interface ColorInformationView(){

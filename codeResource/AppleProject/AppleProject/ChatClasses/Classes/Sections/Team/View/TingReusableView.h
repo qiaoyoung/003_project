@@ -13,8 +13,8 @@
 #import <UIKit/UIKit.h>
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
-//: #import "BBBCardDataSourceProtocol.h"
-#import "BBBCardDataSourceProtocol.h"
+//: #import "UserCardDataSourceProtocol.h"
+#import "UserCardDataSourceProtocol.h"
 
 //: @class BBBAvatarImageView;
 @class AvatarControl;

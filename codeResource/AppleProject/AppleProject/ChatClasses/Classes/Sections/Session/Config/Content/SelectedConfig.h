@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "CCCBaseSessionContentConfig.h"
-#import "CCCBaseSessionContentConfig.h"
+//: #import "UserBaseSessionContentConfig.h"
+#import "UserBaseSessionContentConfig.h"
 
 //: @interface CCCFileContentConfig : NSObject<CCCSessionContentConfig>
 @interface SelectedConfig : NSObject<TopTing>

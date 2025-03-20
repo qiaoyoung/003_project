@@ -30,8 +30,8 @@ Byte str_entireValue[] = {21, 12, 51, 7, 234, 23, 121, 182, 77, 86, 179, 88, 118
 #import "ShowHide.h"
 //: #import <NIMSDK/NIMSDK.h>
 #import <NIMSDK/NIMSDK.h>
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "AAAAppleProjectGroupedData.h"
 #import "NameChecked.h"
 //: #import "AppleProjectKit.h"

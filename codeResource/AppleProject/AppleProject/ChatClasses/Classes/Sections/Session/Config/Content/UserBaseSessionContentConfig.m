@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCBaseSessionContentConfig.m
+//  UserBaseSessionContentConfig.m
 // Indicator
 //
 //  Created by amao on 9/15/15.
@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "CCCBaseSessionContentConfig.h"
-#import "CCCBaseSessionContentConfig.h"
+//: #import "UserBaseSessionContentConfig.h"
+#import "UserBaseSessionContentConfig.h"
 //: #import "CCCTextContentConfig.h"
 #import "TingMessage.h"
 //: #import "CCCImageContentConfig.h"

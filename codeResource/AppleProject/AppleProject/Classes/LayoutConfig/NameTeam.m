@@ -31,8 +31,8 @@ CartData str_tuckMediaData = (CartData){222, (Byte []){144, 138, 155, 141, 157, 
 #import "NameTeam.h"
 //: #import "M80AttributedLabel+AppleProjectKit.h"
 #import "MessageEnableTextView+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface NTESChatroomTextContentConfig()
 @interface NameTeam()

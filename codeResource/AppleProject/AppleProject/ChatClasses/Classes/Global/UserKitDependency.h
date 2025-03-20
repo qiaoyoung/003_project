@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCKitDependency.h
+//  UserKitDependency.h
 // Indicator
 //
 //  Created by chris on 2017/5/3.

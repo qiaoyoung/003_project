@@ -43,8 +43,8 @@ WayData str_oyText = (WayData){50, (Byte []){87, 95, 93, 88, 91, 109, 80, 83, 64
 #import "UIViewNimKit.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: const NSInteger AAAInputEmoticonTabViewHeight = 40;
 const NSInteger k_timeText = 40;

@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import "CCCSessionMessageContentView.h"
 #import "ViewAggregationHeliogramSittingControl.h"
-//: #import "CCCKitDependency.h"
-#import "CCCKitDependency.h"
+//: #import "UserKitDependency.h"
+#import "UserKitDependency.h"
 
 //: @interface CCCSessionNetChatNotifyContentView : CCCSessionMessageContentView
 @interface OfControl : ViewAggregationHeliogramSittingControl

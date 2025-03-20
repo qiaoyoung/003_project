@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import "CCCSessionViewController.h"
 #import "TutorialViewController.h"
-//: #import "CCCSessionConfigurateProtocol.h"
-#import "CCCSessionConfigurateProtocol.h"
+//: #import "UserSessionConfigurateProtocol.h"
+#import "UserSessionConfigurateProtocol.h"
 
 //: @class CCCSessionViewController;
 @class TutorialViewController;

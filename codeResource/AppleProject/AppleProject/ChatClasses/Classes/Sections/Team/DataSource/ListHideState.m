@@ -91,8 +91,8 @@ SomeOtherData str_theaterData = (SomeOtherData){181, (Byte []){82, 18, 14, 92, 4
 // __M_A_C_R_O__
 //: #import "BBBTeamListDataManager.h"
 #import "ListHideState.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
 

@@ -11,14 +11,14 @@
 // __M_A_C_R_O__
 //: #import "CCCCommonTableDelegate.h"
 #import "StreetwiseDelegate.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "CCCCommonTableViewCell.h"
 #import "CommonCell.h"
 //: #import "UIViewNimKit.h"
 #import "UIViewNimKit.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: static NSString *DefaultTableCell = @"UITableViewCell";
 static NSString *k_localValue = @"UITableViewCell";

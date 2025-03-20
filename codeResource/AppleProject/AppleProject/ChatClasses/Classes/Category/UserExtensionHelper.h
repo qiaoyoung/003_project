@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCExtensionHelper.h
+//  UserExtensionHelper.h
 // Indicator
 //
 //  Created by amao on 4/25/16.

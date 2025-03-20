@@ -82,8 +82,8 @@ Byte str_yerData[] = {5, 8, 12, 14, 90, 173, 93, 104, 221, 242, 4, 189, 98, 5, 8
 #import "MinDoingOf.h"
 //: #import <NIMSDK/NIMSDK.h>
 #import <NIMSDK/NIMSDK.h>
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "AAAKitUtil.h"
 #import "TypicalCenter.h"
 //: #import "AppleProjectKit.h"

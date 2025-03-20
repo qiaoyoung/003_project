@@ -34,8 +34,8 @@ Byte str_workoutTitle[] = {88, 18, 1, 9, 7, 105, 149, 214, 128, 104, 98, 110, 10
 #import "ToTarotItem.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface BBBCardOperationItem()
 @interface ToTarotItem()

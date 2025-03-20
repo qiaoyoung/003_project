@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCChatUIManagerProtocol.h
+//  UserChatUIManagerProtocol.h
 // Indicator
 //
 //  Created by 丁文超 on 2020/3/19.

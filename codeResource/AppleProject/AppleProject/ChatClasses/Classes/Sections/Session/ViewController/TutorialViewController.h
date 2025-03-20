@@ -15,10 +15,10 @@
 #import <NIMSDK/NIMSDK.h>
 //: #import "CCCSessionConfig.h"
 #import "FromConfig.h"
-//: #import "CCCMessageCellProtocol.h"
-#import "CCCMessageCellProtocol.h"
-//: #import "CCCSessionConfigurateProtocol.h"
-#import "CCCSessionConfigurateProtocol.h"
+//: #import "UserMessageCellProtocol.h"
+#import "UserMessageCellProtocol.h"
+//: #import "UserSessionConfigurateProtocol.h"
+#import "UserSessionConfigurateProtocol.h"
 //: #import "AAAInputView.h"
 #import "ClueView.h"
 

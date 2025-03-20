@@ -13,8 +13,8 @@
 #import <Foundation/Foundation.h>
 //: #import "CCCKitInfo.h"
 #import "TitleInfo.h"
-//: #import "AAAGroupedUsrInfo.h"
-#import "AAAGroupedUsrInfo.h"
+//: #import "UserGroupedUsrInfo.h"
+#import "UserGroupedUsrInfo.h"
 
 /**
  *  联系人选择器数据回调

@@ -15,8 +15,8 @@
 #import "NTESSubscribeDefine.h"
 //: #import "NTESDevice.h"
 #import "StateDevice.h"
-//: #import "CCCExtensionHelper.h"
-#import "CCCExtensionHelper.h"
+//: #import "UserExtensionHelper.h"
+#import "UserExtensionHelper.h"
 
 //: NSString *const NTESSubscribeNetState = @"net_state";
 NSString *const k_styleValue = @"net_state";

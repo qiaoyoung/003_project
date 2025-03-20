@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  AAAContactDefines.h
+//  UserContactDefines.h
 //  NIM
 //
 //  Created by chris on 15/2/26.

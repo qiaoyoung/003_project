@@ -23,8 +23,8 @@
 #import "UIImage+Indicator.h"
 //: #import "BBBMessageModel.h"
 #import "AccumulationCenter.h"
-//: #import "CCCBaseSessionContentConfig.h"
-#import "CCCBaseSessionContentConfig.h"
+//: #import "UserBaseSessionContentConfig.h"
+#import "UserBaseSessionContentConfig.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
 

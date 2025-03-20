@@ -13,8 +13,8 @@
 #import <UIKit/UIKit.h>
 //: #import "CCCSessionConfig.h"
 #import "FromConfig.h"
-//: #import "CCCInputProtocol.h"
-#import "CCCInputProtocol.h"
+//: #import "UserInputProtocol.h"
+#import "UserInputProtocol.h"
 
 //: NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_BEGIN

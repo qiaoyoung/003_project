@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
 
 //: @interface BBBTimestampModel : NSObject
 @interface FromTap : NSObject

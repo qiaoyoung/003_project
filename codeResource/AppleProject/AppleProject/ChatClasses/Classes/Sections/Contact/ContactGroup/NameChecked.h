@@ -13,8 +13,8 @@
 #import <Foundation/Foundation.h>
 //: #import <NIMSDK/NIMSDK.h>
 #import <NIMSDK/NIMSDK.h>
-//: #import "AAAContactDefines.h"
-#import "AAAContactDefines.h"
+//: #import "UserContactDefines.h"
+#import "UserContactDefines.h"
 
 //: @interface AAAAppleProjectGroupedData : NSObject
 @interface NameChecked : NSObject

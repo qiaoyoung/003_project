@@ -11,10 +11,10 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCSessionConfigurateProtocol.h"
-#import "CCCSessionConfigurateProtocol.h"
-//: #import "CCCSessionPrivateProtocol.h"
-#import "CCCSessionPrivateProtocol.h"
+//: #import "UserSessionConfigurateProtocol.h"
+#import "UserSessionConfigurateProtocol.h"
+//: #import "UserSessionPrivateProtocol.h"
+#import "UserSessionPrivateProtocol.h"
 //: #import "CCCSessionConfig.h"
 #import "FromConfig.h"
 

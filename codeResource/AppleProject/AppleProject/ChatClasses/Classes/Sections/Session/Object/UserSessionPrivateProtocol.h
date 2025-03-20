@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCSessionPrivateProtocol.h
+//  UserSessionPrivateProtocol.h
 // Indicator
 //
 //  Created by chris on 2016/11/7.

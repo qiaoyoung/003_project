@@ -11,10 +11,10 @@
 // __M_A_C_R_O__
 //: #import <UIKit/UIKit.h>
 #import <UIKit/UIKit.h>
-//: #import "CCCSessionConfigurateProtocol.h"
-#import "CCCSessionConfigurateProtocol.h"
-//: #import "CCCMessageCellProtocol.h"
-#import "CCCMessageCellProtocol.h"
+//: #import "UserSessionConfigurateProtocol.h"
+#import "UserSessionConfigurateProtocol.h"
+//: #import "UserMessageCellProtocol.h"
+#import "UserMessageCellProtocol.h"
 
 //: @interface CCCSessionTableAdapter : NSObject<UITableViewDelegate,UITableViewDataSource>
 @interface AddTable : NSObject<UITableViewDelegate,UITableViewDataSource>

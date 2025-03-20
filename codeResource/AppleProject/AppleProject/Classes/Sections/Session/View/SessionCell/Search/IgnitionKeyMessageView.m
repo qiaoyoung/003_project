@@ -22,8 +22,8 @@ Byte str_flavorTypicallyContent[] = {59, 14, 8, 26, 90, 156, 181, 101, 115, 115,
 #import "IgnitionKeyMessageView.h"
 //: #import "BBBAvatarImageView.h"
 #import "AvatarControl.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "UIView+NTES.h"
 #import "UIView+Status.h"
 

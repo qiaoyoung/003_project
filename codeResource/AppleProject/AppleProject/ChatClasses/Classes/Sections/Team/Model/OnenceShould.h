@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "BBBCardDataSourceProtocol.h"
-#import "BBBCardDataSourceProtocol.h"
+//: #import "UserCardDataSourceProtocol.h"
+#import "UserCardDataSourceProtocol.h"
 
 //: @interface NIMCardMemberItem : NSObject<NIMKitCardHeaderData>
 @interface MessageItem : NSObject<WithChild>

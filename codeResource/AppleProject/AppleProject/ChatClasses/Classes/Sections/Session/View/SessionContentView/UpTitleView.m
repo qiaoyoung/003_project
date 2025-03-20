@@ -17,8 +17,8 @@
 #import "UIViewNimKit.h"
 //: #import "BBBLoadProgressView.h"
 #import "ShouldContentView.h"
-//: #import "CCCKitDependency.h"
-#import "CCCKitDependency.h"
+//: #import "UserKitDependency.h"
+#import "UserKitDependency.h"
 //: #import <YYImage/YYImage.h>
 #import <YYImage/YYImage.h>
 //: #import "UCZProgressView.h"

@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
 
 //: @interface CCCCellLayoutConfig : NSObject<CCCCellLayoutConfig>
 @interface OffConfig : NSObject<OffConfig>

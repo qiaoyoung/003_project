@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-//: #import "CCCInputProtocol.h"
-#import "CCCInputProtocol.h"
+//: #import "UserInputProtocol.h"
+#import "UserInputProtocol.h"
 //: #import "CCCSessionConfig.h"
 #import "FromConfig.h"
 //: #import "AAAInputToolBar.h"

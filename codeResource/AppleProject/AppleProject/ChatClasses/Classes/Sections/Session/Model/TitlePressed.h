@@ -15,10 +15,10 @@
 #import "StatusViewCell.h"
 //: #import "CCCSessionTimestampCell.h"
 #import "MixViewCell.h"
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
-//: #import "CCCMessageCellProtocol.h"
-#import "CCCMessageCellProtocol.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
+//: #import "UserMessageCellProtocol.h"
+#import "UserMessageCellProtocol.h"
 
 //: @interface CCCMessageCellFactory : NSObject
 @interface TitlePressed : NSObject

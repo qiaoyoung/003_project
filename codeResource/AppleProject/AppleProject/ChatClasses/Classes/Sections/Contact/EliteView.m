@@ -38,8 +38,8 @@ Byte str_bandCombineName[] = {17, 7, 52, 10, 184, 20, 74, 187, 202, 122, 239, 16
 #import "UIViewNimKit.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
 

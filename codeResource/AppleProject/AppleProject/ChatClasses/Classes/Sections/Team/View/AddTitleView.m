@@ -13,8 +13,8 @@
 #import "AddTitleView.h"
 //: #import "UIViewNimKit.h"
 #import "UIViewNimKit.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface BBBTimePickerView()<UIPickerViewDelegate,UIPickerViewDataSource>
 @interface AddTitleView()<UIPickerViewDelegate,UIPickerViewDataSource>

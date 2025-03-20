@@ -11,12 +11,12 @@
 #import <Foundation/Foundation.h>
 //: #import "BBBMediaItem.h"
 #import "WithMin.h"
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
 //: #import "CCCKitMessageProvider.h"
 #import "ShowFlush.h"
-//: #import "CCCInputBarItemType.h"
-#import "CCCInputBarItemType.h"
+//: #import "UserInputBarItemType.h"
+#import "UserInputBarItemType.h"
 //: #import "AAAInputEmoticonManager.h"
 #import "DataOf.h"
 
@@ -28,7 +28,7 @@
 @optional
 
 /**
- *  输入按钮类型，请填入 CCCInputBarItemType 枚举，按顺序排列。不实现则按默认排列。
+ *  输入按钮类型，请填入 UserInputBarItemType 枚举，按顺序排列。不实现则按默认排列。
  */
 //: - (NSArray<NSNumber *> *)inputBarItemTypes;
 - (NSArray<NSNumber *> *)iconImage;

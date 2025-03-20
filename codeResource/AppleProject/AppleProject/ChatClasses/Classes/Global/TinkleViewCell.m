@@ -27,8 +27,8 @@ EndeavourData str_comingBandData = (EndeavourData){205, (Byte []){238, 140, 252,
 // __M_A_C_R_O__
 //: #import "CCCKitSwitcherCell.h"
 #import "TinkleViewCell.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "UIViewNimKit.h"
 #import "UIViewNimKit.h"
 

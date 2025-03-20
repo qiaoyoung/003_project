@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCGlobalMacro.h
+//  UserGlobalMacro.h
 // Indicator
 //
 //  Created by chris.

@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import "AAAKitDevice.h"
 #import "ShowTable.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @interface AAAKitDevice ()
 @interface ShowTable ()

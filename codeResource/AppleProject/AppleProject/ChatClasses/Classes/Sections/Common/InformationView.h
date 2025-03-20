@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import <UIKit/UIKit.h>
 #import <UIKit/UIKit.h>
-//: #import "BBBCardDataSourceProtocol.h"
-#import "BBBCardDataSourceProtocol.h"
+//: #import "UserCardDataSourceProtocol.h"
+#import "UserCardDataSourceProtocol.h"
 
 //: @protocol BBBMemberGroupViewDelegate <NSObject>
 @protocol TingDelegate <NSObject>

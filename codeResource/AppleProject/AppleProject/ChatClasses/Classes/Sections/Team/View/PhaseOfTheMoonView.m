@@ -45,8 +45,8 @@ ExperienceData str_typicallyConcedeData = (ExperienceData){89, (Byte []){48, 58,
 #import "UIImage+Indicator.h"
 //: #import "BBBTeamHelper.h"
 #import "LanguageChild.h"
-//: #import "BBBCardDataSourceProtocol.h"
-#import "BBBCardDataSourceProtocol.h"
+//: #import "UserCardDataSourceProtocol.h"
+#import "UserCardDataSourceProtocol.h"
 
 //: NSString *const kTeamMember = @"kTeamMember";
 NSString *const k_tagData = @"kTeamMember";

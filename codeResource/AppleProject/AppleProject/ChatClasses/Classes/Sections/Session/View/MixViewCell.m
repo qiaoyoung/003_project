@@ -20,8 +20,8 @@ Byte str_globalData[] = {32, 20, 5, 8, 84, 139, 90, 5, 100, 94, 106, 105, 90, 11
 // __M_A_C_R_O__
 //: #import "CCCSessionTimestampCell.h"
 #import "MixViewCell.h"
-//: #import "CCCCellConfig.h"
-#import "CCCCellConfig.h"
+//: #import "UserCellConfig.h"
+#import "UserCellConfig.h"
 //: #import "UIViewNimKit.h"
 #import "UIViewNimKit.h"
 //: #import "BBBTimestampModel.h"

@@ -48,8 +48,8 @@ ConstrainData str_intervalText = (ConstrainData){93, (Byte []){63, 60, 62, 54, 2
 // __M_A_C_R_O__
 //: #import "BBBTeamCardSelectedViewController.h"
 #import "TeamOfViewController.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 //: #import "ZMONTeamCartSetTableViewCell.h"
 #import "SectionTapCellView.h"
 

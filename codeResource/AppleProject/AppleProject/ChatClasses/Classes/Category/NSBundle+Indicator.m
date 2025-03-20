@@ -54,8 +54,8 @@ LeapData str_commissionShouldValue = (LeapData){216, (Byte []){153, 168, 168, 18
 #import "NSBundle+Indicator.h"
 //: #import "AppleProjectKit.h"
 #import "Indicator.h"
-//: #import "CCCInputEmoticonDefine.h"
-#import "CCCInputEmoticonDefine.h"
+//: #import "UserInputEmoticonDefine.h"
+#import "UserInputEmoticonDefine.h"
 //: #import "SSZipArchiveManager.h"
 #import "EnableChildWith.h"
 

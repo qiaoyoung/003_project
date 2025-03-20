@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCExtensionHelper.m
+//  UserExtensionHelper.m
 // Indicator
 //
 //  Created by amao on 4/25/16.
@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "CCCExtensionHelper.h"
-#import "CCCExtensionHelper.h"
+//: #import "UserExtensionHelper.h"
+#import "UserExtensionHelper.h"
 //: #import <objc/runtime.h>
 #import <objc/runtime.h>
 

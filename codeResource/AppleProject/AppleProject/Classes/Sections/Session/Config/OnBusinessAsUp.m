@@ -351,13 +351,13 @@ Byte str_proofValue[] = {22, 11, 51, 14, 76, 151, 87, 111, 92, 243, 197, 172, 17
 - (NSArray<NSNumber *> *)iconImage{
     //: return @[
     return @[
-//        @(CCCInputBarItemTypeMore),
-//        @(CCCInputBarItemTypeEmoticon),
-//             @(CCCInputBarItemTypeVoice),
-             //: @(CCCInputBarItemTypeTextAndRecord),
-             @(CCCInputBarItemTypeTextAndRecord),
-        //: @(CCCInputBarItemTypeSend),
-        @(CCCInputBarItemTypeSend),
+//        @(UserInputBarItemTypeMore),
+//        @(UserInputBarItemTypeEmoticon),
+//             @(UserInputBarItemTypeVoice),
+             //: @(UserInputBarItemTypeTextAndRecord),
+             @(UserInputBarItemTypeTextAndRecord),
+        //: @(UserInputBarItemTypeSend),
+        @(UserInputBarItemTypeSend),
             //: ];
             ];
 }

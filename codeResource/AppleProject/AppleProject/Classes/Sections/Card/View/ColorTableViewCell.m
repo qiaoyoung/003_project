@@ -30,8 +30,8 @@ Byte str_areaContent[] = {11, 20, 35, 6, 88, 241, 140, 134, 146, 145, 130, 134, 
 #import "ColorTableViewCell.h"
 //: #import "UIView+NTES.h"
 #import "UIView+Status.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 
 //: @interface NTESColorButtonCell()
 @interface ColorTableViewCell()

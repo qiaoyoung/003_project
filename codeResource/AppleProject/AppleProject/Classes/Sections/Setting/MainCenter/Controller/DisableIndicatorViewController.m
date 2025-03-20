@@ -128,8 +128,8 @@ Byte str_widowThreadContent[] = {88, 22, 44, 5, 165, 71, 77, 71, 72, 57, 65, 51,
 // __M_A_C_R_O__
 //: #import "NTESMainCenterViewController.h"
 #import "DisableIndicatorViewController.h"
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 //: #import "CCCCommonTableDelegate.h"
 #import "StreetwiseDelegate.h"
 //: #import "SVProgressHUD.h"

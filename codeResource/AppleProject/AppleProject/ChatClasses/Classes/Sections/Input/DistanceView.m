@@ -60,8 +60,8 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
 #import "UIViewNimKit.h"
 //: #import "UIImage+AppleProjectKit.h"
 #import "UIImage+Indicator.h"
-//: #import "CCCInputBarItemType.h"
-#import "CCCInputBarItemType.h"
+//: #import "UserInputBarItemType.h"
+#import "UserInputBarItemType.h"
 //: #import "AAAInputEmoticonManager.h"
 #import "DataOf.h"
 //: #import "YYText.h"
@@ -206,13 +206,13 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
 
         //: self.types = @[
         self.types = @[
-//            @(CCCInputBarItemTypeMore),
-//            @(CCCInputBarItemTypeEmoticon),
-//                         @(CCCInputBarItemTypeVoice),
-                         //: @(CCCInputBarItemTypeTextAndRecord),
-                         @(CCCInputBarItemTypeTextAndRecord),
-                         //: @(CCCInputBarItemTypeSend),
-                         @(CCCInputBarItemTypeSend),
+//            @(UserInputBarItemTypeMore),
+//            @(UserInputBarItemTypeEmoticon),
+//                         @(UserInputBarItemTypeVoice),
+                         //: @(UserInputBarItemTypeTextAndRecord),
+                         @(UserInputBarItemTypeTextAndRecord),
+                         //: @(UserInputBarItemTypeSend),
+                         @(UserInputBarItemTypeSend),
 
                        //: ];
                        ];
@@ -334,7 +334,7 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
 {
 //    CGFloat textViewWidth = 0;
 //    for (NSNumber *type in self.types) {
-//        if (type.integerValue == CCCInputBarItemTypeTextAndRecord) {
+//        if (type.integerValue == UserInputBarItemTypeTextAndRecord) {
 //            continue;
 //        }
 //        UIView *view = [self subViewForType:type.integerValue];
@@ -351,7 +351,7 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
     //: [super layoutSubviews];
     [super layoutSubviews];
 
-//    if ([self.types containsObject:@(CCCInputBarItemTypeTextAndRecord)]) {
+//    if ([self.types containsObject:@(UserInputBarItemTypeTextAndRecord)]) {
 //        self.inputTextBkgImage.nim_width  = self.inputTextView.nim_width  + 2 * self.textViewPadding;
 //        self.inputTextBkgImage.nim_height = self.inputTextView.nim_height + 2 * self.textViewPadding;
 //    }
@@ -411,8 +411,8 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
 //: - (void)adjustTextAndRecordView
 - (void)sessionMin
 {
-    //: if ([self.types containsObject:@(CCCInputBarItemTypeTextAndRecord)])
-    if ([self.types containsObject:@(CCCInputBarItemTypeTextAndRecord)])
+    //: if ([self.types containsObject:@(UserInputBarItemTypeTextAndRecord)])
+    if ([self.types containsObject:@(UserInputBarItemTypeTextAndRecord)])
     {
 //        self.inputTextView.center  = self.inputTextBkgImage.center;
 
@@ -625,20 +625,20 @@ SignerData str_conditionTitle = (SignerData){249, (Byte []){144, 154, 150, 151, 
 
 //: #pragma mark - Get
 #pragma mark - Get
-//: - (UIView *)subViewForType:(CCCInputBarItemType)type{
-- (UIView *)center:(CCCInputBarItemType)type{
+//: - (UIView *)subViewForType:(UserInputBarItemType)type{
+- (UIView *)center:(UserInputBarItemType)type{
     //: if (!_dict) {
     if (!_dict) {
         //: _dict = @{
         _dict = @{
-                  //: @(CCCInputBarItemTypeVoice) : self.voiceButton,
-                  @(CCCInputBarItemTypeVoice) : self.voiceButton,
-//                  @(CCCInputBarItemTypeTextAndRecord)  : self.inputTextBkgImage,
-                  //: @(CCCInputBarItemTypeEmoticon) : self.emoticonBtn,
-                  @(CCCInputBarItemTypeEmoticon) : self.emoticonBtn,
-//                  @(CCCInputBarItemTypeMore)     : self.moreMediaBtn,
-                  //: @(CCCInputBarItemTypeSend) : self.sendButton,
-                  @(CCCInputBarItemTypeSend) : self.sendButton,
+                  //: @(UserInputBarItemTypeVoice) : self.voiceButton,
+                  @(UserInputBarItemTypeVoice) : self.voiceButton,
+//                  @(UserInputBarItemTypeTextAndRecord)  : self.inputTextBkgImage,
+                  //: @(UserInputBarItemTypeEmoticon) : self.emoticonBtn,
+                  @(UserInputBarItemTypeEmoticon) : self.emoticonBtn,
+//                  @(UserInputBarItemTypeMore)     : self.moreMediaBtn,
+                  //: @(UserInputBarItemTypeSend) : self.sendButton,
+                  @(UserInputBarItemTypeSend) : self.sendButton,
                 //: };
                 };
     }

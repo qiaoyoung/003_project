@@ -13,8 +13,8 @@
 #import <UIKit/UIKit.h>
 //: #import "CCCSessionConfig.h"
 #import "FromConfig.h"
-//: #import "CCCInputProtocol.h"
-#import "CCCInputProtocol.h"
+//: #import "UserInputProtocol.h"
+#import "UserInputProtocol.h"
 
 //: @interface AAAInputMoreContainerView : UIView
 @interface ToAGreaterExtentView : UIView

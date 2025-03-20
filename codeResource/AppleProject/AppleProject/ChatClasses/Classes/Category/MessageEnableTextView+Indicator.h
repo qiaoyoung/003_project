@@ -9,8 +9,8 @@
 //
 
 // __M_A_C_R_O__
-//: #import "CCCKitDependency.h"
-#import "CCCKitDependency.h"
+//: #import "UserKitDependency.h"
+#import "UserKitDependency.h"
 
 //: @interface M80AttributedLabel (AppleProjectKit)
 @interface MessageEnableTextView (Indicator)

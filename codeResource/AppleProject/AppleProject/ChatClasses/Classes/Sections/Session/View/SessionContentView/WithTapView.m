@@ -54,8 +54,8 @@ Byte str_altogetherName[] = {3, 40, 57, 12, 13, 219, 130, 248, 44, 209, 81, 111,
 #import "UIViewNimKit.h"
 //: #import "BBBLoadProgressView.h"
 #import "ShouldContentView.h"
-//: #import "CCCKitDependency.h"
-#import "CCCKitDependency.h"
+//: #import "UserKitDependency.h"
+#import "UserKitDependency.h"
 //: #import <YYImage/YYImage.h>
 #import <YYImage/YYImage.h>
 //: #import "AppleProjectKit.h"

@@ -40,8 +40,8 @@ Byte str_magnetConcerningData[] = {11, 18, 70, 7, 16, 27, 114, 161, 45, 249, 1, 
 // __M_A_C_R_O__
 //: #import "NTESNoticationUtil.h"
 #import "NameUtil.h"
-//: #import "CCCGlobalMacro.h"
-#import "CCCGlobalMacro.h"
+//: #import "UserGlobalMacro.h"
+#import "UserGlobalMacro.h"
 
 //: @implementation NTESNoticationUtil
 @implementation NameUtil

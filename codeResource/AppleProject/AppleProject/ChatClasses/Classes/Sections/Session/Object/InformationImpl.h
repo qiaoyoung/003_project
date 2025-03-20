@@ -11,8 +11,8 @@
 // __M_A_C_R_O__
 //: #import "CCCSessionConfigurator.h"
 #import "MessageDoingIcon.h"
-//: #import "CCCSessionPrivateProtocol.h"
-#import "CCCSessionPrivateProtocol.h"
+//: #import "UserSessionPrivateProtocol.h"
+#import "UserSessionPrivateProtocol.h"
 
 //: @interface CCCSessionLayoutImpl : NSObject<NIMSessionLayout>
 @interface InformationImpl : NSObject<ShouldLayout>

@@ -1,7 +1,7 @@
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCInputEmoticonDefine.h
+//  UserInputEmoticonDefine.h
 // Indicator
 //
 //  Created by chris.

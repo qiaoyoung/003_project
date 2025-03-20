@@ -74,7 +74,7 @@ Byte str_crediblyValue[] = {55, 22, 58, 5, 16, 42, 47, 57, 39, 40, 50, 43, 27, 5
 // __DEBUG__
 // __CLOSE_PRINT__
 //
-//  CCCCommonTableData.m
+//  UserCommonTableData.m
 //  NIM
 //
 //  Created by chris on 15/6/26.
@@ -82,8 +82,8 @@ Byte str_crediblyValue[] = {55, 22, 58, 5, 16, 42, 47, 57, 39, 40, 50, 43, 27, 5
 //
 
 // __M_A_C_R_O__
-//: #import "CCCCommonTableData.h"
-#import "CCCCommonTableData.h"
+//: #import "UserCommonTableData.h"
+#import "UserCommonTableData.h"
 
 //: @implementation NIMCommonTableSection
 @implementation ImageSection
