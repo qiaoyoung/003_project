@@ -1,89 +1,76 @@
-// __DEBUG__
-// __CLOSE_PRINT__
 //
-//  ChemicalElementStatus.h
-//  ViewKeychain
+//  SAMKeychainQuery.h
+//  SAMKeychain
 //
 //  Created by Caleb Davenport on 3/19/13.
 //  Copyright (c) 2013-2014 Sam Soffes. All rights reserved.
 //
 
-// __M_A_C_R_O__
-	//: #import <Foundation/Foundation.h>
+#if __has_feature(modules)
+	@import Foundation;
+	@import Security;
+#else
 	#import <Foundation/Foundation.h>
+	#import <Security/Security.h>
+#endif
 
- //: @import Foundation;
- @import Foundation;
- //: @import Security;
- @import Security;
- // Keychain synchronization available at compile time
+NS_ASSUME_NONNULL_BEGIN
 
+#if __IPHONE_7_0 || __MAC_10_9
+	// Keychain synchronization available at compile time
+	#define SAMKEYCHAIN_SYNCHRONIZATION_AVAILABLE 1
+#endif
 
+#if __IPHONE_3_0 || __MAC_10_9
+	// Keychain access group available at compile time
+	#define SAMKEYCHAIN_ACCESS_GROUP_AVAILABLE 1
+#endif
 
-
- // Keychain access group available at compile time
-
-
-
-
-//: typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchronizationMode : NSUInteger SAMKeychainQuerySynchronizationMode; enum SAMKeychainQuerySynchronizationMode : NSUInteger {
-typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchronizationMode : NSUInteger SAMKeychainQuerySynchronizationMode; enum SAMKeychainQuerySynchronizationMode : NSUInteger {
- //: SAMKeychainQuerySynchronizationModeAny,
- SAMKeychainQuerySynchronizationModeAny,
- //: SAMKeychainQuerySynchronizationModeNo,
- SAMKeychainQuerySynchronizationModeNo,
- //: SAMKeychainQuerySynchronizationModeYes
- SAMKeychainQuerySynchronizationModeYes
-//: };
+#ifdef SAMKEYCHAIN_SYNCHRONIZATION_AVAILABLE
+typedef NS_ENUM(NSUInteger, SAMKeychainQuerySynchronizationMode) {
+	SAMKeychainQuerySynchronizationModeAny,
+	SAMKeychainQuerySynchronizationModeNo,
+	SAMKeychainQuerySynchronizationModeYes
 };
-
+#endif
 
 /**
  Simple interface for querying or modifying keychain items.
  */
-//: @interface SAMKeychainQuery : NSObject
-@interface ChemicalElementStatus : NSObject
+@interface SAMKeychainQuery : NSObject
 
 /** kSecAttrAccount */
-//: @property (nonatomic, copy, nullable) NSString *account;
 @property (nonatomic, copy, nullable) NSString *account;
 
 /** kSecAttrService */
-//: @property (nonatomic, copy, nullable) NSString *service;
 @property (nonatomic, copy, nullable) NSString *service;
 
 /** kSecAttrLabel */
-//: @property (nonatomic, copy, nullable) NSString *label;
 @property (nonatomic, copy, nullable) NSString *label;
 
-
+#ifdef SAMKEYCHAIN_ACCESS_GROUP_AVAILABLE
 /** kSecAttrAccessGroup (only used on iOS) */
-//: @property (nonatomic, copy, nullable) NSString *accessGroup;
 @property (nonatomic, copy, nullable) NSString *accessGroup;
+#endif
 
-
-
+#ifdef SAMKEYCHAIN_SYNCHRONIZATION_AVAILABLE
 /** kSecAttrSynchronizable */
-//: @property (nonatomic) SAMKeychainQuerySynchronizationMode synchronizationMode;
 @property (nonatomic) SAMKeychainQuerySynchronizationMode synchronizationMode;
-
+#endif
 
 /** Root storage for password information */
-//: @property (nonatomic, copy, nullable) NSData *passwordData;
 @property (nonatomic, copy, nullable) NSData *passwordData;
 
 /**
  This property automatically transitions between an object and the value of
  `passwordData` using NSKeyedArchiver and NSKeyedUnarchiver.
  */
-//: @property (nonatomic, copy, nullable) id<NSCoding> passwordObject;
 @property (nonatomic, copy, nullable) id<NSCoding> passwordObject;
 
 /**
  Convenience accessor for setting and getting a password string. Passes through
  to `passwordData` using UTF-8 string encoding.
  */
-//: @property (nonatomic, copy, nullable) NSString *password;
 @property (nonatomic, copy, nullable) NSString *password;
 
 
@@ -99,8 +86,7 @@ typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchroni
 
  @return `YES` if saving was successful, `NO` otherwise.
  */
-//: - (BOOL)save:(NSError **)error;
-- (BOOL)messageOfShould:(NSError **)error;
+- (BOOL)save:(NSError **)error;
 
 /**
  Delete keychain items that match the given account, service, and access group.
@@ -109,8 +95,7 @@ typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchroni
 
  @return `YES` if saving was successful, `NO` otherwise.
  */
-//: - (BOOL)deleteItem:(NSError **)error;
-- (BOOL)send:(NSError **)error;
+- (BOOL)deleteItem:(NSError **)error;
 
 
 ///---------------
@@ -127,8 +112,7 @@ typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchroni
  `nil` should an error occur.
  The order of the items is not determined.
  */
-//: - (nullable NSArray<NSDictionary<NSString *, id> *> *)fetchAll:(NSError **)error;
-- (nullable NSArray<NSDictionary<NSString *, id> *> *)view:(NSError **)error;
+- (nullable NSArray<NSDictionary<NSString *, id> *> *)fetchAll:(NSError **)error;
 
 /**
  Fetch the keychain item that matches the given account, service, and access
@@ -140,15 +124,14 @@ typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchroni
 
  @return `YES` if fetching was successful, `NO` otherwise.
  */
-//: - (BOOL)fetch:(NSError **)error;
-- (BOOL)trap:(NSError **)error;
+- (BOOL)fetch:(NSError **)error;
 
 
 ///-----------------------------
 /// @name Synchronization Status
 ///-----------------------------
 
-
+#ifdef SAMKEYCHAIN_SYNCHRONIZATION_AVAILABLE
 /**
  Returns a boolean indicating if keychain synchronization is available on the device at runtime. The #define 
  SAMKEYCHAIN_SYNCHRONIZATION_AVAILABLE is only for compile time. If you are checking for the presence of synchronization,
@@ -156,9 +139,9 @@ typedef enum __attribute__((enum_extensibility(open))) SAMKeychainQuerySynchroni
  
  @return A value indicating if keychain synchronization is available
  */
-//: + (BOOL)isSynchronizationAvailable;
-+ (BOOL)range;
++ (BOOL)isSynchronizationAvailable;
+#endif
 
-
-//: @end
 @end
+
+NS_ASSUME_NONNULL_END
