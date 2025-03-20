@@ -15,8 +15,7 @@
 //: @required
 @required
 //显示的title名
-//: - (NSString*)title;
-- (NSString*)bar;
+- (NSString*)title;
 
 //返回集合里的成员
 //: - (NSArray*)members;
@@ -38,12 +37,10 @@
 //: @required
 @required
 //userId和Vcname必有一个有值，根据有值的状态push进不同的页面
-//: - (NSString*)vcName;
-- (NSString*)add;
+- (NSString*)vcName;
 
 //userId和Vcname必有一个有值，根据有值的状态push进不同的页面
-//: - (NSString*)userId;
-- (NSString*)queryedMessage;
+- (NSString*)userId;
 
 //返回行高
 //: - (CGFloat)uiHeight;
@@ -51,11 +48,11 @@
 
 //重用id
 //: - (NSString*)reuseId;
-- (NSString*)name;
+- (NSString*)pullIn;
 
 //需要构造的cell类名
 //: - (NSString*)cellName;
-- (NSString*)withName;
+- (NSString*)compartment;
 
 //badge
 //: - (NSString *)badge;

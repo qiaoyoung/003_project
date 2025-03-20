@@ -381,7 +381,7 @@ CenterContainerVcdelegate>
         //: BBBKitInfoFetchOption *option = [[BBBKitInfoFetchOption alloc] init];
         TitleOption *option = [[TitleOption alloc] init];
         //: option.session = self.teamListManager.session;
-        option.session = self.teamListManager.to;
+        option.session = self.teamListManager.session;
         //: CCCKitInfo *info = [[AppleProjectKit sharedKit] infoByUser:obj.userId option:option];
         TitleInfo *info = [[Indicator reach] indoors:obj.userId harvest:option];
 
@@ -507,7 +507,7 @@ CenterContainerVcdelegate>
     //: teamMute.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     teamMute.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didUpdateTeamMute:[item.value integerValue]];
-        [weakSelf label:[item.view integerValue]];
+        [weakSelf label:[item.value integerValue]];
     //: };
     };
     //: teamMute.identify = NIMTeamCardSwithCellTypeMute;
@@ -543,7 +543,7 @@ CenterContainerVcdelegate>
     //: teamNotify.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     teamNotify.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didUpdateNotifiyState:[item.value integerValue]];
-        [weakSelf myState:[item.view integerValue]];
+        [weakSelf myState:[item.value integerValue]];
     //: };
     };
     //: teamNotify.img = [UIImage imageNamed:@"ic_group_notice"];
@@ -567,7 +567,7 @@ CenterContainerVcdelegate>
     //: itemAuth.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     itemAuth.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didupdateTeamJoinMode:[item.value integerValue]];
-        [weakSelf descriptionCustom:[item.view integerValue]];
+        [weakSelf descriptionCustom:[item.value integerValue]];
     //: };
     };
     //: itemAuth.img = [UIImage imageNamed:@"ic_identity_authentication"];
@@ -590,7 +590,7 @@ CenterContainerVcdelegate>
     //: itemInvite.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     itemInvite.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didUpdateTeamInviteMode:[item.value integerValue]];
-        [weakSelf pin:[item.view integerValue]];
+        [weakSelf pin:[item.value integerValue]];
     //: };
     };
     //: itemInvite.img = [UIImage imageNamed:@"ic_invite"];
@@ -613,7 +613,7 @@ CenterContainerVcdelegate>
     //: itemUpdateInfo.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     itemUpdateInfo.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didUpdateTeamInfoMode:[item.value integerValue]];
-        [weakSelf doShould:[item.view integerValue]];
+        [weakSelf doShould:[item.value integerValue]];
     //: };
     };
     //: itemUpdateInfo.img = [UIImage imageNamed:@"ic_modify"];
@@ -636,7 +636,7 @@ CenterContainerVcdelegate>
     //: itemBeInvite.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     itemBeInvite.selectedBlock = ^(id<StateLanguage> item) {
         //: [weakSelf didUpdateTeamBeInviteMode:[item.value integerValue]];
-        [weakSelf empty:[item.view integerValue]];
+        [weakSelf empty:[item.value integerValue]];
     //: };
     };
     //: itemBeInvite.img = [UIImage imageNamed:@"ic_invitee_verification"];
@@ -1121,7 +1121,7 @@ CenterContainerVcdelegate>
     //: NIMContactTeamMemberSelectConfig *config = [[NIMContactTeamMemberSelectConfig alloc] init];
     MessageChild *config = [[MessageChild alloc] init];
     //: config.session = self.teamListManager.session;
-    config.session = self.teamListManager.to;
+    config.session = self.teamListManager.session;
     //: config.teamType = NIMKitTeamTypeNomal;
     config.teamType = NIMKitTeamTypeNomal;
     //: config.teamId = self.teamListManager.team.teamId;
@@ -1158,7 +1158,7 @@ CenterContainerVcdelegate>
             //: options.removeOtherClients = YES;
             options.removeOtherClients = YES;
             //: [NIMSDK.sharedSDK.conversationManager deleteAllRemoteMessagesInSession:self.teamListManager.session options:options completion:^(NSError * _Nullable error) {
-            [NIMSDK.sharedSDK.conversationManager deleteAllRemoteMessagesInSession:self.teamListManager.to options:options completion:^(NSError * _Nullable error) {
+            [NIMSDK.sharedSDK.conversationManager deleteAllRemoteMessagesInSession:self.teamListManager.session options:options completion:^(NSError * _Nullable error) {
                 //: if (error) {
                 if (error) {
                     //: return;

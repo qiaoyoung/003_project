@@ -196,7 +196,6 @@ Byte str_liabilityTitle[] = {79, 36, 85, 10, 44, 254, 29, 169, 90, 245, 0, 244, 
     return _imagePickerController;
 }
 
-//: - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
     //: if (buttonIndex == 0) {
     if (buttonIndex == 0) {

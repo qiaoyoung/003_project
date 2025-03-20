@@ -328,7 +328,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
         //: BBBKitInfoFetchOption *option = [[BBBKitInfoFetchOption alloc] init];
         TitleOption *option = [[TitleOption alloc] init];
         //: option.session = teamListManager.session;
-        option.session = teamListManager.to;
+        option.session = teamListManager.session;
         //: CCCKitInfo *info = [[AppleProjectKit sharedKit] infoByUser:obj.userId option:option];
         TitleInfo *info = [[Indicator reach] indoors:obj.userId harvest:option];
 
@@ -964,7 +964,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
             //: teamMute.selectedBlock = ^(id<NIMKitSelectCardData> item) {
             teamMute.selectedBlock = ^(id<StateLanguage> item) {
                 //: [_vc didUpdateTeamMute:[item.value integerValue]];
-                [_vc label:[item.view integerValue]];
+                [_vc label:[item.value integerValue]];
             //: };
             };
             //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:teamMute.title
@@ -1011,7 +1011,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
             //: teamNotify.selectedBlock = ^(id<NIMKitSelectCardData> item) {
             teamNotify.selectedBlock = ^(id<StateLanguage> item) {
                 //: [_vc didUpdateNotifiyState:[item.value integerValue]];
-                [_vc myState:[item.view integerValue]];
+                [_vc myState:[item.value integerValue]];
             //: };
             };
             //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:teamNotify.title
@@ -1054,7 +1054,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
     //: BOOL isTop = switchview.on;
     BOOL isTop = switchview.on;
     //: NIMSession *session = _teamListManager.session;
-    NIMSession *session = _teamListManager.to;
+    NIMSession *session = _teamListManager.session;
     //: NIMRecentSession *recent = [[NIMSDK sharedSDK].conversationManager recentSessionBySession:session];
     NIMRecentSession *recent = [[NIMSDK sharedSDK].conversationManager recentSessionBySession:session];
     //: if (isTop) {
@@ -1193,7 +1193,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
     //: option.start = 0;
     option.start = 0;
     //: [[NIMSDK sharedSDK].conversationManager deleteMessagesInSession:_teamListManager.session option:option completion:^(NSError * _Nullable error) {
-    [[NIMSDK sharedSDK].conversationManager deleteMessagesInSession:_teamListManager.to option:option completion:^(NSError * _Nullable error) {
+    [[NIMSDK sharedSDK].conversationManager deleteMessagesInSession:_teamListManager.session option:option completion:^(NSError * _Nullable error) {
 
     //: }];
     }];
@@ -1311,7 +1311,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
     //: itemAuth.selectedBlock = ^(id<NIMKitSelectCardData> item) {
     itemAuth.selectedBlock = ^(id<StateLanguage> item) {
         //: [_vc didupdateTeamJoinMode:[item.value integerValue]];
-        [_vc descriptionCustom:[item.view integerValue]];
+        [_vc descriptionCustom:[item.value integerValue]];
     //: };
     };
     //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:itemAuth.title
@@ -1504,7 +1504,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
             //: itemInvite.selectedBlock = ^(id<NIMKitSelectCardData> item) {
             itemInvite.selectedBlock = ^(id<StateLanguage> item) {
                 //: [_vc didUpdateTeamInviteMode:[item.value integerValue]];
-                [_vc pin:[item.view integerValue]];
+                [_vc pin:[item.value integerValue]];
             //: };
             };
             //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:itemInvite.title
@@ -1545,7 +1545,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
             //: itemUpdateInfo.selectedBlock = ^(id<NIMKitSelectCardData> item) {
             itemUpdateInfo.selectedBlock = ^(id<StateLanguage> item) {
                 //: [_vc didUpdateTeamInfoMode:[item.value integerValue]];
-                [_vc doShould:[item.view integerValue]];
+                [_vc doShould:[item.value integerValue]];
             //: };
             };
             //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:itemUpdateInfo.title
@@ -1587,7 +1587,7 @@ Byte str_backgroundSuraData[] = {63, 14, 64, 7, 88, 128, 24, 161, 181, 180, 168,
             //: itemBeInvite.selectedBlock = ^(id<NIMKitSelectCardData> item) {
             itemBeInvite.selectedBlock = ^(id<StateLanguage> item) {
                 //: [_vc didUpdateTeamBeInviteMode:[item.value integerValue]];
-                [_vc empty:[item.view integerValue]];
+                [_vc empty:[item.value integerValue]];
             //: };
             };
             //: BBBTeamCardSelectedViewController *vc = [BBBTeamCardSelectedViewController instanceWithTitle:itemBeInvite.title

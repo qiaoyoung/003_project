@@ -191,7 +191,7 @@
 }
 
 //: - (void)startRunning {
-- (void)name {
+- (void)startRunning {
     //: if (![self.session isRunning]) {
     if (![self.session isRunning]) {
         //: [self.session startRunning];

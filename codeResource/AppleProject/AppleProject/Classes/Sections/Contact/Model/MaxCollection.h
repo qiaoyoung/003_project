@@ -15,12 +15,11 @@
 //: @protocol NTESGroupMemberProtocol <NSObject>
 @protocol TextStatus <NSObject>
 
-//: - (NSString *)groupTitle;
-- (NSString *)withText;
-//: - (NSString *)memberId;
-- (NSString *)view;
-//: - (id)sortKey;
-- (id)ironed;
+- (NSString *)groupTitle;
+
+- (NSString *)memberId;
+
+- (id)sortKey;
 
 //: @end
 @end

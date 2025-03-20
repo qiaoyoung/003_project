@@ -1447,13 +1447,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		425E94B62978022F00C812E7 /* BanCapture */ = {
+		425E94B62978022F00C812E7 /* NSDictionaryExtend */ = {
 			isa = PBXGroup;
 			children = (
 				427FB73C2B16CC6D00C0FA28 /* NSDictionaryExtend.h */,
 				427FB73D2B16CC6D00C0FA28 /* NSDictionaryExtend.m */,
 			);
-			path = BanCapture;
+			path = NSDictionaryExtend;
 			sourceTree = "<group>";
 		};
 		425E94C02978044F00C812E7 /* Rest */ = {
@@ -1469,13 +1469,13 @@
 			path = Rest;
 			sourceTree = "<group>";
 		};
-		429D400C299A79F400354206 /* ChatClasses */ = {
+		429D400C299A79F400354206 /* TeamMarkView */ = {
 			isa = PBXGroup;
 			children = (
 				429D400D299A79F400354206 /* Classes */,
 				429D417F299A79F500354206 /* Manager */,
 			);
-			path = ChatClasses;
+			path = TeamMarkView;
 			sourceTree = "<group>";
 		};
 		429D400D299A79F400354206 /* Classes */ = {
@@ -1495,10 +1495,10 @@
 				429D4016299A79F400354206 /* Contact */,
 				429D402A299A79F400354206 /* Util */,
 				429D4040299A79F400354206 /* Input */,
-				429D4060299A79F400354206 /* Common */,
+				429D4060299A79F400354206 /* ColorAddView */,
 				429D407A299A79F400354206 /* Team */,
 				429D40B1299A79F500354206 /* Model */,
-				429D40BE299A79F500354206 /* SessionList */,
+				429D40BE299A79F500354206 /* ShouldViewController */,
 				429D40C4299A79F500354206 /* Session */,
 			);
 			path = Sections;
@@ -1508,7 +1508,7 @@
 			isa = PBXGroup;
 			children = (
 				429D4021299A79F400354206 /* Cell */,
-				429D401B299A79F400354206 /* ContactGroup */,
+				429D401B299A79F400354206 /* EliteView */,
 				429D4018299A79F400354206 /* TeamMarkView.h */,
 				429D4025299A79F400354206 /* TeamMarkView.m */,
 				429D4020299A79F400354206 /* ShowHide.h */,
@@ -1523,7 +1523,7 @@
 			path = Contact;
 			sourceTree = "<group>";
 		};
-		429D401B299A79F400354206 /* ContactGroup */ = {
+		429D401B299A79F400354206 /* EliteView */ = {
 			isa = PBXGroup;
 			children = (
 				429D401F299A79F400354206 /* NameChecked.h */,
@@ -1531,7 +1531,7 @@
 				429D401C299A79F400354206 /* UserGroupedUsrInfo.h */,
 				429D401E299A79F400354206 /* UserGroupedUsrInfo.m */,
 			);
-			path = ContactGroup;
+			path = EliteView;
 			sourceTree = "<group>";
 		};
 		429D4021299A79F400354206 /* Cell */ = {
@@ -1624,7 +1624,7 @@
 			path = GrowingTextView;
 			sourceTree = "<group>";
 		};
-		429D4060299A79F400354206 /* Common */ = {
+		429D4060299A79F400354206 /* ColorAddView */ = {
 			isa = PBXGroup;
 			children = (
 				429D4061299A79F400354206 /* ColorAddView.h */,
@@ -1649,7 +1649,7 @@
 				429D406A299A79F400354206 /* ShouldContentView.h */,
 				429D4079299A79F400354206 /* ShouldContentView.m */,
 			);
-			path = Common;
+			path = ColorAddView;
 			sourceTree = "<group>";
 		};
 		429D407A299A79F400354206 /* Team */ = {
@@ -1794,14 +1794,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		429D40BE299A79F500354206 /* SessionList */ = {
+		429D40BE299A79F500354206 /* ShouldViewController */ = {
 			isa = PBXGroup;
 			children = (
 				429D40C3299A79F500354206 /* ShouldViewController.h */,
 				429D40BF299A79F500354206 /* ShouldViewController.m */,
 				429D40C0299A79F500354206 /* View */,
 			);
-			path = SessionList;
+			path = ShouldViewController;
 			sourceTree = "<group>";
 		};
 		429D40C0299A79F500354206 /* View */ = {
@@ -2149,7 +2149,7 @@
 			isa = PBXGroup;
 			children = (
 				B1F6DB772D882CDE00A173E1 /* AppleProject.entitlements */,
-				429D400C299A79F400354206 /* ChatClasses */,
+				429D400C299A79F400354206 /* TeamMarkView */,
 				61F728281A7B23A40076C096 /* Classes */,
 				AE5882EC1A6F47E10070536A /* FromDelegate.h */,
 				AE5882ED1A6F47E10070536A /* FromDelegate.m */,
@@ -2170,7 +2170,7 @@
 				B108A74F2D75568D00E3346E /* UIImage+Container.h */,
 				B108A7502D75568D00E3346E /* UIImage+Container.m */,
 				425E94C02978044F00C812E7 /* Rest */,
-				425E94B62978022F00C812E7 /* BanCapture */,
+				425E94B62978022F00C812E7 /* NSDictionaryExtend */,
 				AE5882E81A6F47E10070536A /* Supporting Files */,
 			);
 			path = AppleProject;

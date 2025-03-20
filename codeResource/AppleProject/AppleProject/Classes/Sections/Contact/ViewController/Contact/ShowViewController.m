@@ -131,7 +131,7 @@ TingData str_statusCellName = (TingData){182, (Byte []){213, 217, 210, 211, 153}
 //: - (void)start {
 - (void)titleStart {
     //: [scanCode startRunning];
-    [scanCode name];
+    [scanCode startRunning];
     //: [self.scanView startScanning];
     [self.scanView line];
 }

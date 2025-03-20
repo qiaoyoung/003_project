@@ -53,8 +53,7 @@
 - (BOOL)join;
 
 /// 开启扫描
-//: - (void)startRunning;
-- (void)name;
+- (void)startRunning;
 /// 停止扫描
 - (void)stopRunning;
 

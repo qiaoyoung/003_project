@@ -27,15 +27,14 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
 @implementation ContactAt
 
 //: - (CGFloat)uiHeight{
-- (CGFloat)to{
+- (CGFloat)session{
     //: return 60;
     return 60;
 }
 
 //userId和Vcname必有一个有值，根据有值的状态push进不同的页面
 
-//: - (NSString *)vcName{
-- (NSString *)ofUnder{
+- (NSString *)vcName{
     //: return nil;
     return nil;
 }
@@ -59,7 +58,7 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
 }
 
 //: - (NSString *)groupTitle {
-- (NSString *)underPosition {
+- (NSString *)groupTitle {
     //: NSString *title = [[NTESSpellingCenter sharedCenter] firstLetter:self.info.showName].capitalizedString;
     NSString *title = [[ScoopView breadbox] sessionIn:self.info.showName].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -75,8 +74,7 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
     }
 }
 
-//: - (NSString *)userId{
-- (NSString *)queryedMessage{
+- (NSString *)userId{
     //: return self.info.infoId;
     return self.info.infoId;
 }
@@ -88,13 +86,13 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
 }
 
 //: - (NSString *)avatarUrl{
-- (NSString *)place{
+- (NSString *)end{
     //: return self.info.avatarUrlString;
     return self.info.avatarUrlString;
 }
 
 //: - (NSString *)memberId{
-- (NSString *)should{
+- (NSString *)memberId{
     //: return self.info.infoId;
     return self.info.infoId;
 }
@@ -106,7 +104,7 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
 }
 
 //: - (BOOL)showAccessoryView{
-- (BOOL)accessoryBar{
+- (BOOL)viewDisable{
     //: return NO;
     return NO;
 }

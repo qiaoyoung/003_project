@@ -101,12 +101,12 @@
     //: for (id<NTESGroupMemberProtocol>member in members) {
     for (id<TextStatus>member in members) {
         //: if ([[member memberId] isEqualToString:me]) {
-        if ([[member view] isEqualToString:me]) {
+        if ([[member memberId] isEqualToString:me]) {
             //: continue;
             continue;
         }
         //: NSString *groupTitle = [member groupTitle];
-        NSString *groupTitle = [member withText];
+        NSString *groupTitle = [member groupTitle];
         //: NSMutableArray *groupedMembers = [tmp objectForKey:groupTitle];
         NSMutableArray *groupedMembers = [tmp objectForKey:groupTitle];
         //: if(!groupedMembers) {
@@ -152,7 +152,7 @@
 - (void)manager:(id<TextStatus>)member
 {
     //: NSString *groupTitle = [member groupTitle];
-    NSString *groupTitle = [member withText];
+    NSString *groupTitle = [member groupTitle];
     //: NSInteger groupIndex = [_groupTtiles indexOfObject:groupTitle];
     NSInteger groupIndex = [_groupTtiles indexOfObject:groupTitle];
     //: Pair *pair = [_groups objectAtIndex:groupIndex];
@@ -179,7 +179,7 @@
 //: - (void)removeGroupMember:(id<NTESGroupMemberProtocol>)member{
 - (void)electronShellText:(id<TextStatus>)member{
     //: NSString *groupTitle = [member groupTitle];
-    NSString *groupTitle = [member withText];
+    NSString *groupTitle = [member groupTitle];
     //: NSInteger groupIndex = [_groupTtiles indexOfObject:groupTitle];
     NSInteger groupIndex = [_groupTtiles indexOfObject:groupTitle];
     //: Pair *pair = [_groups objectAtIndex:groupIndex];
@@ -287,7 +287,7 @@
         //: for (id<NTESGroupMemberProtocol> member in members) {
         for (id<TextStatus> member in members) {
             //: if ([[member memberId] isEqualToString:uid]) {
-            if ([[member view] isEqualToString:uid]) {
+            if ([[member memberId] isEqualToString:uid]) {
                 //: return member;
                 return member;
             }
@@ -361,7 +361,7 @@
         //: [groupedMembers sortUsingComparator:^NSComparisonResult(id<NTESGroupMemberProtocol> member1, id<NTESGroupMemberProtocol> member2) {
         [groupedMembers sortUsingComparator:^NSComparisonResult(id<TextStatus> member1, id<TextStatus> member2) {
             //: return _groupMemberComparator([member1 sortKey], [member2 sortKey]);
-            return _groupMemberComparator([member1 ironed], [member2 ironed]);
+            return _groupMemberComparator([member1 sortKey], [member2 sortKey]);
         //: }];
         }];
     //: }];

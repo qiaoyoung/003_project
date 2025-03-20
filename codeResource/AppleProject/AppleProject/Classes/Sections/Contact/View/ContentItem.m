@@ -27,8 +27,7 @@
     return @"MarkView";
 }
 
-//: - (NSString*)title{
-- (NSString*)bar{
+- (NSString*)title{
     //: return nil;
     return nil;
 }
@@ -52,25 +51,23 @@
 }
 
 //: - (NSString*)reuseId{
-- (NSString*)name{
+- (NSString*)pullIn{
     //: return @"NTESContactUtilItem";
     return @"ContentItem";
 }
 
 //: - (NSString*)cellName{
-- (NSString*)withName{
+- (NSString*)compartment{
     //: return @"NTESContactUtilCell";
     return @"MarkView";
 }
 
-//: - (NSString *)groupTitle {
-- (NSString *)withText {
+- (NSString *)groupTitle {
     //: return nil;
     return nil;
 }
 
-//: - (NSString *)memberId{
-- (NSString *)view{
+- (NSString *)memberId{
     //: return self.userId;
     return self.userId;
 }
