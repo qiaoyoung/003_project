@@ -1504,7 +1504,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: self.messageForMenu = nil;
     self.messageForMenu = nil;
     //: [self.interactor setReferenceMessage:nil];
-    [self.interactor setData:nil];
+    [self.interactor setReferenceMessage:nil];
 
     //: if ([self.sessionConfig respondsToSelector:@selector(clearThreadMessageAfterSent)])
     if ([self.iconConfig respondsToSelector:@selector(handicappedCrop)])
@@ -1676,7 +1676,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: _messageForMenu = message;
     _messageForMenu = message;
     //: [self.interactor setReferenceMessage:message];
-    [self.interactor setData:message];
+    [self.interactor setReferenceMessage:message];
     //: if (![self becomeFirstResponder]) {
     if (![self becomeFirstResponder]) {
         //: handle = NO;
@@ -1705,7 +1705,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: _messageForMenu = message;
     _messageForMenu = message;
     //: [self.interactor setReferenceMessage:message];
-    [self.interactor setData:message];
+    [self.interactor setReferenceMessage:message];
 
     //: handle = [self shouldShowMenuByMessage:message];
     handle = [self link:message];
@@ -1726,7 +1726,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: _messageForMenu = message;
     _messageForMenu = message;
     //: [self.interactor setReferenceMessage:message];
-    [self.interactor setData:message];
+    [self.interactor setReferenceMessage:message];
     //: if (![self becomeFirstResponder]) {
     if (![self becomeFirstResponder]) {
         //: handle = NO;
@@ -1931,11 +1931,11 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: NIMMessage *message = [self messageForMenu];
     NIMMessage *message = [self messageForMenu];
     //: if (message.tyl_internalIdentifier.length) {
-    if (message.Ting.length) {
+    if (message.ting.length) {
         //: UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         //: [pasteboard setString:message.tyl_internalIdentifier];
-        [pasteboard setString:message.Ting];
+        [pasteboard setString:message.ting];
     }
     //: else if (message.text.length) {
     else if (message.text.length) {
@@ -1970,11 +1970,11 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
     //: NIMMessage *message = [self messageForMenu];
     NIMMessage *message = [self messageForMenu];
     //: if (message.tyl_internalIdentifier.length) {
-    if (message.Ting.length) {
+    if (message.ting.length) {
         //: UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         //: [pasteboard setString:message.tyl_internalIdentifier];
-        [pasteboard setString:message.Ting];
+        [pasteboard setString:message.ting];
     }
     //: else if (message.text.length) {
     else if (message.text.length) {

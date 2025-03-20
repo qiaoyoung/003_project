@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 标记此attributedString中的表情是否已经检索渲染成了emoji表情
 //: @property (nonatomic, strong) NSString *tyl_internalIdentifier;
-@property (nonatomic, strong) NSString *tyl_internalIdentifier;
+@property (nonatomic, strong) NSString *ting;
 
 
 //: @end

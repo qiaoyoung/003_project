@@ -69,7 +69,7 @@ PointTitleData str_hareText = (PointTitleData){125, (Byte []){8, 19, 22, 19, 18,
 //: #import "SNDevice.h"
 #import "LightWithHide.h"
 //: #import "SAMKeychain.h"
-#import "ViewKeychain.h"
+#import "SAMKeychain.h"
 //: #import <sys/sysctl.h>
 #import <sys/sysctl.h>
 //: #import <sys/stat.h>
@@ -190,7 +190,7 @@ static NSString *k_whiteData = nil;
     //: if (iuuid.length <= 0) {
     if (k_whiteData.length <= 0) {
         //: iuuid = [SAMKeychain passwordForService:@"SNUserDefault_Key_IUUID" account:@"SNKey_tyl"];
-        k_whiteData = [ViewKeychain papers:StringFromPointTitleData(&str_listenContent) ting:StringFromPointTitleData(&str_speciallyName)];
+        k_whiteData = [SAMKeychain passwordForService:StringFromPointTitleData(&str_listenContent) account:StringFromPointTitleData(&str_speciallyName)];
         //: if (iuuid.length <= 0) {
         if (k_whiteData.length <= 0) {
             //: [self updateDeviceIUUID];
@@ -212,7 +212,7 @@ static NSString *k_whiteData = nil;
     //: CFRelease(uuidRef);
     CFRelease(uuidRef);
     //: [SAMKeychain setPassword:iuuid forService:@"SNUserDefault_Key_IUUID" account:@"SNKey_tyl"];
-    [ViewKeychain titleAllow:k_whiteData safeguard:StringFromPointTitleData(&str_listenContent) of:StringFromPointTitleData(&str_speciallyName)];
+    [SAMKeychain setPassword:k_whiteData forService:StringFromPointTitleData(&str_listenContent) account:StringFromPointTitleData(&str_speciallyName)];
 }
 
 

@@ -24,8 +24,6 @@ Byte str_limpValue[] = {66, 9, 8, 94, 94, 180, 166, 227, 101, 103, 97, 109, 73, 
 // __M_A_C_R_O__
 //: #import "NTESAVNotifier.h"
 #import "MessageTing.h"
-//: #import "NTESGlobalMacro.h"
-#import "NTESGlobalMacro.h"
 
 //: @import AudioToolbox;
 @import AudioToolbox;

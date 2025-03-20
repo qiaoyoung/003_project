@@ -303,7 +303,7 @@ Byte str_sizeKickValue[] = {86, 7, 8, 9, 68, 236, 130, 19, 233, 27, 48, 47, 45, 
             //: if (self.delegate && [self.delegate respondsToSelector:@selector(friendNotification)]) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(markChild)]) {
                 //: [self.delegate groupNotification];
-                [self.delegate value];
+                [self.delegate currValue];
             }
         }
             //: break;

@@ -15,7 +15,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "NTESGlobalMacro.h"
 #import "Indicator.h"
 #import "NSString+Status.h"
 #import "FromMessage.h"
@@ -132,3 +131,11 @@
 
 #endif
 #endif
+
+#define SuppressPerformSelectorLeakWarning(Stuff) \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Warc-performSelector-leaks\"") \
+Stuff; \
+_Pragma("clang diagnostic pop") \
+} while (0)

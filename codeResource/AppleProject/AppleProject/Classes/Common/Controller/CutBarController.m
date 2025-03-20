@@ -196,9 +196,9 @@ typedef NS_ENUM(NSInteger,NTESMainTabType) {
     [[NIMSDK sharedSDK].conversationManager addDelegate:self];
 
     //: extern NSString *NTESCustomNotificationCountChanged;
-    extern NSString *NTESCustomNotificationCountChanged;
+    extern NSString *k_versionData;
     //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCustomNotifyChanged:) name:NTESCustomNotificationCountChanged object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(harvestMoonChanged:) name:NTESCustomNotificationCountChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(harvestMoonChanged:) name:k_versionData object:nil];
     //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChanged:) name:@"KEKENotificationLanguageChanged" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(withses:) name:StringFromMagnitudeoneData(&str_fractionValue) object:nil];
 

@@ -200,20 +200,20 @@ Byte str_resourceContent[] = {46, 5, 4, 160, 101, 101, 114, 103, 97, 170};
     //: [[NIMSDK sharedSDK].loginManager addDelegate:self];
     [[NIMSDK sharedSDK].loginManager addDelegate:self];
 
-    //: extern NSString *const NIMKitTeamInfoHasUpdatedNotification;
-    extern NSString *const NIMKitTeamInfoHasUpdatedNotification;
-    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTeamInfoHasUpdatedNotification:) name:NIMKitTeamInfoHasUpdatedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toed:) name:NIMKitTeamInfoHasUpdatedNotification object:nil];
+    //: extern NSString *const k_keyFlexibleText;
+    extern NSString *const k_keyFlexibleText;
+    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTeamInfoHasUpdatedNotification:) name:k_keyFlexibleText object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toed:) name:k_keyFlexibleText object:nil];
 
-    //: extern NSString *const NIMKitTeamMembersHasUpdatedNotification;
-    extern NSString *const NIMKitTeamMembersHasUpdatedNotification;
-    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTeamMembersHasUpdatedNotification:) name:NIMKitTeamMembersHasUpdatedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(majorLeagueTeamDown:) name:NIMKitTeamMembersHasUpdatedNotification object:nil];
+    //: extern NSString *const k_quickName;
+    extern NSString *const k_quickName;
+    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onTeamMembersHasUpdatedNotification:) name:k_quickName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(majorLeagueTeamDown:) name:k_quickName object:nil];
 
-    //: extern NSString *const NIMKitUserInfoHasUpdatedNotification;
-    extern NSString *const NIMKitUserInfoHasUpdatedNotification;
-    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserInfoHasUpdatedNotification:) name:NIMKitUserInfoHasUpdatedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(putUp:) name:NIMKitUserInfoHasUpdatedNotification object:nil];
+    //: extern NSString *const k_pointName;
+    extern NSString *const k_pointName;
+    //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserInfoHasUpdatedNotification:) name:k_pointName object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(putUp:) name:k_pointName object:nil];
 
     //: [self setupSessions];
     [self visualization];

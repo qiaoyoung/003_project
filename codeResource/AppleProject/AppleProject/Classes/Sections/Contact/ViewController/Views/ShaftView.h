@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol StateWithMax <NSObject>
 
 //: -(void)headerClickWith:(NSInteger)section;
--(void)cells:(NSInteger)section;
+-(void)myCells:(NSInteger)section;
 
 //: @end
 @end

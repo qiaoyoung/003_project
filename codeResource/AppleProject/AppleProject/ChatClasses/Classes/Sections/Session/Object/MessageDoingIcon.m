@@ -103,8 +103,7 @@
     //: _interactor.layout = layout;
     _interactor.layout = layout;
 
-    //: [layout setDelegate:_interactor];
-    [layout setDataReply:_interactor];
+    [layout setDelegate:_interactor];
 
     //: _tableAdapter = [[CCCSessionTableAdapter alloc] init];
     _tableAdapter = [[AddTable alloc] init];

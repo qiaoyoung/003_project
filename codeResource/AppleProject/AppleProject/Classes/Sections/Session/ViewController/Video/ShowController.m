@@ -782,12 +782,6 @@ static dispatch_once_t k_minKeyName;
             });
         }
     }
-
-    //: NSLog(@"KVO_AVPlayerItem_loadedTimeRanges: %d / %d\n",
-          //: bufferedDurationMilli,
-          bufferedDurationMilli,
-          //: (int)kMaxHighWaterMarkMilli);
-          (int)k_tapName);
 }
 
 //拖动

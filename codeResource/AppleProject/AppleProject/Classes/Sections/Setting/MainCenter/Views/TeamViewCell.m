@@ -211,7 +211,7 @@ Byte str_cornerByValue[] = {22, 26, 78, 13, 71, 196, 129, 50, 35, 121, 192, 107,
     //: if (self.delegate && [self.delegate respondsToSelector:@selector(myWallet)]) {
     if (self.delegate && [self.delegate respondsToSelector:@selector(inputView)]) {
         //: [self.delegate myWallet];
-        [self.delegate inputView];
+        [self.delegate inputXView];
     }
 }
 

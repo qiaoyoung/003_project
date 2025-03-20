@@ -45,8 +45,7 @@
     return self;
 }
 
-//: - (NSString *)groupTitle{
-- (NSString *)team{
+- (NSString *)groupTitle{
     //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.info.showName].capitalizedString;
     NSString *title = [[CenterMessagePressed success] indexLetter:self.info.showName].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -68,14 +67,12 @@
     return self.info.showName;
 }
 
-//: - (NSString *)memberId{
-- (NSString *)video{
+- (NSString *)memberId{
     //: return self.userId;
     return self.userId;
 }
 
-//: - (id)sortKey{
-- (id)artificialFlowerStemWithKey{
+- (id)sortKey{
     //: return [[AAASpellingCenter sharedCenter] spellingForString:self.info.showName].shortSpelling;
     return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.info.showName].shortSpelling;
 }
@@ -133,7 +130,7 @@
 }
 
 //: - (NSString *)groupTitle{
-- (NSString *)team{
+- (NSString *)groupTitle{
     //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
     NSString *title = [[CenterMessagePressed success] indexLetter:self.showTitle].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -149,8 +146,7 @@
     }
 }
 
-//: - (id)sortKey{
-- (id)artificialFlowerStemWithKey{
+- (id)sortKey{
     //: return [[AAASpellingCenter sharedCenter] spellingForString:self.showName].shortSpelling;
     return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.showTitle].shortSpelling;
 }
@@ -162,7 +158,7 @@
 }
 
 //: - (NSString *)memberId{
-- (NSString *)video{
+- (NSString *)memberId{
     //: return self.userId;
     return self.userId;
 }
@@ -221,7 +217,7 @@
 }
 
 //: - (NSString *)groupTitle{
-- (NSString *)team{
+- (NSString *)groupTitle{
     //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
     NSString *title = [[CenterMessagePressed success] indexLetter:self.showTitle].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -237,8 +233,7 @@
     }
 }
 
-//: - (id)sortKey{
-- (id)artificialFlowerStemWithKey{
+- (id)sortKey{
     //: return [[AAASpellingCenter sharedCenter] spellingForString:[self showName]].shortSpelling;
     return [[CenterMessagePressed success] unwelcomeSpellingPackthread:[self showTitle]].shortSpelling;
 }
@@ -250,7 +245,7 @@
 }
 
 //: - (NSString *)memberId{
-- (NSString *)video{
+- (NSString *)memberId{
     //: return self.teamId;
     return self.teamId;
 }

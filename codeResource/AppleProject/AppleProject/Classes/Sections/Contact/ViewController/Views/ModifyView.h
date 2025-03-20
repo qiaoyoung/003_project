@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 //: -(void)friendNotification;
 -(void)markChild;
 //: -(void)groupNotification;
--(void)value;
+-(void)currValue;
 //: -(void)deviceList;
 -(void)keySession;
 //: -(void)blackFriendList;

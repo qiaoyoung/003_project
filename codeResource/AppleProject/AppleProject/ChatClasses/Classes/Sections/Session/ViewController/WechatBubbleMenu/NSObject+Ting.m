@@ -14,19 +14,21 @@
 //: #import <objc/runtime.h>
 #import <objc/runtime.h>
 
+static const void *kTingKey = &kTingKey;
+
 //: @implementation NSObject (tyl_internalIdentifier)
 @implementation NSObject (Ting)
 
 //: - (void)setTyl_internalIdentifier:(NSString *)tyl_internalIdentifier{
-- (void)setTyl_internalIdentifier:(NSString *)Ting{
+- (void)setTing:(NSString *)ting{
     //: objc_setAssociatedObject(self, @selector(tyl_internalIdentifier), tyl_internalIdentifier, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    objc_setAssociatedObject(self, @selector(Ting), Ting, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kTingKey, ting, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 //: - (NSString *)tyl_internalIdentifier{
-- (NSString *)Ting{
+- (NSString *)ting{
     //: return objc_getAssociatedObject(self, _cmd);
-    return objc_getAssociatedObject(self, _cmd);
+    return objc_getAssociatedObject(self, kTingKey);
 }
 
 //: @end

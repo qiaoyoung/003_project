@@ -181,8 +181,7 @@ typedef NS_ENUM(NSUInteger, NIMKitSessionState) {
 //: - (void)setSessionState:(NIMKitSessionState)sessionState;
 - (void)setOrientation:(NIMKitSessionState)sessionState;
 
-//: - (void)setReferenceMessage:(NIMMessage *)message;
-- (void)setData:(NIMMessage *)message;
+- (void)setReferenceMessage:(NIMMessage *)message;
 
 //: @end
 @end

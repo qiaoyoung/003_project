@@ -427,7 +427,7 @@ Byte str_gelContent[] = {20, 9, 10, 146, 52, 1, 232, 152, 235, 210, 103, 98, 95,
 - (IBAction)userred:(id)sender {
 
     //: if (self.config.showSelectHeaderview) {
-    if (self.config.sumernalRepresentation) {
+    if (self.config.showSelectHeaderview) {
 
         //: [self.view addSubview:self.setGroupnameView];
         [self.view addSubview:self.setGroupnameView];
@@ -631,7 +631,7 @@ Byte str_gelContent[] = {20, 9, 10, 146, 52, 1, 232, 152, 235, 210, 103, 98, 95,
     //: cell.accessoryBtn.hidden = NO;
     cell.accessoryBtn.hidden = NO;
     //: cell.accessoryBtn.selected = [_selectecContacts containsObject:[contactItem memberId]];
-    cell.accessoryBtn.selected = [_selectecContacts containsObject:[contactItem video]];
+    cell.accessoryBtn.selected = [_selectecContacts containsObject:[contactItem memberId]];
     //: [cell refreshItem:contactItem];
     [cell queryed:contactItem];
     //: return cell;
@@ -664,7 +664,7 @@ Byte str_gelContent[] = {20, 9, 10, 146, 52, 1, 232, 152, 235, 210, 103, 98, 95,
     id<UpProtocol> member = arr[indexPath.row];
 
     //: NSString *memberId = [(id<NIMGroupMemberProtocol>)member memberId];
-    NSString *memberId = [(id<UpProtocol>)member video];
+    NSString *memberId = [(id<UpProtocol>)member memberId];
     //: AAAContactDataCell *cell = (AAAContactDataCell *)[tableView cellForRowAtIndexPath:indexPath];
     FromOfView *cell = (FromOfView *)[tableView cellForRowAtIndexPath:indexPath];
     //: CCCKitInfo *info;

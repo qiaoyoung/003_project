@@ -141,9 +141,9 @@ Byte str_providerText[] = {30, 7, 23, 12, 54, 93, 67, 33, 246, 207, 239, 225, 58
 //: -(void)buttonClick:(UIButton *)sender{
 -(void)loadded:(UIButton *)sender{
     //: if (self.delegate && [self.delegate respondsToSelector:@selector(headerClickWith:)]) {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(cells:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(myCells:)]) {
         //: [self.delegate headerClickWith:self.section];
-        [self.delegate cells:self.section];
+        [self.delegate myCells:self.section];
     }
 }
 

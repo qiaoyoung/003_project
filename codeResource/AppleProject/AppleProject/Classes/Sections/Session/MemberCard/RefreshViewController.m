@@ -163,9 +163,9 @@ typedef void(^NIMTeamMemberListFetchDataBlock)(BOOL isCompletion);
 //        _pageIndex = 0;
 //        _teamListManager = [[ListHideState alloc] initWithTeam:dataSource.team session:dataSource.session];
         //: NSString *kNIMTeamListDataTeamMembersChanged = @"kNIMTeamListDataTeamMembersChanged";
-        NSString *kNIMTeamListDataTeamMembersChanged = StringFromModeData(str_suraContent);
+        NSString *k_showName = StringFromModeData(str_suraContent);
         //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(teamMemberUpdate:) name:kNIMTeamListDataTeamMembersChanged object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsed:) name:kNIMTeamListDataTeamMembersChanged object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsed:) name:k_showName object:nil];
 
         //: NSLog(@"self.teamListManager-%@",_teamListManager.memberIds);
     }

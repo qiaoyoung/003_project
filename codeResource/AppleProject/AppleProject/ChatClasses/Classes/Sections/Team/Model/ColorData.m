@@ -53,7 +53,7 @@ BiologicData str_neitherLengthData = (BiologicData){182, (Byte []){213, 217, 216
 }
 
 //: - (NSString *)groupTitle{
-- (NSString *)team{
+- (NSString *)groupTitle{
     //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.teamName].capitalizedString;
     NSString *title = [[CenterMessagePressed success] indexLetter:self.teamName].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -71,13 +71,12 @@ BiologicData str_neitherLengthData = (BiologicData){182, (Byte []){213, 217, 216
 }
 
 //: - (NSString *)memberId{
-- (NSString *)video{
+- (NSString *)memberId{
     //: return self.teamId;
     return self.teamId;
 }
 
-//: - (id)sortKey{
-- (id)artificialFlowerStemWithKey{
+- (id)sortKey{
     //: return [[AAASpellingCenter sharedCenter] spellingForString:self.teamName].shortSpelling;
     return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.teamName].shortSpelling;
 }

@@ -21,20 +21,20 @@ Byte str_signatureText[] = {19, 33, 7, 79, 58, 45, 120, 100, 97, 101, 114, 104, 
 //: #import "BBBKitNotificationFirer.h"
 #import "ContainerName.h"
 
-//: NSString *const NIMKitUserInfoHasUpdatedNotification = @"NIMKitUserInfoHasUpdatedNotification";
-NSString *const k_pointName = @"NIMKitUserInfoHasUpdatedNotification";
-//: NSString *const NIMKitTeamInfoHasUpdatedNotification = @"NIMKitTeamInfoHasUpdatedNotification";
-NSString *const k_keyFlexibleText = @"NIMKitTeamInfoHasUpdatedNotification";
+//: NSString *const k_pointName = @"k_pointName";
+NSString *const k_pointName = @"k_pointName";
+//: NSString *const k_keyFlexibleText = @"k_keyFlexibleText";
+NSString *const k_keyFlexibleText = @"k_keyFlexibleText";
 
 //: NSString *const NIMKitUserBlackListHasUpdatedNotification = @"NIMKitUserBlackListHasUpdatedNotification";
 NSString *const k_errorName = @"NIMKitUserBlackListHasUpdatedNotification";
 //: NSString *const NIMKitUserMuteListHasUpdatedNotification = @"NIMKitUserMuteListHasUpdatedNotification";
 NSString *const k_bubbleText = @"NIMKitUserMuteListHasUpdatedNotification";
 
-//: NSString *const NIMKitTeamMembersHasUpdatedNotification = @"NIMKitTeamMembersHasUpdatedNotification";
-NSString *const k_quickName = @"NIMKitTeamMembersHasUpdatedNotification";
+//: NSString *const k_quickName = @"k_quickName";
+NSString *const k_quickName = @"k_quickName";
 
-//: NSString *const CCCKitInfoKey = @"InfoId";
+//: NSString *const k_mainData = @"InfoId";
 NSString *const k_mainData = @"InfoId";
 
 //: @implementation BBBKitNotificationFirer
@@ -97,7 +97,7 @@ NSString *const k_mainData = @"InfoId";
 
     //: for (NSString *notificationName in dict) {
     for (NSString *notificationName in dict) {
-        //: NSDictionary *userInfo = dict[notificationName]? @{ CCCKitInfoKey:dict[notificationName] } : nil;
+        //: NSDictionary *userInfo = dict[notificationName]? @{ k_mainData:dict[notificationName] } : nil;
         NSDictionary *userInfo = dict[notificationName]? @{ k_mainData:dict[notificationName] } : nil;
         //: [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];
         [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil userInfo:userInfo];

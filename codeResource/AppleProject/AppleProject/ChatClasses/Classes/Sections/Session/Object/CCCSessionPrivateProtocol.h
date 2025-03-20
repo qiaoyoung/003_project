@@ -137,7 +137,7 @@
 - (void)custom:(CGFloat)inputViewHeight;
 
 //: - (void)setDelegate:(id<NIMSessionLayoutDelegate>)delegate;
-- (void)setDataReply:(id<ShowHideFrom>)delegate;
+- (void)setDelegate:(id<ShowHideFrom>)delegate;
 
 //: - (void)layoutAfterRefresh;
 - (void)afterRange;

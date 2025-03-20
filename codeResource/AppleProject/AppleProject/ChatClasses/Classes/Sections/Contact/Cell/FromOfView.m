@@ -111,7 +111,7 @@ CedeGainData str_franchiseHareData = (CedeGainData){111, (Byte []){6, 12, 0, 1, 
     //: [self refreshTitle:member.showName];
     [self tap:member.showTitle];
     //: self.memberId = member.memberId;
-    self.memberId = member.video;
+    self.memberId = member.memberId;
     //: NSURL *url = member.avatarUrlString ? [NSURL URLWithString:member.avatarUrlString] : nil;
     NSURL *url = member.cornerLikeSnapLine ? [NSURL URLWithString:member.cornerLikeSnapLine] : nil;
     //: [_avatarImageView nim_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"head_default"] options:SDWebImageRetryFailed];
@@ -123,7 +123,7 @@ CedeGainData str_franchiseHareData = (CedeGainData){111, (Byte []){6, 12, 0, 1, 
     //: [self refreshTitle:member.showName];
     [self tap:member.showTitle];
     //: self.memberId = [member memberId];
-    self.memberId = [member video];
+    self.memberId = [member memberId];
     //: CCCKitInfo *info = [[AppleProjectKit sharedKit] infoByUser:self.memberId option:nil];
     TitleInfo *info = [[Indicator reach] indoors:self.memberId harvest:nil];
     //: [self refreshAvatar:info];

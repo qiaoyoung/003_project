@@ -381,11 +381,11 @@ PillData str_organizeLeyName = (PillData){47, (Byte []){70, 65, 70, 91, 70, 78, 
 //: - (NSString *)toUrlString {
 - (NSString *)on {
     //: return [self mutableUrlString];
-    return [self read];
+    return [self mutableUrlString];
 }
 
 //: - (NSMutableString *)mutableUrlString {
-- (NSMutableString *)read {
+- (NSMutableString *)mutableUrlString {
     //: NSMutableString *str = [NSMutableString stringWithCapacity:32];
     NSMutableString *str = [NSMutableString stringWithCapacity:32];
 

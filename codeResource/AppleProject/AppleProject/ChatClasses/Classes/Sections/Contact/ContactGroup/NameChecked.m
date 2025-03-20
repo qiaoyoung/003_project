@@ -101,12 +101,12 @@
     //: for (id<NIMGroupMemberProtocol>member in members) {
     for (id<UpProtocol>member in members) {
         //: if ([[member memberId] isEqualToString:me]) {
-        if ([[member video] isEqualToString:me]) {
+        if ([[member memberId] isEqualToString:me]) {
             //: continue;
             continue;
         }
         //: NSString *groupTitle = [member groupTitle];
-        NSString *groupTitle = [member team];
+        NSString *groupTitle = [member groupTitle];
         //: NSMutableArray *groupedMembers = [tmp objectForKey:groupTitle];
         NSMutableArray *groupedMembers = [tmp objectForKey:groupTitle];
         //: if(!groupedMembers) {
@@ -262,7 +262,7 @@
         //: [groupedMembers sortUsingComparator:^NSComparisonResult(id<NIMGroupMemberProtocol> member1, id<NIMGroupMemberProtocol> member2) {
         [groupedMembers sortUsingComparator:^NSComparisonResult(id<UpProtocol> member1, id<UpProtocol> member2) {
             //: return _groupMemberComparator([member1 sortKey], [member2 sortKey]);
-            return _groupMemberComparator([member1 artificialFlowerStemWithKey], [member2 artificialFlowerStemWithKey]);
+            return _groupMemberComparator([member1 sortKey], [member2 sortKey]);
         //: }];
         }];
     //: }];

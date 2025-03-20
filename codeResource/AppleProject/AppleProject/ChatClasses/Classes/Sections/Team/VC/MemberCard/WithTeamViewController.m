@@ -229,9 +229,9 @@ Byte str_arcData[] = {27, 8, 15, 14, 130, 180, 152, 33, 30, 87, 196, 103, 28, 96
         //: _dataSource = dataSource;
         _dataSource = dataSource;
         //: extern NSString *kNIMTeamListDataTeamMembersChanged;
-        extern NSString *kNIMTeamListDataTeamMembersChanged;
+        extern NSString *k_showName;
         //: [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(teamMemberUpdate:) name:kNIMTeamListDataTeamMembersChanged object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsed:) name:kNIMTeamListDataTeamMembersChanged object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsed:) name:k_showName object:nil];
     }
     //: return self;
     return self;

@@ -41,9 +41,9 @@ Byte str_foreheadStatuteData[] = {67, 14, 10, 185, 87, 180, 122, 56, 200, 20, 34
 //: #import "CCCChatUIManager.h"
 #import "ColorEnable.h"
 
-//: extern NSString *const NIMKitUserInfoHasUpdatedNotification;
+//: extern NSString *const k_pointName;
 extern NSString *const k_pointName;
-//: extern NSString *const NIMKitTeamInfoHasUpdatedNotification;
+//: extern NSString *const k_keyFlexibleText;
 extern NSString *const k_keyFlexibleText;
 
 
@@ -179,7 +179,7 @@ extern NSString *const k_keyFlexibleText;
         TotalernationalityText *info = [[TotalernationalityText alloc] init];
         //: info.session = session;
         info.session = session;
-        //: info.notificationName = NIMKitUserInfoHasUpdatedNotification;
+        //: info.notificationName = k_pointName;
         info.notificationName = k_pointName;
         //: [self.firer addFireInfo:info];
         [self.firer info:info];
@@ -207,7 +207,7 @@ extern NSString *const k_keyFlexibleText;
         //: info.session = session;
         info.session = session;
     }
-    //: info.notificationName = NIMKitTeamInfoHasUpdatedNotification;
+    //: info.notificationName = k_keyFlexibleText;
     info.notificationName = k_keyFlexibleText;
     //: [self.firer addFireInfo:info];
     [self.firer info:info];
@@ -234,10 +234,10 @@ extern NSString *const k_keyFlexibleText;
         //: info.session = session;
         info.session = session;
     }
-    //: extern NSString *NIMKitTeamMembersHasUpdatedNotification;
-    extern NSString *NIMKitTeamMembersHasUpdatedNotification;
-    //: info.notificationName = NIMKitTeamMembersHasUpdatedNotification;
-    info.notificationName = NIMKitTeamMembersHasUpdatedNotification;
+    //: extern NSString *k_quickName;
+    extern NSString *k_quickName;
+    //: info.notificationName = k_quickName;
+    info.notificationName = k_quickName;
     //: [self.firer addFireInfo:info];
     [self.firer info:info];
 }

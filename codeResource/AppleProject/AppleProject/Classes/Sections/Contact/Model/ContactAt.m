@@ -100,7 +100,7 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
 }
 
 //: - (NSString *)showName{
-- (NSString *)team{
+- (NSString *)showTitle{
     //: return self.info.showName;
     return self.info.showName;
 }
@@ -111,8 +111,7 @@ Byte str_kickTitle[] = {40, 19, 55, 5, 150, 133, 139, 124, 138, 122, 166, 165, 1
     return NO;
 }
 
-//: - (id)sortKey {
-- (id)magnitude {
+- (id)sortKey {
     //: return [[NTESSpellingCenter sharedCenter] spellingForString:self.info.showName].shortSpelling;
     return [[ScoopView breadbox] unwished:self.info.showName].shortSpelling;
 }

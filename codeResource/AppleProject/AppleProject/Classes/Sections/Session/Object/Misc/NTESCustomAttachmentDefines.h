@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger,NTESCustomMessageType){
 - (NSString *)orientationBubble;
 
 //: - (UIImage *)showCoverImage;
-- (UIImage *)bottom;
+- (UIImage *)showCoverImage;
 
 //: - (BOOL)shouldShowAvatar;
 - (BOOL)name;

@@ -77,7 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)toolView;
 
 //: -(void)myWallet;
--(void)inputView;
+-(void)inputXView;
 
 //: -(void)signClick;
 -(void)openlineText;

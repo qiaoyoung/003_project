@@ -49,7 +49,7 @@
 //: - (NSString *)toUrlString;
 - (NSString *)on;
 //: - (NSMutableString *)mutableUrlString;
-- (NSMutableString *)read;
+- (NSMutableString *)mutableUrlString;
 
 /// e.g. {a1:b1,a2:b2} ===> a1=b1&a2=b2
 //: - (NSString *)toQueryString;

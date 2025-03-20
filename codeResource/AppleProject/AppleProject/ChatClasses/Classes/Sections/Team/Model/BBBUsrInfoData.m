@@ -36,7 +36,7 @@
 }
 
 //: - (NSString *)groupTitle {
-- (NSString *)team {
+- (NSString *)groupTitle {
     //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.info.showName].capitalizedString;
     NSString *title = [[CenterMessagePressed success] indexLetter:self.info.showName].capitalizedString;
     //: unichar character = [title characterAtIndex:0];
@@ -53,7 +53,7 @@
 }
 
 //: - (NSString *)memberId{
-- (NSString *)video{
+- (NSString *)memberId{
     //: return self.info.infoId;
     return self.info.infoId;
 }
@@ -76,8 +76,7 @@
     return self.info.avatarImage;
 }
 
-//: - (id)sortKey {
-- (id)artificialFlowerStemWithKey {
+- (id)sortKey {
     //: return [[AAASpellingCenter sharedCenter] spellingForString:self.info.showName].shortSpelling;
     return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.info.showName].shortSpelling;
 }

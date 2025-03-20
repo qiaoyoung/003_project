@@ -15,11 +15,9 @@
 //: @protocol NIMGroupMemberProtocol <NSObject>
 @protocol UpProtocol <NSObject>
 
-//: - (NSString *)groupTitle;
-- (NSString *)team;
+- (NSString *)groupTitle;
 
-//: - (NSString *)memberId;
-- (NSString *)video;
+- (NSString *)memberId;
 
 //: - (NSString *)showName;
 - (NSString *)showTitle;
@@ -30,8 +28,7 @@
 //: - (UIImage *)avatarImage;
 - (UIImage *)key;
 
-//: - (id)sortKey;
-- (id)artificialFlowerStemWithKey;
+- (id)sortKey;
 
 //: @end
 @end

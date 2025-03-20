@@ -81,8 +81,7 @@
     return YES;
 }
 
-//: - (id)sortKey {
-- (id)ironed {
+- (id)sortKey {
     //: return nil;
     return nil;
 }

@@ -50,8 +50,6 @@ Byte str_labConcerningData[] = {74, 3, 8, 165, 213, 226, 71, 92, 118, 97, 119, 2
 #import "UIView+Toast.h"
 //: #import "NTESCustomSysNotificationSender.h"
 #import "UsanceTeam.h"
-//: #import "NTESGlobalMacro.h"
-#import "NTESGlobalMacro.h"
 //: #import <AVFoundation/AVFoundation.h>
 #import <AVFoundation/AVFoundation.h>
 //: #import "NTESSessionMsgConverter.h"

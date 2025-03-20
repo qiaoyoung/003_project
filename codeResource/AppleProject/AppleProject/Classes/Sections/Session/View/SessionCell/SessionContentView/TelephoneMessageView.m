@@ -59,7 +59,7 @@
     //: if ([attachment isKindOfClass:[NTESJanKenPonAttachment class]]) {
     if ([attachment isKindOfClass:[MaxOnStatusAttachment class]]) {
         //: self.imageView.image = [attachment showCoverImage];
-        self.imageView.image = [attachment bottom];
+        self.imageView.image = [attachment showCoverImage];
         //: [self.imageView sizeToFit];
         [self.imageView sizeToFit];
     }
