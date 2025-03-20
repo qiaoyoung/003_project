@@ -1,3 +1,5 @@
+// __DEBUG__
+// __CLOSE_PRINT__
 //
 //  BBBUsrInfoData.h
 //  NIM
@@ -6,13 +8,21 @@
 //  Copyright (c) 2015年 Netease. All rights reserved.
 //
 
+// __M_A_C_R_O__
+//: #import "AAAContactDefines.h"
 #import "AAAContactDefines.h"
-@class CCCKitInfo;
 
-@interface AppleProjectUsrInfo : NSObject <NIMGroupMemberProtocol>
+//: @class CCCKitInfo;
+@class TitleInfo;
 
-@property (nonatomic,strong) CCCKitInfo *info;
+//: @interface AppleProjectUsrInfo : NSObject <NIMGroupMemberProtocol>
+@interface IconInfo : NSObject <UpProtocol>
 
-- (BOOL)isFriend;
+//: @property (nonatomic,strong) CCCKitInfo *info;
+@property (nonatomic,strong) TitleInfo *info;
 
+//: - (BOOL)isFriend;
+- (BOOL)showFriend;
+
+//: @end
 @end

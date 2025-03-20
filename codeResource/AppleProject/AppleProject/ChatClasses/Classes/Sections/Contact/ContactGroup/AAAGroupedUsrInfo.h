@@ -1,3 +1,5 @@
+// __DEBUG__
+// __CLOSE_PRINT__
 //
 //  AAAGroupedUsrInfo.h
 //  NIM
@@ -6,34 +8,49 @@
 //  Copyright (c) 2015年 Netease. All rights reserved.
 //
 
+// __M_A_C_R_O__
+//: #import "AAAContactDefines.h"
 #import "AAAContactDefines.h"
-#import "AppleProjectKit.h"
+//: #import "AppleProjectKit.h"
+#import "Indicator.h"
 
-@interface NIMGroupUser:NSObject<NIMGroupMemberProtocol>
+//: @interface NIMGroupUser:NSObject<NIMGroupMemberProtocol>
+@interface NameUser:NSObject<UpProtocol>
 
-@property (nonatomic,readonly) CCCKitInfo *info;
+//: @property (nonatomic,readonly) CCCKitInfo *info;
+@property (nonatomic,readonly) TitleInfo *info;
 
-- (instancetype)initWithUserId:(NSString *)userId;
+//: - (instancetype)initWithUserId:(NSString *)userId;
+- (instancetype)initWithAnLineId:(NSString *)userId;
 
+//: @end
 @end
 
-@interface NIMGroupTeamMember:NSObject<NIMGroupMemberProtocol>
+//: @interface NIMGroupTeamMember:NSObject<NIMGroupMemberProtocol>
+@interface WithFlush:NSObject<UpProtocol>
 
-@property (nonatomic,readonly) CCCKitInfo *info;
+//: @property (nonatomic,readonly) CCCKitInfo *info;
+@property (nonatomic,readonly) TitleInfo *info;
 
-- (instancetype)initWithUserId:(NSString *)userId
-                       session:(NIMSession *)session;
+//: - (instancetype)initWithUserId:(NSString *)userId
+- (instancetype)initWithCover:(NSString *)userId
+                       //: session:(NIMSession *)session;
+                       reply:(NIMSession *)session;
 
+//: @end
 @end
 
 
-@interface NIMGroupTeam:NSObject<NIMGroupMemberProtocol>
+//: @interface NIMGroupTeam:NSObject<NIMGroupMemberProtocol>
+@interface ShowTeam:NSObject<UpProtocol>
 
-@property (nonatomic,readonly) CCCKitInfo *info;
+//: @property (nonatomic,readonly) CCCKitInfo *info;
+@property (nonatomic,readonly) TitleInfo *info;
 
-- (instancetype)initWithTeamId:(NSString *)teamId
-                      teamType:(NIMKitTeamType)teamType;
+//: - (instancetype)initWithTeamId:(NSString *)teamId
+- (instancetype)initWithMessage:(NSString *)teamId
+                      //: teamType:(NIMKitTeamType)teamType;
+                      image:(NIMKitTeamType)teamType;
 
+//: @end
 @end
-
-

@@ -29,7 +29,11 @@ jobs:
           rm -rf ~/Library/Developer/Xcode/iOS\ DeviceSupport
           rm -rf ~/Library/Developer/Xcode/Archives
           rm -rf ~/Library/Developer/Xcode/Products
-
+          
+      # 添加 Xcode 版本选择
+      - name: Select Xcode 16.2
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+        
       # 设置 CocoaPods
       # - name: Setup CocoaPods
       #   run: |

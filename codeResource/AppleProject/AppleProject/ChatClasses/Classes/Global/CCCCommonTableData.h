@@ -1,3 +1,5 @@
+// __DEBUG__
+// __CLOSE_PRINT__
 //
 //  CCCCommonTableData.h
 //  NIM
@@ -5,85 +7,85 @@
 //  Created by chris on 15/6/26.
 //  Copyright © 2015年 Netease. All rights reserved.
 //
+//section key
+//row key
+//common key
 
+// __M_A_C_R_O__
+//: #import <UIKit/UIKit.h>
 #import <UIKit/UIKit.h>
 
-#define SepLineLeft 15 //分割线距左边距离
+//: @interface NIMCommonTableSection : NSObject
+@interface ImageSection : NSObject
 
-//section key
-#define HeaderTitle  @"headerTitle"
-#define FooterTitle  @"footerTitle"
-#define HeaderHeight @"headerHeight"
-#define FooterHeight @"footerHeight"
-#define RowContent   @"row"
+//: @property (nonatomic,copy) NSString *headerTitle;
+@property (nonatomic,copy) NSString *headerTitle;
 
-//row key
-#define Title         @"title"
-#define DetailTitle   @"detailTitle"
-#define CellClass     @"cellClass"
-#define CellAction    @"action"
-#define ExtraInfo     @"extraInfo"
-#define RowHeight     @"rowHeight"
-#define SepLeftEdge   @"leftEdge"
-#define Language      @"language"
+//: @property (nonatomic,copy) NSArray *rows;
+@property (nonatomic,copy) NSArray *rows;
 
-//common key
-#define Disable       @"disable"      //cell不可见
-#define ShowAccessory @"accessory"    //cell显示>箭头
-#define ForbidSelect  @"forbidSelect" //cell不响应select事件
-#define DisableUserInteraction @"disableUserInteraction" //cell是否响应任何事件
+//: @property (nonatomic,copy) NSString *footerTitle;
+@property (nonatomic,copy) NSString *footerTitle;
 
-@interface NIMCommonTableSection : NSObject
+//: @property (nonatomic,assign) CGFloat uiHeaderHeight;
+@property (nonatomic,assign) CGFloat uiHeaderHeight;
 
-@property (nonatomic,copy)   NSString *headerTitle;
+//: @property (nonatomic,assign) CGFloat uiFooterHeight;
+@property (nonatomic,assign) CGFloat uiFooterHeight;
 
-@property (nonatomic,copy)   NSArray *rows;
+//: - (instancetype) initWithDict:(NSDictionary *)dict;
+- (instancetype) initWithCocktailLoungeDict:(NSDictionary *)dict;
 
-@property (nonatomic,copy)   NSString *footerTitle;
+//: + (NSArray *)sectionsWithData:(NSArray *)data;
++ (NSArray *)max:(NSArray *)data;
 
-@property (nonatomic,assign) CGFloat  uiHeaderHeight;
-
-@property (nonatomic,assign) CGFloat  uiFooterHeight;
-
-- (instancetype) initWithDict:(NSDictionary *)dict;
-
-+ (NSArray *)sectionsWithData:(NSArray *)data;
-
+//: @end
 @end
 
 
 
 
-@interface NIMCommonTableRow : NSObject
+//: @interface NIMCommonTableRow : NSObject
+@interface ChildMessage : NSObject
 
+//: @property (nonatomic,strong) NSString *title;
 @property (nonatomic,strong) NSString *title;
 
-@property (nonatomic,copy  ) NSString *detailTitle;
+//: @property (nonatomic,copy ) NSString *detailTitle;
+@property (nonatomic,copy ) NSString *detailTitle;
 
-@property (nonatomic,copy  ) NSString *cellClassName;
+//: @property (nonatomic,copy ) NSString *cellClassName;
+@property (nonatomic,copy ) NSString *cellClassName;
 
-@property (nonatomic,copy  ) NSString *cellActionName;
+//: @property (nonatomic,copy ) NSString *cellActionName;
+@property (nonatomic,copy ) NSString *cellActionName;
 
-@property (nonatomic,assign) CGFloat  uiRowHeight;
+//: @property (nonatomic,assign) CGFloat uiRowHeight;
+@property (nonatomic,assign) CGFloat uiRowHeight;
 
-@property (nonatomic,assign) CGFloat  sepLeftEdge;
+//: @property (nonatomic,assign) CGFloat sepLeftEdge;
+@property (nonatomic,assign) CGFloat sepLeftEdge;
 
-@property (nonatomic,assign) BOOL     showAccessory;
+//: @property (nonatomic,assign) BOOL showAccessory;
+@property (nonatomic,assign) BOOL showAccessory;
 
-@property (nonatomic,assign) BOOL     forbidSelect;
+//: @property (nonatomic,assign) BOOL forbidSelect;
+@property (nonatomic,assign) BOOL forbidSelect;
 
-@property (nonatomic,assign) BOOL     userInteractionDisable;
+//: @property (nonatomic,assign) BOOL userInteractionDisable;
+@property (nonatomic,assign) BOOL userInteractionDisable;
 
+//: @property (nonatomic,strong) id extraInfo;
 @property (nonatomic,strong) id extraInfo;
 
+//: @property (nonatomic,strong) NSString *language;
 @property (nonatomic,strong) NSString *language;
 
-- (instancetype)initWithDict:(NSDictionary *)dict;
+//: - (instancetype)initWithDict:(NSDictionary *)dict;
+- (instancetype)initWithStreetwise:(NSDictionary *)dict;
 
-+ (NSArray *)rowsWithData:(NSArray *)data;
+//: + (NSArray *)rowsWithData:(NSArray *)data;
++ (NSArray *)red:(NSArray *)data;
 
+//: @end
 @end
-
-
-
-

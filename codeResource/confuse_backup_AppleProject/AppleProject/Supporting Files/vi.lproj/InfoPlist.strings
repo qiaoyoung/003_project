@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  NIM
+
+  Created by He on 2020/2/11.
+  Copyright © 2020 Netease. All rights reserved.
+*/
+
+NSCameraUsageDescription="Để chụp ảnh và quay video để bạn có thể tải lên hoặc chia sẻ trong ứng dụng, chúng tôi sẽ không tải thông tin cá nhân của bạn lên máy chủ để bảo vệ quyền riêng tư và an ninh của bạn.";
+NSMicrophoneUsageDescription="Để ghi âm âm thanh, chúng tôi cần truy cập vào micro của bạn. Điều này sẽ giúp bạn tạo ra tin nhắn giọng nói và ghi lại video và các hoạt động khác. Chúng tôi sẽ không tải lên thông tin cá nhân của bạn lên máy chủ, bảo vệ quyền riêng tư và an ninh của bạn.";
+NSPhotoLibraryUsageDescription="Để lưu trữ và chia sẻ ảnh và video, chúng tôi cần truy cập vào album của bạn. Điều này sẽ giúp bạn lưu trữ và chia sẻ những khoảnh khắc đẹp dễ dàng. Chúng tôi sẽ không tải lên thông tin cá nhân của bạn lên máy chủ, bảo vệ quyền riêng tư và an ninh của bạn.";
+NSContactsUsageDescription="Để cung cấp trải nghiệm người dùng tốt hơn, chúng tôi cần sử dụng quyền sổ địa chỉ của bạn để giới thiệu bạn bè cho bạn.";
+NSLocationWhenInUseUsageDescription="Để cung cấp trải nghiệm người dùng tốt hơn, chúng tôi cần sử dụng thông tin vị trí của bạn để giúp bạn tìm kiếm những người bạn gần đó. Chúng tôi sẽ không tải thông tin cá nhân của bạn lên máy chủ để bảo vệ quyền riêng tư và an ninh của bạn.";

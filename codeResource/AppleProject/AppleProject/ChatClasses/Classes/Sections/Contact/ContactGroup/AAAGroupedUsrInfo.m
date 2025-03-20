@@ -1,3 +1,5 @@
+// __DEBUG__
+// __CLOSE_PRINT__
 //
 //  NTESGroupedUsrInfo.m
 //  NIM
@@ -6,168 +8,264 @@
 //  Copyright (c) 2015年 Netease. All rights reserved.
 //
 
+// __M_A_C_R_O__
+//: #import "AAAGroupedUsrInfo.h"
 #import "AAAGroupedUsrInfo.h"
-#import "AAASpellingCenter.h"
-#import "BBBKitInfoFetchOption.h"
+//: #import "AAASpellingCenter.h"
+#import "CenterMessagePressed.h"
+//: #import "BBBKitInfoFetchOption.h"
+#import "TitleOption.h"
 
-@interface NIMGroupUser()
+//: @interface NIMGroupUser()
+@interface NameUser()
 
-@property (nonatomic,copy)   NSString *userId;
-@property (nonatomic,strong) CCCKitInfo *info;
-
-@end
-
-@implementation NIMGroupUser
-
-- (instancetype)initWithUserId:(NSString *)userId{
-    self = [super init];
-    if (self) {
-        _userId = userId;
-        _info = [[AppleProjectKit sharedKit] infoByUser:userId option:nil];
-    }
-    return self;
-}
-
-- (NSString *)groupTitle{
-    NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.info.showName].capitalizedString;
-    unichar character = [title characterAtIndex:0];
-    if (character >= 'A' && character <= 'Z') {
-        return title;
-    }else{
-        return @"#";
-    }
-}
-
-- (NSString *)showName{
-    return self.info.showName;
-}
-
-- (NSString *)memberId{
-    return self.userId;
-}
-
-- (id)sortKey{
-    return [[AAASpellingCenter sharedCenter] spellingForString:self.info.showName].shortSpelling;
-}
-
-- (UIImage *)avatarImage {
-    return self.info.avatarImage;
-}
-
-
-- (NSString *)avatarUrlString {
-    return self.info.avatarUrlString;
-}
-
-
-@end
-
-@interface NIMGroupTeamMember()
-
+//: @property (nonatomic,copy) NSString *userId;
 @property (nonatomic,copy) NSString *userId;
-@property (nonatomic,strong) CCCKitInfo *info;
+//: @property (nonatomic,strong) CCCKitInfo *info;
+@property (nonatomic,strong) TitleInfo *info;
 
+//: @end
 @end
 
-@implementation NIMGroupTeamMember
+//: @implementation NIMGroupUser
+@implementation NameUser
 
-- (instancetype)initWithUserId:(NSString *)userId
-                       session:(NIMSession *)session {
+//: - (instancetype)initWithUserId:(NSString *)userId{
+- (instancetype)initWithAnLineId:(NSString *)userId{
+    //: self = [super init];
     self = [super init];
+    //: if (self) {
     if (self) {
+        //: _userId = userId;
         _userId = userId;
-        BBBKitInfoFetchOption *option = [[BBBKitInfoFetchOption alloc] init];
-        option.session = session;
-        _info = [[AppleProjectKit sharedKit] infoByUser:userId option:option];
+        //: _info = [[AppleProjectKit sharedKit] infoByUser:userId option:nil];
+        _info = [[Indicator reach] indoors:userId harvest:nil];
     }
+    //: return self;
     return self;
 }
 
-- (NSString *)groupTitle{
-    NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
+//: - (NSString *)groupTitle{
+- (NSString *)team{
+    //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.info.showName].capitalizedString;
+    NSString *title = [[CenterMessagePressed success] indexLetter:self.info.showName].capitalizedString;
+    //: unichar character = [title characterAtIndex:0];
     unichar character = [title characterAtIndex:0];
+    //: if (character >= 'A' && character <= 'Z') {
     if (character >= 'A' && character <= 'Z') {
+        //: return title;
         return title;
+    //: }else{
     }else{
+        //: return @"#";
         return @"#";
     }
 }
 
-- (id)sortKey{
-    return [[AAASpellingCenter sharedCenter] spellingForString:self.showName].shortSpelling;
-}
-
-- (NSString *)showName{
+//: - (NSString *)showName{
+- (NSString *)showTitle{
+    //: return self.info.showName;
     return self.info.showName;
 }
 
-- (NSString *)memberId{
+//: - (NSString *)memberId{
+- (NSString *)video{
+    //: return self.userId;
     return self.userId;
 }
 
-- (UIImage *)avatarImage {
+//: - (id)sortKey{
+- (id)artificialFlowerStemWithKey{
+    //: return [[AAASpellingCenter sharedCenter] spellingForString:self.info.showName].shortSpelling;
+    return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.info.showName].shortSpelling;
+}
+
+//: - (UIImage *)avatarImage {
+- (UIImage *)key {
+    //: return self.info.avatarImage;
     return self.info.avatarImage;
 }
 
-- (NSString *)avatarUrlString {
+
+//: - (NSString *)avatarUrlString {
+- (NSString *)cornerLikeSnapLine {
+    //: return self.info.avatarUrlString;
     return self.info.avatarUrlString;
 }
 
+
+//: @end
 @end
 
-@interface NIMGroupTeam()
+//: @interface NIMGroupTeamMember()
+@interface WithFlush()
 
-@property (nonatomic,copy) NSString *teamId;
-@property (nonatomic,strong) CCCKitInfo *info;
+//: @property (nonatomic,copy) NSString *userId;
+@property (nonatomic,copy) NSString *userId;
+//: @property (nonatomic,strong) CCCKitInfo *info;
+@property (nonatomic,strong) TitleInfo *info;
 
+//: @end
 @end
 
-@implementation NIMGroupTeam
+//: @implementation NIMGroupTeamMember
+@implementation WithFlush
 
-- (instancetype)initWithTeamId:(NSString *)teamId
-                      teamType:(NIMKitTeamType)teamType {
+//: - (instancetype)initWithUserId:(NSString *)userId
+- (instancetype)initWithCover:(NSString *)userId
+                       //: session:(NIMSession *)session {
+                       reply:(NIMSession *)session {
+    //: self = [super init];
     self = [super init];
+    //: if (self) {
     if (self) {
+        //: _userId = userId;
+        _userId = userId;
+        //: BBBKitInfoFetchOption *option = [[BBBKitInfoFetchOption alloc] init];
+        TitleOption *option = [[TitleOption alloc] init];
+        //: option.session = session;
+        option.session = session;
+        //: _info = [[AppleProjectKit sharedKit] infoByUser:userId option:option];
+        _info = [[Indicator reach] indoors:userId harvest:option];
+    }
+    //: return self;
+    return self;
+}
+
+//: - (NSString *)groupTitle{
+- (NSString *)team{
+    //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
+    NSString *title = [[CenterMessagePressed success] indexLetter:self.showTitle].capitalizedString;
+    //: unichar character = [title characterAtIndex:0];
+    unichar character = [title characterAtIndex:0];
+    //: if (character >= 'A' && character <= 'Z') {
+    if (character >= 'A' && character <= 'Z') {
+        //: return title;
+        return title;
+    //: }else{
+    }else{
+        //: return @"#";
+        return @"#";
+    }
+}
+
+//: - (id)sortKey{
+- (id)artificialFlowerStemWithKey{
+    //: return [[AAASpellingCenter sharedCenter] spellingForString:self.showName].shortSpelling;
+    return [[CenterMessagePressed success] unwelcomeSpellingPackthread:self.showTitle].shortSpelling;
+}
+
+//: - (NSString *)showName{
+- (NSString *)showTitle{
+    //: return self.info.showName;
+    return self.info.showName;
+}
+
+//: - (NSString *)memberId{
+- (NSString *)video{
+    //: return self.userId;
+    return self.userId;
+}
+
+//: - (UIImage *)avatarImage {
+- (UIImage *)key {
+    //: return self.info.avatarImage;
+    return self.info.avatarImage;
+}
+
+//: - (NSString *)avatarUrlString {
+- (NSString *)cornerLikeSnapLine {
+    //: return self.info.avatarUrlString;
+    return self.info.avatarUrlString;
+}
+
+//: @end
+@end
+
+//: @interface NIMGroupTeam()
+@interface ShowTeam()
+
+//: @property (nonatomic,copy) NSString *teamId;
+@property (nonatomic,copy) NSString *teamId;
+//: @property (nonatomic,strong) CCCKitInfo *info;
+@property (nonatomic,strong) TitleInfo *info;
+
+//: @end
+@end
+
+//: @implementation NIMGroupTeam
+@implementation ShowTeam
+
+//: - (instancetype)initWithTeamId:(NSString *)teamId
+- (instancetype)initWithMessage:(NSString *)teamId
+                      //: teamType:(NIMKitTeamType)teamType {
+                      image:(NIMKitTeamType)teamType {
+    //: self = [super init];
+    self = [super init];
+    //: if (self) {
+    if (self) {
+        //: _teamId = teamId;
         _teamId = teamId;
+        //: if (teamType == NIMKitTeamTypeNomal) {
         if (teamType == NIMKitTeamTypeNomal) {
-            _info = [[AppleProjectKit sharedKit] infoByTeam:teamId option:nil];
+            //: _info = [[AppleProjectKit sharedKit] infoByTeam:teamId option:nil];
+            _info = [[Indicator reach] text:teamId byLabel:nil];
+        //: } else if (teamType == NIMKitTeamTypeSuper) {
         } else if (teamType == NIMKitTeamTypeSuper) {
-            _info = [[AppleProjectKit sharedKit] infoBySuperTeam:teamId option:nil];
+            //: _info = [[AppleProjectKit sharedKit] infoBySuperTeam:teamId option:nil];
+            _info = [[Indicator reach] noneShowOption:teamId viewMedia:nil];
         }
     }
+    //: return self;
     return self;
 }
 
-- (NSString *)groupTitle{
-    NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
+//: - (NSString *)groupTitle{
+- (NSString *)team{
+    //: NSString *title = [[AAASpellingCenter sharedCenter] firstLetter:self.showName].capitalizedString;
+    NSString *title = [[CenterMessagePressed success] indexLetter:self.showTitle].capitalizedString;
+    //: unichar character = [title characterAtIndex:0];
     unichar character = [title characterAtIndex:0];
+    //: if (character >= 'A' && character <= 'Z') {
     if (character >= 'A' && character <= 'Z') {
+        //: return title;
         return title;
+    //: }else{
     }else{
+        //: return @"#";
         return @"#";
     }
 }
 
-- (id)sortKey{
-    return [[AAASpellingCenter sharedCenter] spellingForString:[self showName]].shortSpelling;
+//: - (id)sortKey{
+- (id)artificialFlowerStemWithKey{
+    //: return [[AAASpellingCenter sharedCenter] spellingForString:[self showName]].shortSpelling;
+    return [[CenterMessagePressed success] unwelcomeSpellingPackthread:[self showTitle]].shortSpelling;
 }
 
-- (NSString *)showName{
+//: - (NSString *)showName{
+- (NSString *)showTitle{
+    //: return self.info.showName;
     return self.info.showName;
 }
 
-- (NSString *)memberId{
+//: - (NSString *)memberId{
+- (NSString *)video{
+    //: return self.teamId;
     return self.teamId;
 }
 
-- (UIImage *)avatarImage {
+//: - (UIImage *)avatarImage {
+- (UIImage *)key {
+    //: return self.info.avatarImage;
     return self.info.avatarImage;
 }
 
-- (NSString *)avatarUrlString {
+//: - (NSString *)avatarUrlString {
+- (NSString *)cornerLikeSnapLine {
+    //: return self.info.avatarUrlString;
     return self.info.avatarUrlString;
 }
 
+//: @end
 @end
-
-

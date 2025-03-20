@@ -1,3 +1,5 @@
+// __DEBUG__
+// __CLOSE_PRINT__
 //
 //  NTESCustomAttachmentDefines.h
 //  NIM
@@ -6,85 +8,74 @@
 //  Copyright (c) 2015 Netease. All rights reserved.
 //
 
-#ifndef NIM_NTESCustomAttachmentTypes_h
-#define NIM_NTESCustomAttachmentTypes_h
+// __M_A_C_R_O__
 
+//: @class NIMKitBubbleStyleObject;
 @class NIMKitBubbleStyleObject;
 
+//: typedef NS_ENUM(NSInteger,NTESCustomMessageType){
 typedef NS_ENUM(NSInteger,NTESCustomMessageType){
-    CustomMessageTypeJanKenPon  = 1, //剪子石头布
-    CustomMessageTypeSnapchat   = 2, //阅后即焚
-    CustomMessageTypeChartlet   = 3, //贴图表情
+    //: CustomMessageTypeJanKenPon = 1, 
+    CustomMessageTypeJanKenPon = 1, //剪子石头布
+    //: CustomMessageTypeSnapchat = 2, 
+    CustomMessageTypeSnapchat = 2, //阅后即焚
+    //: CustomMessageTypeChartlet = 3, 
+    CustomMessageTypeChartlet = 3, //贴图表情
+    //: CustomMessageTypeWhiteboard = 4, 
     CustomMessageTypeWhiteboard = 4, //白板会话
-    CustomMessageTypeRedPacket  = 5, //红包消息
+    //: CustomMessageTypeRedPacket = 5, 
+    CustomMessageTypeRedPacket = 5, //红包消息
+    //: CustomMessageTypeRedPacketTip = 6, 
     CustomMessageTypeRedPacketTip = 6, //红包提示消息
+    //: CustomMessageTypeMultiRetweet = 15,
     CustomMessageTypeMultiRetweet = 15,//多条消息合并转发
-    
+
+    //: CustomMessageTypeCard = 105,
     CustomMessageTypeCard = 105,
+//: };
 };
-
-
-#define CMType             @"type"
-#define CMData             @"data"
-#define CMValue            @"value"
-#define CMFlag             @"flag"
-#define CMURL              @"url"
-#define CMMD5              @"md5"
-#define CMFileName         @"fileName"
-#define CMFIRE             @"fired"        //阅后即焚消息是否被焚毁
-#define CMCatalog          @"catalog"      //贴图类别
-#define CMChartlet         @"chartlet"     //贴图表情ID
 //红包
-#define CMRedPacketTitle   @"title"
-#define CMRedPacketContent @"content"
-#define CMPersonCardId     @"personCardId"
-#define CMPersonCardtype   @"type"
-
-
-
-#define CMRedPacketId      @"redPacketId"  //红包ID
-#define CMRedPacketSendID  @"redPacketSendID" //发送者
-
 //红包详情
-#define CMRedPacketSendId     @"sendPacketId"
-#define CMRedPacketOpenId     @"openPacketId"
-#define CMRedPacketDone       @"isGetDone"
+
+
+
 
 //合并转发
-#define CMCompressed       @"compressed" //合并转发文件是否压缩
-#define CMEncrypted        @"encrypted"  //合并转发文件是否加密
-#define CMPassword         @"password"   //合并转发文件解密密钥
-#define CMMessageAbstract  @"messageAbstract" //合并转发消息
-#define CMMessageAbstractSender   @"sender" //合并转发消息-发送者
-#define CMMessageAbstractContent  @"message" //合并转发消息-信息
-#define CMSessionName   @"sessionName" //会话名称
-#define CMSessionId   @"sessionId" //会话名称
+//: @protocol NTESCustomAttachmentInfo <NSObject>
+@protocol TingChild <NSObject>
 
-#endif
-
-
-@protocol NTESCustomAttachmentInfo <NSObject>
-
+//: @optional
 @optional
 
-- (NSString *)cellContent:(NIMMessage *)message;
+//: - (NSString *)cellContent:(NIMMessage *)message;
+- (NSString *)pin:(NIMMessage *)message;
 
-- (CGSize)contentSize:(NIMMessage *)message cellWidth:(CGFloat)width;
+//: - (CGSize)contentSize:(NIMMessage *)message cellWidth:(CGFloat)width;
+- (CGSize)linkOfPop:(NIMMessage *)message of:(CGFloat)width;
 
-- (UIEdgeInsets)contentViewInsets:(NIMMessage *)message;
+//: - (UIEdgeInsets)contentViewInsets:(NIMMessage *)message;
+- (UIEdgeInsets)keyPanoramicView:(NIMMessage *)message;
 
-- (NSString *)formatedMessage;
+//: - (NSString *)formatedMessage;
+- (NSString *)orientationBubble;
 
-- (UIImage *)showCoverImage;
+//: - (UIImage *)showCoverImage;
+- (UIImage *)bottom;
 
-- (BOOL)shouldShowAvatar;
+//: - (BOOL)shouldShowAvatar;
+- (BOOL)name;
 
-- (void)setShowCoverImage:(UIImage *)image;
+//: - (void)setShowCoverImage:(UIImage *)image;
+- (void)setBottom:(UIImage *)image;
 
-- (BOOL)canBeRevoked;
+//: - (BOOL)canBeRevoked;
+- (BOOL)recent;
 
-- (BOOL)canBeForwarded;
+//: - (BOOL)canBeForwarded;
+- (BOOL)container;
 
-- (BOOL)canDisplayBubbleBackground:(NIMMessage *)message;
+//: - (BOOL)canDisplayBubbleBackground:(NIMMessage *)message;
+- (BOOL)ofs:(NIMMessage *)message;
 
+//: @end
 @end
