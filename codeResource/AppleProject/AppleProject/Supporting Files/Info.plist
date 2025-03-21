@@ -93,7 +93,6 @@
 	<string>To store and share photos and videos, we need access to your photo library. This will help you easily save and share beautiful moments. We will not upload your personal information to the server, protecting your privacy and security.</string>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>audio</string>
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
