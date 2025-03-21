@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>responseFormatter</key>
+    <string>FancyMarkEqualStrategy</string>
+    <key>cancelDashboardFormatter</key>
+    <string>PowerBrightBesideDataSource</string>
+    <key>aroundCache</key>
+    <string>FetchCentralChartAgent</string>
+    <key>primePast</key>
+    <string>UntilBlockWiseModule</string>
+    <key>holisticSelfExecuteTool</key>
+    <string>UrbaneTypeOverFactory</string>
+    <key>listenerSync</key>
+    <string>ToolDecentSendClass</string>
+    <key>facadeFaint</key>
+    <string>SensorAlongMildInstance</string>
+    <key>statusOver</key>
+    <string>ValidAlongsideUtilityThen</string>
+    <key>matrixHarmlessState</key>
+    <string>MobileJungleAcceptAdapter</string>
+</dict>
+</plist>

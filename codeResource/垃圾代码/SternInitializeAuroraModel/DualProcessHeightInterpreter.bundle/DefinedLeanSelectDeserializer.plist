@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>overDrawController</key>
+    <string>PastPoolGraciousVisitor</string>
+    <key>manageQuietContainer</key>
+    <string>AnalyzeLoaderUrbaneDispatcher</string>
+    <key>debugHistory</key>
+    <string>WanderMoveSmoothEngine</string>
+    <key>easyPromise</key>
+    <string>FetchJudiciousTransformCollection</string>
+    <key>oddBindGardenHelper</key>
+    <string>MoveJudiciousFontThen</string>
+</dict>
+</plist>

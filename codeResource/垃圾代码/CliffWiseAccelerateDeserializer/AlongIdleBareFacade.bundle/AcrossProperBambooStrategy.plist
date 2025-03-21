@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>decoderBalancedTool</key>
+    <string>ForestSyncAzureFacade</string>
+    <key>alcoveLock</key>
+    <string>AuroraTowardTrustySerializer</string>
+    <key>fetchBrokerContinue</key>
+    <string>IntoModeYoungInstance</string>
+</dict>
+</plist>

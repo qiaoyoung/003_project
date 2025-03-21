@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>gateFindQuietModel</key>
+    <string>PastInfinitePortraitReference</string>
+    <key>firmDeserializer</key>
+    <string>SaveOverCompactInterpreter</string>
+    <key>mainMapByDeserializer</key>
+    <string>HonestMarkCounterDelegate</string>
+    <key>observerBeyondPleasedCliff</key>
+    <string>LuckyPerformOverAdapter</string>
+    <key>vibrantCalculate</key>
+    <string>InsertFocusedStemHelper</string>
+</dict>
+</plist>

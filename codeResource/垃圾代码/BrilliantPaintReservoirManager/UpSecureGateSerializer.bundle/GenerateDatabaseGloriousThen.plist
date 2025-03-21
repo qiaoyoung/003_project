@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>topGrowingInstanceRun</key>
+    <string>GlobalSetCentralType</string>
+    <key>toolCacheSuper</key>
+    <string>InSuperBasinDataSource</string>
+    <key>thinCheck</key>
+    <string>AustereExtractFlatTool</string>
+    <key>ivoryMediatorMagicFrom</key>
+    <string>OutsideTriggerDivineBroker</string>
+</dict>
+</plist>

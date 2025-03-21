@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>delegateUpward</key>
+    <string>FormalDuskPaintAdapter</string>
+    <key>checkDialogFilter</key>
+    <string>BeaconBuildAbleObserver</string>
+    <key>directVisitorDrawJasper</key>
+    <string>PassageDurableBesideDelegate</string>
+    <key>brokerDawnFindRich</key>
+    <string>ClientAmongHarmonicTool</string>
+    <key>worthDivineCacheClear</key>
+    <string>PineFreshInsideManager</string>
+    <key>queryCelestialEnable</key>
+    <string>LawfulInitializeStayFormatter</string>
+    <key>definedImplement</key>
+    <string>LegacyThinPaintProtocol</string>
+    <key>deserializerSyncAcute</key>
+    <string>DefinedMatchRapidsGroup</string>
+    <key>protocolLarge</key>
+    <string>WayRunCompositeDataSource</string>
+</dict>
+</plist>
