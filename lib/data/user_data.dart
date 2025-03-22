@@ -36,7 +36,7 @@ class UserData {
       possibleTags.add('Music Lover');
     if (description.contains('recording studio')) possibleTags.add('Musician');
     if (description.contains('conference room'))
-      possibleTags.add('Business Person');
+      possibleTags.add('Office Professional');
     if (description.contains('yoga')) possibleTags.add('Yoga Enthusiast');
     if (description.contains('gym')) possibleTags.add('Fitness Enthusiast');
     if (description.contains('leather jacket') ||
@@ -248,19 +248,20 @@ class UserData {
       'Rainbow',
       'Moonlight',
       'Sunshine',
-      'Breeze',
-      'Thunder',
-      'Cloud',
-      'Star',
-      'Meteor',
-      'Cosmic',
-      'Earth',
-      'Flame',
-      'Ice',
-      'Desert'
+      'Pebble',
+      'Diamond',
+      'Crystal',
+      'Sparkling',
+      'Twinkling',
+      'Golden',
+      'Silver',
+      'Amber',
+      'Emerald',
+      'Sapphire',
+      'Ruby'
     ];
 
-    final List<String> nicknameSuffixes = [
+    final List<String> generalSuffixes = [
       'Explorer',
       'Traveler',
       'Dreamer',
@@ -268,76 +269,54 @@ class UserData {
       'Creator',
       'Observer',
       'Collector',
-      'Pursuer',
-      'Guardian',
       'Adventurer',
-      'Hunter',
-      'Warrior',
-      'Wizard',
-      'Knight',
-      'King',
-      'Queen',
-      'Princess',
-      'Prince',
-      'Elf',
-      'Sorcerer',
-      'DragonRider',
-      'Pirate',
-      'Ninja',
-      'Samurai',
-      'Hero',
-      'Swordsman',
-      'Archer',
-      'Mage',
-      'Cleric',
-      'Druid',
+      'Seeker',
       'Voyager',
       'Wanderer',
-      'Seeker',
       'Nomad',
       'Pioneer',
-      'Ranger',
       'Scout',
       'Pathfinder',
       'Trailblazer',
       'Discoverer',
       'Innovator',
       'Visionary',
-      'Genius',
-      'Prodigy',
       'Master',
       'Champion',
       'Legend',
-      'Mystic',
-      'Sage',
       'Scholar'
     ];
 
-    // Choose appropriate suffixes based on description
+    // Add contextual suffixes based on description
     final List<String> contextualSuffixes = [];
-    if (description.contains('sports') ||
-        description.contains('basketball') ||
-        description.contains('football')) {
-      contextualSuffixes.addAll(['Athlete', 'Player', 'Champion', 'Coach']);
-    }
-    if (description.contains('music') || description.contains('headphones')) {
-      contextualSuffixes.addAll(
-          ['Musician', 'Singer', 'Composer', 'DJ', 'Drummer', 'Guitarist']);
-    }
-    if (description.contains('chef') || description.contains('restaurant')) {
-      contextualSuffixes.addAll(['Chef', 'Foodie', 'Gourmet', 'Cook']);
-    }
-    if (description.contains('programmer') ||
-        description.contains('laboratory')) {
-      contextualSuffixes
-          .addAll(['Engineer', 'Scientist', 'Researcher', 'Hacker', 'Geek']);
-    }
-    if (description.contains('court')) {
-      contextualSuffixes.addAll(['Lawyer', 'Judge', 'Defender']);
-    }
-    if (description.contains('art') || description.contains('bohemian')) {
-      contextualSuffixes.addAll(['Artist', 'Designer', 'Creator', 'Poet']);
-    }
+    if (description.contains('programmer') || description.contains('coding'))
+      contextualSuffixes.addAll(['Coder', 'Developer', 'Tech']);
+    if (description.contains('music'))
+      contextualSuffixes.addAll(['Melody', 'Rhythm', 'Harmony']);
+    if (description.contains('sports'))
+      contextualSuffixes.addAll(['Athlete', 'Champion', 'Player']);
+    if (description.contains('chef') || description.contains('cooking'))
+      contextualSuffixes.addAll(['Cook', 'Chef', 'Gourmet']);
+    if (description.contains('art'))
+      contextualSuffixes.addAll(['Artist', 'Creator', 'Visionary']);
+    if (description.contains('beach') || description.contains('ocean'))
+      contextualSuffixes.addAll(['Wave', 'Beach', 'Ocean']);
+    if (description.contains('hiking') || description.contains('mountain'))
+      contextualSuffixes.addAll(['Hiker', 'Explorer', 'Adventurer']);
+    if (description.contains('film') || description.contains('movie'))
+      contextualSuffixes.addAll(['Director', 'Critic', 'Cinephile']);
+    if (description.contains('writer') || description.contains('book'))
+      contextualSuffixes.addAll(['Author', 'Wordsmith', 'Storyteller']);
+    if (description.contains('teacher') || description.contains('education'))
+      contextualSuffixes.addAll(['Mentor', 'Educator', 'Guide']);
+    if (description.contains('court') || description.contains('legal'))
+      contextualSuffixes.addAll(['Advocate', 'Expert', 'Analyst']);
+    if (description.contains('design'))
+      contextualSuffixes.addAll(['Designer', 'Creative', 'Artisan']);
+    if (description.contains('photograph'))
+      contextualSuffixes.addAll(['Photographer', 'Visual', 'Capture']);
+    if (description.contains('science'))
+      contextualSuffixes.addAll(['Scientist', 'Researcher', 'Discoverer']);
 
     String firstName;
     if (gender == 'Male') {
@@ -348,40 +327,40 @@ class UserData {
 
     final String lastName = lastNames[_random.nextInt(lastNames.length)];
 
-    // Several ways to generate nicknames
-    final int nicknameType = _random.nextInt(5);
-
-    switch (nicknameType) {
+    // Generate nickname with different patterns
+    switch (_random.nextInt(4)) {
       case 0:
-        // Real name style
-        return '$lastName$firstName';
+        // First name only
+        return firstName;
       case 1:
-        // Prefix + name
-        return '${nicknamePrefixes[_random.nextInt(nicknamePrefixes.length)]}$firstName';
+        // First name + Last name
+        return '$firstName $lastName';
       case 2:
         // Name + suffix
         final List<String> allSuffixes = [
-          ...nicknameSuffixes,
+          ...generalSuffixes,
           ...contextualSuffixes
         ];
-        return '$firstName${allSuffixes[_random.nextInt(allSuffixes.length)]}';
+        if (allSuffixes.isEmpty) {
+          return firstName;
+        }
+        final String suffix = allSuffixes[_random.nextInt(allSuffixes.length)];
+        return '$firstName$suffix';
       case 3:
         // Prefix + suffix
         final List<String> allSuffixes = [
-          ...nicknameSuffixes,
+          ...generalSuffixes,
           ...contextualSuffixes
         ];
-        return '${nicknamePrefixes[_random.nextInt(nicknamePrefixes.length)]}${allSuffixes[_random.nextInt(allSuffixes.length)]}';
-      case 4:
-        // English letters + numbers combination
-        final String letters = 'abcdefghijklmnopqrstuvwxyz';
-        final String randomLetters = String.fromCharCodes(List.generate(
-                2, (_) => letters.codeUnitAt(_random.nextInt(letters.length))))
-            .toUpperCase();
-        final int randomNumber = _random.nextInt(1000);
-        return '$randomLetters$randomNumber$firstName';
+        if (allSuffixes.isEmpty || nicknamePrefixes.isEmpty) {
+          return firstName;
+        }
+        final String prefix =
+            nicknamePrefixes[_random.nextInt(nicknamePrefixes.length)];
+        final String suffix = allSuffixes[_random.nextInt(allSuffixes.length)];
+        return '$prefix$suffix';
       default:
-        return '$lastName$firstName';
+        return firstName;
     }
   }
 
@@ -427,11 +406,11 @@ class UserData {
   static String _generateOccupation(String description) {
     final List<String> occupations = [
       'Software Engineer',
-      'Doctor',
-      'Teacher',
-      'Lawyer',
+      'Science Teacher',
+      'Art Teacher',
+      'Content Creator',
       'Designer',
-      'Accountant',
+      'Digital Artist',
       'Marketing Specialist',
       'Sales Representative',
       'Customer Service',
@@ -452,9 +431,9 @@ class UserData {
       'Gardener',
       'Farmer',
       'Fisherman',
-      'Police Officer',
+      'Park Ranger',
       'Firefighter',
-      'Military Personnel',
+      'History Enthusiast',
       'Civil Servant'
     ];
 
@@ -462,14 +441,14 @@ class UserData {
     if (description.contains('programmer')) return 'Software Engineer';
     if (description.contains('chef')) return 'Chef';
     if (description.contains('military uniform') ||
-        description.contains('military camp')) return 'Military Personnel';
-    if (description.contains('court')) return 'Lawyer';
+        description.contains('military camp')) return 'History Enthusiast';
+    if (description.contains('court')) return 'Content Creator';
     if (description.contains('laboratory')) return 'Researcher';
     if (description.contains('work clothes') ||
         description.contains('construction site')) return 'Construction Worker';
     if (description.contains('suit') ||
         description.contains('professional attire') ||
-        description.contains('conference room')) return 'Business Professional';
+        description.contains('conference room')) return 'Office Worker';
     if (description.contains('music') ||
         description.contains('recording studio')) return 'Musician';
     if (description.contains('yoga') || description.contains('gym'))
@@ -481,71 +460,127 @@ class UserData {
   // Generate personal description
   static String _generateDescription(String info, String gender, int age,
       String ethnicity, String occupation) {
-    final List<String> personalityTraits = [
-      'Enthusiastic',
-      'Friendly',
-      'Outgoing',
-      'Introverted',
-      'Cautious',
-      'Bold',
-      'Innovative',
-      'Traditional',
-      'Humorous',
-      'Serious',
-      'Meticulous',
-      'Careless',
-      'Optimistic',
-      'Pessimistic',
-      'Confident',
-      'Humble',
-      'Diligent',
-      'Lazy',
-      'Frugal',
-      'Extravagant',
-      'Rational',
-      'Emotional',
-      'Practical',
-      'Idealistic',
-      'Independent',
-      'Dependent',
-      'Focused',
-      'Scattered',
-      'Calm',
-      'Impulsive'
+    // Generate a personality trait
+    final List<String> personalities = [
+      'friendly',
+      'outgoing',
+      'creative',
+      'thoughtful',
+      'analytical',
+      'detail-oriented',
+      'passionate',
+      'ambitious',
+      'relaxed',
+      'calm',
+      'energetic',
+      'enthusiastic',
+      'practical',
+      'logical',
+      'intuitive',
+      'reliable',
+      'spontaneous',
+      'disciplined',
+      'curious',
+      'open-minded',
+      'gentle',
+      'assertive',
+      'persistent',
+      'adaptable',
+      'organized',
+      'artistic',
+      'rational',
+      'compassionate',
+      'resourceful',
+      'witty'
     ];
 
+    final String personality =
+        personalities[_random.nextInt(personalities.length)];
+    String secondaryPersonality = '';
+    do {
+      secondaryPersonality =
+          personalities[_random.nextInt(personalities.length)];
+    } while (secondaryPersonality == personality);
+
+    // Generate hobbies
     final List<String> hobbies = [
-      'Reading',
-      'Writing',
-      'Painting',
-      'Photography',
-      'Traveling',
-      'Cooking',
-      'Gardening',
-      'Fishing',
-      'Hiking',
-      'Camping',
-      'Swimming',
-      'Running',
-      'Yoga',
-      'Meditation',
-      'Collecting',
-      'Crafting',
-      'Programming',
-      'Watching Movies',
-      'Listening to Music',
-      'Dancing',
-      'Singing',
-      'Playing Instruments',
-      'Board Games',
-      'Video Games',
-      'Tabletop Games',
-      'Volunteering',
-      'Learning Languages',
-      'Astronomy',
-      'History',
-      'Technology'
+      'reading books',
+      'watching movies',
+      'hiking in nature',
+      'traveling to new places',
+      'cooking new recipes',
+      'playing video games',
+      'learning new languages',
+      'photography',
+      'painting',
+      'playing musical instruments',
+      'writing stories',
+      'gardening',
+      'collecting vintage items',
+      'doing yoga',
+      'meditating',
+      'dancing',
+      'singing',
+      'cycling',
+      'swimming',
+      'playing sports',
+      'volunteering',
+      'attending concerts',
+      'visiting art galleries',
+      'camping',
+      'fishing',
+      'bird watching',
+      'stargazing',
+      'building models',
+      'DIY crafts',
+      'listening to podcasts'
     ];
+
+    String hobby = hobbies[_random.nextInt(hobbies.length)];
+    String secondaryHobby = '';
+    do {
+      secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
+    } while (secondaryHobby == hobby);
+
+    // Add professional description based on occupation
+    String professionalDescription = '';
+    if (occupation.contains('Engineer') || occupation.contains('Software')) {
+      professionalDescription =
+          'Has a passion for solving complex technical problems and creating efficient solutions.';
+    } else if (occupation.contains('Designer')) {
+      professionalDescription =
+          'Has an eye for aesthetics and loves creating beautiful and functional designs.';
+    } else if (occupation.contains('Science Teacher') ||
+        occupation.contains('Art Teacher')) {
+      professionalDescription =
+          'Dedicated to inspiring the next generation with knowledge and creativity.';
+    } else if (occupation.contains('Teacher') ||
+        occupation.contains('Professor')) {
+      professionalDescription =
+          'Believes in the power of education to transform lives and enjoys sharing knowledge.';
+    } else if (occupation.contains('Writer') || occupation.contains('Editor')) {
+      professionalDescription =
+          'Has a way with words and enjoys crafting compelling narratives.';
+    } else if (occupation.contains('Artist') || occupation.contains('Music')) {
+      professionalDescription =
+          'Expresses creativity through various forms of artistic expression.';
+    } else if (occupation.contains('Sales') ||
+        occupation.contains('Marketing')) {
+      professionalDescription =
+          'Excellent at understanding people\'s needs and communicating value effectively.';
+    } else if (occupation.contains('Content Creator')) {
+      professionalDescription =
+          'Always exploring new ideas and trends to create engaging content.';
+    } else if (occupation.contains('Digital Artist')) {
+      professionalDescription =
+          'Combines technical skills with artistic vision to create amazing digital artwork.';
+    } else if (occupation.contains('Office Worker')) {
+      professionalDescription =
+          'Organized and detail-oriented, with good communication skills and a collaborative spirit.';
+    } else {
+      professionalDescription =
+          'Brings dedication and expertise to their professional role.';
+    }
 
     // Lifestyle
     final List<String> lifestyles = [
@@ -609,43 +644,6 @@ class UserData {
       'Develop a Healthy Lifestyle'
     ];
 
-    // Select appropriate hobbies based on description
-    final List<String> contextualHobbies = [];
-    if (info.contains('basketball'))
-      contextualHobbies.add('Playing Basketball');
-    if (info.contains('football')) contextualHobbies.add('Playing Football');
-    if (info.contains('music') || info.contains('headphones'))
-      contextualHobbies.add('Listening to Music');
-    if (info.contains('library')) contextualHobbies.add('Reading');
-    if (info.contains('surfing')) contextualHobbies.add('Surfing');
-    if (info.contains('skiing')) contextualHobbies.add('Skiing');
-    if (info.contains('hiking')) contextualHobbies.add('Hiking');
-    if (info.contains('diving')) contextualHobbies.add('Diving');
-    if (info.contains('art')) contextualHobbies.add('Appreciating Art');
-
-    // Select personality traits
-    final String personality =
-        personalityTraits[_random.nextInt(personalityTraits.length)];
-    final String secondaryPersonality =
-        personalityTraits[_random.nextInt(personalityTraits.length)];
-
-    // Select hobby
-    String hobby;
-    String secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
-    if (contextualHobbies.isNotEmpty) {
-      hobby = contextualHobbies[_random.nextInt(contextualHobbies.length)];
-      // Ensure second hobby is different from the first
-      while (secondaryHobby == hobby && hobbies.length > 1) {
-        secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
-      }
-    } else {
-      hobby = hobbies[_random.nextInt(hobbies.length)];
-      // Ensure second hobby is different from the first
-      while (secondaryHobby == hobby && hobbies.length > 1) {
-        secondaryHobby = hobbies[_random.nextInt(hobbies.length)];
-      }
-    }
-
     // Select lifestyle
     final String lifestyle = lifestyles[_random.nextInt(lifestyles.length)];
 
@@ -654,36 +652,6 @@ class UserData {
 
     // Select life goal
     final String goal = goals[_random.nextInt(goals.length)];
-
-    // Add professional description based on occupation
-    String professionalDescription = '';
-    if (occupation.contains('Engineer') || occupation.contains('Software')) {
-      professionalDescription =
-          'Has rich experience in the tech field, excels at solving complex problems and innovative thinking.';
-    } else if (occupation.contains('Designer')) {
-      professionalDescription =
-          'Has a keen aesthetic eye and creative mind, skilled at transforming ideas into visual works.';
-    } else if (occupation.contains('Doctor') || occupation.contains('Nurse')) {
-      professionalDescription =
-          'Cares about others\' health, compassionate, and pursues professional excellence in the medical field.';
-    } else if (occupation.contains('Teacher') ||
-        occupation.contains('Professor')) {
-      professionalDescription =
-          'Passionate about education, good at inspiring students to think, and enjoys sharing knowledge.';
-    } else if (occupation.contains('Writer') || occupation.contains('Editor')) {
-      professionalDescription =
-          'Has strong writing skills, good at expression and storytelling, with a deep interest in literature.';
-    } else if (occupation.contains('Artist') || occupation.contains('Music')) {
-      professionalDescription =
-          'Has outstanding artistic talent, pursues creative expression, and continuously explores and innovates in the art field.';
-    } else if (occupation.contains('Sales') ||
-        occupation.contains('Marketing')) {
-      professionalDescription =
-          'Has excellent communication skills and business acumen, good at seizing market opportunities.';
-    } else {
-      professionalDescription =
-          'Pursues professionalism and excellence at work, continuously learning and improving abilities.';
-    }
 
     // Add age-related description
     String ageRelatedDescription = '';
