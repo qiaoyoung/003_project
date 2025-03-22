@@ -12,11 +12,164 @@ class ChatService {
   static const String apiUrl =
       'https://open.bigmodel.cn/api/paas/v4/chat/completions';
 
+  // 敏感话题关键词列表
+  final List<String> sensitiveMedicalTopics = [
+    'diagnosis',
+    'treatment',
+    'disease',
+    'symptom',
+    'illness',
+    'medication',
+    'prescription',
+    'drug',
+    'therapy',
+    'medical advice',
+    'health condition',
+    'doctor',
+    'cure',
+    'syndrome',
+    'patient',
+    'medical',
+    'clinical',
+    'hospital',
+    'emergency',
+    'surgery',
+    'dosage',
+    'pharmaceutic',
+    'vaccine',
+    'cancer',
+    'diabetes',
+    'depression',
+    'anxiety',
+    'health issue',
+    'medical condition',
+  ];
+
+  final List<String> sensitiveFinancialTopics = [
+    'investment',
+    'invest',
+    'stock',
+    'market',
+    'finance',
+    'trading',
+    'mutual fund',
+    'portfolio',
+    'cryptocurrency',
+    'crypto',
+    'bitcoin',
+    'ethereum',
+    'financial advice',
+    'retirement',
+    'loan',
+    'mortgage',
+    'debt',
+    'credit',
+    'banking',
+    'tax advice',
+    'insurance',
+    'estate planning',
+    'wealth management',
+    'assets',
+    'bonds',
+    'real estate investment',
+    'money management',
+    'financial planning',
+    'roi',
+    'dividend',
+    'trading strategy',
+    'financial future',
+    'interest rate',
+  ];
+
+  final List<String> sensitiveLegalTopics = [
+    'legal advice',
+    'lawsuit',
+    'sue',
+    'court',
+    'lawyer',
+    'attorney',
+    'legal',
+    'law',
+    'litigation',
+    'regulation',
+    'contract review',
+    'legal document',
+    'settlement',
+    'divorce',
+    'custody',
+    'will',
+    'testament',
+    'legal rights',
+    'intellectual property',
+    'patent',
+    'copyright',
+    'trademark',
+    'legal liability',
+    'legal disclaimer',
+    'terms of service',
+    'agreement',
+    'legal issue',
+    'legal question',
+    'legal concern',
+    'representation',
+    'notary',
+    'criminal',
+  ];
+
+  // 检查消息是否包含敏感话题
+  bool _containsSensitiveTopics(String message) {
+    message = message.toLowerCase();
+
+    // 检查医疗相关敏感词
+    for (var keyword in sensitiveMedicalTopics) {
+      if (message.contains(keyword.toLowerCase())) {
+        developer.log('发现医疗敏感词: $keyword');
+        return true;
+      }
+    }
+
+    // 检查金融相关敏感词
+    for (var keyword in sensitiveFinancialTopics) {
+      if (message.contains(keyword.toLowerCase())) {
+        developer.log('发现金融敏感词: $keyword');
+        return true;
+      }
+    }
+
+    // 检查法律相关敏感词
+    for (var keyword in sensitiveLegalTopics) {
+      if (message.contains(keyword.toLowerCase())) {
+        developer.log('发现法律敏感词: $keyword');
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  // 生成敏感话题回复
+  String _getSensitiveTopicResponse() {
+    final List<String> responses = [
+      "I'm sorry, but I'm not able to provide advice on medical, financial, or legal topics. These require professional expertise. Would you like to chat about something else?",
+      "As an entertainment AI, I can't discuss topics that require professional advice, such as health, finance, or legal matters. Let's talk about something else instead!",
+      "I'm designed for casual conversation and entertainment only. For questions about health, finances, or legal matters, please consult with qualified professionals. How about we chat about movies, music, or travel instead?",
+      "I'm not qualified to provide advice on professional topics like medical, financial, or legal matters. I'd be happy to chat about hobbies, entertainment, or general knowledge instead!",
+      "Topics requiring professional expertise (like health, finance, or legal advice) are outside the scope of our conversation. I'm here for fun chats and entertainment! What else would you like to talk about?",
+    ];
+
+    return responses[math.Random().nextInt(responses.length)];
+  }
+
   // 获取AI回复
   Future<String> getAIResponse(
       String userMessage, String userDescription, String userId,
       [String? customPrompt]) async {
     try {
+      // 检查是否包含敏感话题
+      if (_containsSensitiveTopics(userMessage)) {
+        return _getSensitiveTopicResponse();
+      }
+
       // 获取历史消息作为上下文
       final messages = await getChatHistory(userId);
       developer.log('获取历史消息: ${messages.length} 条');
@@ -36,7 +189,9 @@ class ChatService {
             'Occasionally use emojis to express emotions. '
             'Sometimes make small typing errors to seem more human. '
             'Avoid long explanations and overly formal language. '
-            'Respond as if you are texting casually with a friend.';
+            'Respond as if you are texting casually with a friend. '
+            'IMPORTANT: NEVER provide medical, financial, or legal advice. If asked about these topics, '
+            'politely decline and redirect the conversation.';
       }
 
       // 确保系统提示词包含使用英文回复的指令
