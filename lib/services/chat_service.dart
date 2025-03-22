@@ -123,7 +123,7 @@ class ChatService {
     // 检查医疗相关敏感词
     for (var keyword in sensitiveMedicalTopics) {
       if (message.contains(keyword.toLowerCase())) {
-        developer.log('发现医疗敏感词: $keyword');
+        developer.log('Detected medical sensitive keyword: $keyword');
         return true;
       }
     }
@@ -131,7 +131,7 @@ class ChatService {
     // 检查金融相关敏感词
     for (var keyword in sensitiveFinancialTopics) {
       if (message.contains(keyword.toLowerCase())) {
-        developer.log('发现金融敏感词: $keyword');
+        developer.log('Detected financial sensitive keyword: $keyword');
         return true;
       }
     }
@@ -139,7 +139,7 @@ class ChatService {
     // 检查法律相关敏感词
     for (var keyword in sensitiveLegalTopics) {
       if (message.contains(keyword.toLowerCase())) {
-        developer.log('发现法律敏感词: $keyword');
+        developer.log('Detected legal sensitive keyword: $keyword');
         return true;
       }
     }
@@ -172,7 +172,7 @@ class ChatService {
 
       // 获取历史消息作为上下文
       final messages = await getChatHistory(userId);
-      developer.log('获取历史消息: ${messages.length} 条');
+      developer.log('Retrieved message history: ${messages.length} messages');
 
       // 构建系统提示词
       String systemPrompt;
@@ -190,8 +190,10 @@ class ChatService {
             'Sometimes make small typing errors to seem more human. '
             'Avoid long explanations and overly formal language. '
             'Respond as if you are texting casually with a friend. '
-            'IMPORTANT: NEVER provide medical, financial, or legal advice. If asked about these topics, '
-            'politely decline and redirect the conversation.';
+            'IMPORTANT: This app is for ENTERTAINMENT PURPOSES ONLY. '
+            'NEVER provide medical, financial, or legal advice. '
+            'NEVER suggest, facilitate, or discuss ANY financial transactions, investments, or payment services. '
+            'If asked about these topics, politely decline and redirect the conversation.';
       }
 
       // 确保系统提示词包含使用英文回复的指令
@@ -223,7 +225,7 @@ class ChatService {
         'max_tokens': 150, // 减少最大token数，限制回复长度
       };
 
-      developer.log('发送API请求: $userMessage');
+      developer.log('Sending API request: $userMessage');
 
       // 发送请求
       final response = await http.post(
@@ -243,15 +245,17 @@ class ChatService {
         // 对AI回复进行后处理，增加人性化特征
         aiResponse = _postProcessAIResponse(aiResponse);
 
-        developer.log('收到API响应: $aiResponse');
+        developer.log('Received API response: $aiResponse');
         return aiResponse;
       } else {
-        developer.log('API请求失败: ${response.statusCode} ${response.body}',
+        developer.log(
+            'API request failed: ${response.statusCode} ${response.body}',
             error: response.body);
-        throw Exception('API请求失败: ${response.statusCode} ${response.body}');
+        throw Exception(
+            'API request failed: ${response.statusCode} ${response.body}');
       }
     } catch (e) {
-      developer.log('获取AI回复出错', error: e);
+      developer.log('Error getting AI response: $e', error: e);
       // 如果API调用失败，返回一个友好的错误消息
       return "I'm sorry, I couldn't process your message at the moment. Could you try again later?";
     }

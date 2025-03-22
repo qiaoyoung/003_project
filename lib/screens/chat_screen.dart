@@ -33,6 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _isTyping = false;
   String? _customPrompt;
   String _errorMessage = '';
+  // Flag to control disclaimer visibility
+  bool _showDisclaimer = true;
 
   @override
   void initState() {
@@ -270,7 +272,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Get title from route parameters
     final screenTitle = widget.title ?? widget.user.nickname;
 
     return Scaffold(
@@ -331,6 +332,35 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
+          // Disclaimer banner
+          if (_showDisclaimer)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              color: Colors.amber.shade700,
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline, color: Colors.white, size: 18),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'For entertainment purposes only. This app does not provide financial, medical, or legal services.',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ),
+                  IconButton(
+                    icon:
+                        const Icon(Icons.close, color: Colors.white, size: 16),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    onPressed: () {
+                      setState(() {
+                        _showDisclaimer = false;
+                      });
+                    },
+                  )
+                ],
+              ),
+            ),
           // Error message
           if (_errorMessage.isNotEmpty)
             Container(
