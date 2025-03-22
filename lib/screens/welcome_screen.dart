@@ -145,12 +145,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     });
   }
 
-  void _launchPrivacyPolicy() async {
-    final Uri url = Uri.parse(
-        'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/');
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    }
+  void _launchPrivacyPolicy() {
+    // 导航到用户协议页面
+    Navigator.pushNamed(context, '/agreement');
   }
 
   // 处理开始按钮点击
@@ -353,19 +350,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   // 底部版权信息
                   FadeTransition(
                     opacity: _fadeAnimation,
-                    child: GestureDetector(
-                      onTap: () async {
-                        final Uri url = Uri.parse('https://www.example.com');
-                        if (await canLaunchUrl(url)) {
-                          await launchUrl(url);
-                        }
-                      },
-                      child: const Text(
-                        '© 2025 Qintar. All rights reserved.',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12,
-                        ),
+                    child: const Text(
+                      '© 2025 Qintar. All rights reserved.',
+                      style: TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
                       ),
                     ),
                   ),

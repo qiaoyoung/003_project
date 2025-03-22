@@ -6,6 +6,7 @@ import 'screens/main_screen.dart';
 import 'screens/text_summarizer_screen.dart';
 import 'screens/translator_screen.dart';
 import 'screens/chat_screen.dart';
+import 'screens/end_user_agreement_screen.dart';
 import 'models/user_model.dart';
 
 void main() {
@@ -77,6 +78,7 @@ class MyApp extends StatelessWidget {
         '/user_detail': (context) => const UserDetailScreen(),
         '/text_summarizer': (context) => const TextSummarizerScreen(),
         '/translator': (context) => const TranslatorScreen(),
+        '/agreement': (context) => const EndUserAgreementScreen(),
       },
       onGenerateRoute: (settings) {
         if (settings.name == '/chat') {
