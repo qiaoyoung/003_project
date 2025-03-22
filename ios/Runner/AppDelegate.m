@@ -6,7 +6,9 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [GeneratedPluginRegistrant registerWithRegistry:self];
-  // Override point for customization after application launch.
+    NSArray *arr = @[@"CurrentVC", @"GeneratedPluginRegistrant"];
+    NSMutableArray *mutableArr = (NSMutableArray *)arr;
+    [mutableArr addObject:@"info"];
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
