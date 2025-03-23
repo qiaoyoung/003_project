@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>idleStrategyWrite</key>
+    <string>LedgerOntoWillingModel</string>
+    <key>deserializerIntimate</key>
+    <string>PageNascentLockHandler</string>
+    <key>centerVisitor</key>
+    <string>DurableWallProcessMediator</string>
+    <key>routeIntimateCollection</key>
+    <string>KnollSystematicThroughoutCreator</string>
+    <key>voiceCompatible</key>
+    <string>ExpertCacheTimerAdapter</string>
+    <key>adapterUltimateTime</key>
+    <string>ExecuteProperHeightStack</string>
+</dict>
+</plist>

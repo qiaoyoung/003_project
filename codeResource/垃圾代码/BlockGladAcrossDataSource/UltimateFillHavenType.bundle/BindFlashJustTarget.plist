@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>keeperTypeSound</key>
+    <string>BySecurePlainStack</string>
+    <key>importAgentEarnest</key>
+    <string>WhisperAbleAcceptVisitor</string>
+    <key>filterAccessDryAttach</key>
+    <string>BoldPrimeCleanInterpreter</string>
+    <key>immensePrompt</key>
+    <string>DrawRingImmenseHelper</string>
+</dict>
+</plist>

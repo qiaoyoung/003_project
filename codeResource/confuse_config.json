@@ -1,0 +1,3327 @@
+[
+  {
+    "depends" : [
+
+    ],
+    "title" : "项目配置",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "",
+      "title" : "",
+      "key" : "",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_project",
+    "tips" : "必选",
+    "required" : 1,
+    "items" : [
+      {
+        "hidden" : 1,
+        "defaultValue" : "en",
+        "title" : "语言",
+        "check" : "",
+        "key" : "config_language",
+        "tips" : "默认英文",
+        "configValue" : "zh",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "项目根路径",
+        "check" : "",
+        "key" : "config_project_root_path",
+        "tips" : "切换项目的时候记得点击菜单栏->Config->重置配置\n注意: 正常情况为xxx.xcodeproj文件夹的上一级目录\n提示： 请优先选择该选项，其他内容自动匹配，不一定正确，请自己检查一遍",
+        "configValue" : "\/Users\/douxiu\/Desktop\/003_project\/codeResource\/AppleProject",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "xcodeproj",
+        "check" : "(?<!\/Pods)\\.xcodeproj$",
+        "key" : "config_project_xcodeproj_path",
+        "tips" : "编译运行的xcodeproj，例如: confuse_test，默认第一个xx.xcodeproj\n注意：需要自行检查",
+        "configValue" : "\/Users\/douxiu\/Desktop\/003_project\/codeResource\/AppleProject\/AppleProject.xcodeproj",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Scheme",
+        "check" : "",
+        "key" : "config_main_scheme_name",
+        "tips" : "编译运行的scheme，例如: confuse_test，默认第一个\n注意：需要自行检查",
+        "configValue" : "AppleProject",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "Debug模式",
+        "check" : "",
+        "key" : "config_debug_enable",
+        "tips" : "便于在源文件中查看修改前后对比，同时插入一些特殊注释标识便于定位bug，建议开启",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "混编模式",
+        "check" : "",
+        "key" : "config_bridge_enable",
+        "tips" : "该模式用于处理混编项目中swift调用oc部分，保证混淆后维持调用关系，注意：暂不支持oc调用swift",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "Frameworks,ThirdPart,DiscardFile",
+        "title" : "忽略路径",
+        "check" : "",
+        "key" : "config_discard_paths",
+        "tips" : "每个文件(夹)逗号隔开，无需全路径，支持正则。不需要混淆的请尽可能忽略。\n注意:\n1.忽略文件不能调用混淆文件的（类、方法、属性等）\n2.Cocoapods(Pods)默认忽略\n3.cocos2d-x(cocos,extensions,external)默认忽略，如果源码的方法名或属性被改了，请加入到对应功能的黑名单中。\n提示：\n1.如果文件夹重名了，可设置父文件夹区分，例如Folder1_1\/Folder2,Folder1_2\/Folder2\n2.如果文件里面包含+等正则元字符需要加反斜杠'\\',例如：UIView\\+YJS.h",
+        "configValue" : "Frameworks,ThirdPart,DiscardFile",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "垃圾路径",
+        "check" : "",
+        "key" : "config_garbage_paths",
+        "tips" : "每个文件(夹)逗号隔开，无需全路径，支持正则。和编译阶段无关的文件都为垃圾文件。\n注意:build、Tests默认忽略",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "proto路径",
+        "check" : "",
+        "key" : "config_proto_paths",
+        "tips" : "每个文件(夹)逗号隔开，无需全路径，支持正则",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "normal",
+        "title" : "环境检查模式",
+        "check" : "^(normal|strict|,)+$",
+        "key" : "config_pre_check_mode",
+        "tips" : "可多选(normal | strict), 例如: normal",
+        "configValue" : "normal",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "参考项目根路径",
+        "check" : "",
+        "key" : "config_project_reference_path",
+        "tips" : "读取参考项目(允许编译不通过)\n1.单词：只读取(h|m|mm|hpp|cpp|swift)文件\n2.UUID：个数约等于文件个数，最好多导入一些文件\n注意：参考的项目最好是未提交过的",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "ipa路径",
+        "check" : "^.*(?<!\\.ipa)$",
+        "key" : "config_ipa_path",
+        "tips" : "目的：避免命名重复\n注意：\n1.必须为文件夹，尽可能包含所有提审过的ipa包\n2.可在子目录中创建confuse_ipa_white.json作为白名单，内容为单层数组结构",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "敏感词",
+        "check" : "",
+        "key" : "config_sensitive_word",
+        "tips" : "避免混淆后出现敏感词，逗号隔开",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "NSLog,print",
+        "title" : "关闭输出",
+        "check" : "",
+        "key" : "config_close_print",
+        "tips" : "注释所有输出语句，逗号隔开",
+        "configValue" : "NSLog,print",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "版本迭代混淆",
+        "check" : "",
+        "key" : "config_history",
+        "tips" : "过审后迭代更新，沿用上一次（也可以任意选择版本）混淆记录增量混淆，保持版本连续性，模拟正常开发，默认不选为全新混淆。\n注意：混淆完成后，自动保存（或者'菜单栏->记录->导出混淆记录）历史记录在项目同级目录下（confuse_history_xxx），已过包记得备份，避免丢失，建议加入源码的版本库同步管理\n优势：只要维护源码，正常开发流程，避免在已过包的混淆项目上继续开发，做到开发和混淆同步且各自独立\n建议：为了方便管理每次混淆新建一个v1.0分支同时保存confuse_history_xxx文件，下次迭代更新的时候在主分支上新建v2.0分支+指定版本记录v1.0，就能实现原代码的版本更新和混淆的版本更新同步且连续，避免在混淆后的项目上开发",
+        "configValue" : "",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "删除注释",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "main.m",
+        "AppDelegate.h",
+        "AppDelegate.m",
+        "ViewController.h",
+        "ViewController.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_annotation_modify.json",
+      "configValues" : [
+        "main.m",
+        "AppDelegate.h",
+        "AppDelegate.m",
+        "ViewController.h",
+        "ViewController.m"
+      ]
+    },
+    "key" : "config_is_annotation_modify",
+    "tips" : "注意：勾选了工具的debug模式，该功能将无效",
+    "required" : 0,
+    "items" : [
+
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "替换资源",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "",
+      "title" : "",
+      "key" : "",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_replace_source",
+    "tips" : "用于混淆前有些相同名字的备份资源要预先替换，根据名称替换",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "替换资源路径",
+        "check" : "",
+        "key" : "config_replace_source_path",
+        "tips" : "用于混淆前有些资源要预先替换(默认为: 空)",
+        "configValue" : "",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改sks",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或SKSpriteNode节点名或sks的布局(例如：'{8, 16}')，多个换行",
+      "title" : "黑名单",
+      "key" : "black_sprite_kit_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_sprite_kit_modify",
+    "tips" : "修改SpriteKit中sks文件的布局和节点名称，注意：节点命名必须是'sks_'前缀\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "运行拼接名称",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_sprite_kit_modify_runtime_join",
+        "tips" : "用于运行时通过字符串拼接生成的SKSpriteNode节点名，多个逗号隔开。\n例如：'number,tab_',代码中[NSString stringWithFormat:@\"number%d\", i]、[NSString stringWithFormat:@\"tab_%d_hight\", i]对应的number、tab_会被修改",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_sprite_kit_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "编译",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "",
+      "title" : "",
+      "key" : "",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_build",
+    "tips" : "为了验证项目的完整性，会进行编译校验。编译优先级：手动 > 半自动 > 自动",
+    "required" : 1,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "自动",
+        "check" : "",
+        "key" : "config_build_cmd",
+        "tips" : "xcodebuild指令，如果为空则使用内置通用编译指令\n注意：如果重新编译需要手动清理缓存",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "半自动",
+        "check" : "",
+        "key" : "config_build_log",
+        "tips" : "选择指定的编译（时间和Xcode编译时间对应），建议选择最近一次的正常编译\n注意：自定义设置需要关闭所有Target的Pch预编译，请设置Build Settings -> Precompile Prefix Header = NO",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "手动",
+        "check" : "\/Build (?#scheme)_.*\\.txt$",
+        "key" : "config_build_export_path",
+        "tips" : "选择xocde导出的编译日志\n注意：自定义设置需要关闭Pch预编译，请设置Build Settings -> Precompile Prefix Header = NO\n详情操作见链接（https:\/\/www.yuque.com\/docs\/share\/5cc01579-b3d6-4e0c-9031-7bf74866f870?#《手动导出编译日志操作说明》）",
+        "configValue" : "",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "宏展开",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_macro.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_macro",
+    "tips" : "展开宏定义\n提示：如果其他功能依赖此功能将无法主动关闭，需要先关闭其他关联功能\n小技巧：测试阶段，单独勾选宏展开，然后git commit，节约时间，避免重复执行此操作",
+    "required" : 0,
+    "items" : [
+
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改控制流",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "function1:param2:",
+        "function2",
+        "fileXXX.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_condition_modify.json",
+      "configValues" : [
+        "function1:param2:",
+        "function2",
+        "fileXXX.m"
+      ]
+    },
+    "key" : "config_is_oc_condition_modify",
+    "tips" : "if条件语句中的逻辑运算进行等价替换",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_condition_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名全局方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_global_function_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_global_function_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_oc_global_function_rename_prefix",
+        "tips" : "所有的全局方法名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_global_function_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名图片",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "AppIcon",
+        "LaunchImage"
+      ],
+      "tips" : "#图片名(无扩展名)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_image_rename.json",
+      "configValues" : [
+        "AppIcon",
+        "LaunchImage"
+      ]
+    },
+    "key" : "config_is_oc_image_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "运行拼接名称",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_image_rename_runtime_join",
+        "tips" : "用于运行时通过字符串拼接生成的图片名，多个逗号隔开。\n例如：'number,tab_',代码中[NSString stringWithFormat:@\"number%d\", i]、[NSString stringWithFormat:@\"tab_%d_hight\", i]对应的number、tab_会被修改",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "重命名关联字符串",
+        "check" : "",
+        "key" : "config_oc_image_rename_string_modify_enable",
+        "tips" : "用于修改字符串与图片名相等的情况，有一定风险，自己看情况使用",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "指定忽略长度",
+        "check" : "^([4-9]|[1][0-9])$",
+        "key" : "config_oc_image_rename_ignore_length",
+        "tips" : "图片名长度小于指定长度为危险名称，将忽略，取值范围(4~19)，默认4，注意：一个汉字长度为3",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "忽略危险",
+        "check" : "",
+        "key" : "config_oc_image_rename_ignore_danger_enable",
+        "tips" : "与字典key同名，将忽略",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "关联文件",
+        "check" : "",
+        "key" : "config_oc_image_rename_associated_paths",
+        "tips" : "其他包含图片名的文件，每个文件(夹)逗号隔开，无需全路径，支持正则",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_image_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入图片",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll:"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_image_inject.json",
+      "configValues" : [
+        "scrollViewDidScroll:"
+      ]
+    },
+    "key" : "config_is_oc_image_inject",
+    "tips" : "源码中自动调用图片，小技巧：可多次执行\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "插入路径",
+        "check" : "^.*\\.xcassets$",
+        "key" : "config_oc_image_inject_path",
+        "tips" : "注意: 只能是xcassets文件夹, 建议项目中用到的图片全部放到xcassets文件夹",
+        "configValue" : "\/Users\/douxiu\/Desktop\/003_project\/codeResource\/AppleProject\/AppleProject\/Images.xcassets",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "插入数量",
+        "check" : "^[1-9][0-9]$",
+        "key" : "config_oc_image_inject_count",
+        "tips" : "10~99",
+        "configValue" : "50",
+        "required" : 1
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名成员变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_member_variable_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_member_variable_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_member_variable_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_property_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_property_rename",
+    "tips" : "注意:\nkvc、kvo，扫描结果见预检查日志，处理方式：对应属性手动加入黑名单，或者移除该功能，扫描结果见预检查日志\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_property_rename_model_suffix",
+        "tips" : "作用：利用类名后缀(支持正则)，批量过滤包含属性的类\n例如: 'Model,_M'将过滤类UserModel、User_M等\n目的: 避免Model字段不匹配后台数据\n提示： 建议使用YYModel、MJExtension的属性映射, 可不设Model后缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model映射",
+        "check" : "^(YYModel|MJExtension|,)+$",
+        "key" : "config_oc_property_rename_model_mapping",
+        "tips" : "自动插入映射,可多选(YYModel | MJExtension), 例如: YYModel,该选项只作用与Model后缀的文件\n目的: 属性改了同时也能匹配后台数据",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_property_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll:"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或关联属性名(单独执行有效)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_property_inject.json",
+      "configValues" : [
+        "scrollViewDidScroll:"
+      ]
+    },
+    "key" : "config_is_oc_property_inject",
+    "tips" : "根据已有属性插入\n小技巧：可多次执行，插入属性数量指数（x2）增加\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_property_inject_model_suffix",
+        "tips" : "作用：利用类名后缀(支持正则)，批量过滤包含属性的类\n例如: 'Model,_M'将过滤类UserModel、User_M等\n目的: 避免Model字段不匹配后台数据，或者对象归档失败",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_property_inject_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名方法",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+        "function1:param2:",
+        "function2",
+        "fileXXX.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_function_rename.json",
+      "configValues" : [
+        "function1:param2:",
+        "function2",
+        "fileXXX.m"
+      ]
+    },
+    "key" : "config_is_oc_function_rename",
+    "tips" : "1.实现协议的时候记得遵守协议（例如：MyClass: NSObject<MyProptocol>），不要只写实现方法，因为没有上下文关系，混淆的时候会当成自己的类，可能导致运行时错误，YYModel已做特殊处理\n2.通过反射调用的方法需要自己留意,可查看预检查日志,目前只能简单识别NSSelectorFromString且方法名是完整的例如：\nNSSelectorFromString(@\"function:param:\")\nNSSelectorFromString([NSString stringWithFormat:@\"%@\",@\"function:param:\"])\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_function_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改闭包",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_closure_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_closure_modify",
+    "tips" : "提取方法体中的闭包内容封装为方法并调用\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_closure_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "拆分方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_function_split.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_function_split",
+    "tips" : "拆分方法体\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_function_split_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_function_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_function_inject",
+    "tips" : "根据方法的返回值类型，在分类中创建相应的方法，同时封装原方法的返回值并调用，后期将进一步升级\n小技巧：可多次执行，插入方法数量指数（x2）增加\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_function_inject_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "合并方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_function_merge.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_function_merge",
+    "tips" : "穿插合并代码，改变函数堆栈结构\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "m,m_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_function_merge_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符非数字",
+        "configValue" : "m,m_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_function_merge_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_function_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_function_modify",
+    "tips" : "拆分方法，对原方法进行封装并根据参数不同进行局部调整，然后调用\n小技巧：可多次执行，修改方法数量指数（x2）增加\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "实参引用百分比",
+        "check" : "^([1-9][0-9]{0,1}|100|0)$",
+        "key" : "config_oc_function_modify_argument_reference_percentage",
+        "tips" : "控制插入的实参引用上下文的比例，取值范围(1~100)，默认0%",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "交换参数",
+        "check" : "",
+        "key" : "config_oc_function_modify_exchange_param_enable",
+        "tips" : "随机交换参数位置，主要用于多参方法",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_function_modify_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名全局变量",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或全局变量名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_global_variable_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_global_variable_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "k,k_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_global_variable_rename_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符不可为数字",
+        "configValue" : "k_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "value,data,string,name",
+        "title" : "变量后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_global_variable_rename_suffix",
+        "tips" : "多个逗号隔开并随机调用\n注意：忽略首字符大小写",
+        "configValue" : "value,data,string,name",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_global_variable_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改全局变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或全局变量名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_global_variable_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_global_variable_modify",
+    "tips" : "const全局变量修改为全局函数，注意：可变全局变量将忽略",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_global_variable_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名多语言",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_localizable_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_localizable_rename",
+    "tips" : "对直接或间接使用系统方法NSLocalizedString、NSLocalizedStringFromTable的多语言进行修改,自定义封装处理详见：https:\/\/520coding.yuque.com\/docs\/share\/de45751a-c629-4737-84ad-251fb2502123\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_localizable_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入局部变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "main.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_local_variable_inject.json",
+      "configValues" : [
+        "main.m"
+      ]
+    },
+    "key" : "config_is_oc_local_variable_inject",
+    "tips" : "拆分复合语句\n小技巧：可多次执行，修改的代码数量指数（x2）增加",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_local_variable_inject_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改局部变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "main.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或局部变量名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_local_variable_modify.json",
+      "configValues" : [
+        "main.m"
+      ]
+    },
+    "key" : "config_is_oc_local_variable_modify",
+    "tips" : "局部变量的值运行时保持不变\n小技巧：可多次执行，修改的代码数量指数（x2）增加\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_local_variable_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改字符串",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或字符串，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_string_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_string_modify",
+    "tips" : "字符串随机加密混淆,如果字符串加密后如果影响性能,请自行加入黑名单过滤\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "最少长度",
+        "check" : "^\\d+$",
+        "key" : "config_oc_string_modify_min_length ",
+        "tips" : "字符个数>=最少长度,将被修改",
+        "configValue" : "8",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "3",
+        "title" : "有效个数",
+        "check" : "^\\d+$",
+        "key" : "config_oc_string_modify_valid_count",
+        "tips" : "包含中文、英文和数字等常见有意义字符之和>=有效个数,将被修改",
+        "configValue" : "3",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "k,k_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_string_modify_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符不可为数字",
+        "configValue" : "str_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "value,data,string,name",
+        "title" : "变量后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_string_modify_suffix",
+        "tips" : "多个逗号隔开并随机调用\n注意：忽略首字符大小写",
+        "configValue" : "value,data,string,name",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_string_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改xib、storyboard",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_xib_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_xib_modify",
+    "tips" : "xib、storyboard文件插入垃圾视图，并修改内部结构属性\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_xib_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改字体",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_font_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_font_modify",
+    "tips" : "微调项目中字体大小",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_font_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改颜色",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_color_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_color_modify",
+    "tips" : "微调UI控件的颜色",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_color_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改布局",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll:"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_layout_modify.json",
+      "configValues" : [
+        "scrollViewDidScroll:"
+      ]
+    },
+    "key" : "config_is_oc_layout_modify",
+    "tips" : "微调UI布局，有一定风险，尤其是某些地方有严格的尺寸要求，该情况请加入黑名单过滤",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "Frame,Masonry",
+        "title" : "布局模式",
+        "check" : "^(SDAutoLayout|Masonry|Frame|,)+$",
+        "key" : "config_oc_layout_modify_mode",
+        "tips" : "可多选(Masonry | Frame | SDAutoLayout), 例如: Frame,Masonry",
+        "configValue" : "Frame,Masonry",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_layout_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入文件",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_file_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_file_inject",
+    "tips" : "生成oc文件、插入的文件互相调用，而且会在项目中的其它文件中引用，进行初始化、调用公有方法等过程。\n注意：(在项目根路径下，会生成\"other_xxx_file\"的文件夹）\n子选项Target控制导入方式，若为空，则需要手动导入，将生成的文件夹拖入工程即可；反之，自动导入",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Target",
+        "check" : "",
+        "key" : "config_oc_file_inject_target",
+        "tips" : "工程的target，例如: confuse_test，默认第一个，多个请用逗号隔开\n注意：需要自行检查",
+        "configValue" : "AppleProject",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "文件名前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_oc_file_inject_prefix",
+        "tips" : "所有文件名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "20",
+        "title" : "插入次数",
+        "check" : "^([1-4][0-9]|[1-9])$",
+        "key" : "config_oc_file_inject_count",
+        "tips" : "范围1~49，每次插入14个文件",
+        "configValue" : "20",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入文本",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "config_black_oc_text_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_text_inject",
+    "tips" : "生成json、txt、doc、plist等文本、而且会在项目中的其它文件中引用，生成属性、初始化、自动销毁等。\n注意：(在项目根路径下，会生成\"other_xxx_text\"的文件夹，生成的文件会自动导入）",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "文件名前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_oc_text_inject_prefix",
+        "tips" : "所有的文件名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "20",
+        "title" : "插入数量",
+        "check" : "^([1-4][0-9]|[1-9])$",
+        "key" : "config_oc_text_inject_count",
+        "tips" : "1~49",
+        "configValue" : "20",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改类",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)、类名,换行作为分隔符",
+      "title" : "黑名单",
+      "key" : "black_oc_class_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_oc_class_modify",
+    "tips" : "修改成员变量、属性、方法声明及定义的顺序，支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "关联注释",
+        "check" : "",
+        "key" : "config_oc_class_modify_annotation_enable",
+        "tips" : "同步移动关联的注释",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_class_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名类",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+        "Main",
+        "LaunchScreen",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ],
+      "tips" : "#文件名(带扩展名且正则只对新模式有效)或类名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_oc_class_rename.json",
+      "configValues" : [
+        "Main",
+        "LaunchScreen",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ]
+    },
+    "key" : "config_is_oc_class_rename",
+    "tips" : "包含类名、结构体名、协议名，如果需要同步改文件名请勾选'重命名同名文件名'，支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "旧模式",
+        "check" : "",
+        "key" : "config_oc_class_rename_old_enable",
+        "tips" : "考虑到OC类名本身具有唯一性，保留旧版本功能，混淆速度极快。旧版类名要求1.首字不能是小写 2.类名长度>=5 3.分类名长度>=5（3或4必须全部大写），新模式不受限",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "类名前缀",
+        "check" : "^[A-Za-z]+$",
+        "key" : "config_oc_class_rename_prefix",
+        "tips" : "大小写字母",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "重命名同名文件名",
+        "check" : "",
+        "key" : "config_oc_class_rename_file_rename_enable",
+        "tips" : "文件名和类名相同，将同步修改\n提示：测试阶段关闭，方便查看修改和对比，发布的时候记得开启",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "ignore",
+        "title" : "重命名相似字符串",
+        "check" : "^(ignore|equal|contain)$",
+        "key" : "config_oc_class_rename_string_rename",
+        "tips" : "ignore：忽略，equal：字符串与类名相等，contain：字符串包含类名。\n注意：旧模式情况下，该功能无效",
+        "configValue" : "ignore",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "class,new",
+        "title" : "纠正非标准点语法",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_oc_class_rename_illegal_point_grammar",
+        "tips" : "新模式使用，针对非标准的点语法调用（方法当做属性调用），例如:class,new\nMyClass.class -> [MyClass class]\nMyClass.new -> [MyClass new]",
+        "configValue" : "class,new",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "关联文件",
+        "check" : "",
+        "key" : "config_oc_class_rename_associated_paths",
+        "tips" : "其他包含类名的文件，每个文件(夹)逗号隔开，无需全路径，支持正则",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_oc_class_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_property_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_cpp_property_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_property_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "插入属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或关联属性名(单独执行有效)或类名或方法名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_property_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_cpp_property_inject",
+    "tips" : "插入属性（成员变量）并相互调用修改，自动初始化、销毁、并在其他方法中赋值修改调用等类似人工操作\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_property_inject_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_function_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_cpp_function_rename",
+    "tips" : "测试版，如果遇到问题欢迎指正\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_function_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_function_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_cpp_function_modify",
+    "tips" : "利用重载技术，改变方法原型并调用修改形参\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_function_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "修改字符串",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或字符串，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_string_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_cpp_string_modify",
+    "tips" : "字符串随机加密混淆,如果字符串加密后如果影响性能,请自行加入黑名单过滤\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "最少长度",
+        "check" : "^\\d+$",
+        "key" : "config_cpp_string_modify_min_length ",
+        "tips" : "字符个数>=最少长度,将被修改",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "3",
+        "title" : "有效个数",
+        "check" : "^\\d+$",
+        "key" : "config_cpp_string_modify_valid_count",
+        "tips" : "包含中文、英文和数字等常见有意义字符之和>=有效个数,将被修改",
+        "configValue" : "3",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "k,k_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_cpp_string_modify_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符不可为数字",
+        "configValue" : "k,k_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "value,data,string,name",
+        "title" : "变量后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_cpp_string_modify_suffix",
+        "tips" : "多个逗号隔开并随机调用\n注意：忽略首字符大小写",
+        "configValue" : "value,data,string,name",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_string_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+      "config_is_macro"
+    ],
+    "title" : "重命名类",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "Main",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ],
+      "tips" : "#文件名(带扩展名且正则只对新模式有效)或类名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_cpp_class_rename.json",
+      "configValues" : [
+        "Main",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ]
+    },
+    "key" : "config_is_cpp_class_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "旧模式",
+        "check" : "",
+        "key" : "config_cpp_class_rename_old_enable",
+        "tips" : "混淆速度极快。旧版类名要求1.首字不能是小写 2.类名长度>=5，新模式不受限",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "类名前缀",
+        "check" : "^[A-Za-z]+$",
+        "key" : "config_cpp_class_rename_prefix",
+        "tips" : "大小写字母",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "重命名同名文件名",
+        "check" : "",
+        "key" : "config_cpp_class_rename_file_rename_enable",
+        "tips" : "文件名和类名相同，将同步修改\n提示：测试阶段关闭，方便查看修改和对比，发布的时候记得开启",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_cpp_class_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改控制流",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_condition_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_condition_modify",
+    "tips" : "if条件语句中的逻辑运算和可选绑定进行等价替换",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_condition_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名全局方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_global_function_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_global_function_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "参数标签",
+        "check" : "",
+        "key" : "config_swift_global_function_rename_argument_label_enable",
+        "tips" : "注意：耗时增加20%左右",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_swift_global_function_rename_prefix",
+        "tips" : "所有的全局方法名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_global_function_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名图片",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "AppIcon",
+        "LaunchImage"
+      ],
+      "tips" : "#图片名(无扩展名)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_image_rename.json",
+      "configValues" : [
+        "AppIcon",
+        "LaunchImage"
+      ]
+    },
+    "key" : "config_is_swift_image_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "运行拼接名称",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_image_rename_runtime_join",
+        "tips" : "用于运行时通过字符串拼接生成的图片名，多个逗号隔开。\n例如：'number,xxx',代码中UIImage(named: \"number-\\(i)\")对应的number会被修改",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "指定忽略长度",
+        "check" : "^([4-9]|[1][0-9])$",
+        "key" : "config_swift_image_rename_ignore_length",
+        "tips" : "图片名长度小于指定长度为危险名称，将忽略，取值范围(4~19)，默认4，注意：一个汉字长度为3",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "忽略危险",
+        "check" : "",
+        "key" : "config_swift_image_rename_ignore_danger_enable",
+        "tips" : "与字典key同名，将忽略",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "关联文件",
+        "check" : "",
+        "key" : "config_swift_image_rename_associated_paths",
+        "tips" : "其他包含图片名的文件，每个文件(夹)逗号隔开，无需全路径，支持正则",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_image_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名Lottie",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#Lottie名(无扩展名)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_lottie_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_lottie_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "运行拼接名称",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_lottie_rename_runtime_join",
+        "tips" : "用于运行时通过字符串拼接生成的Lottie名，多个逗号隔开。\n例如：'number,xxx',代码中LottieAnimation.named(\"number-\\(i)\")对应的number会被修改",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "指定忽略长度",
+        "check" : "^([4-9]|[1][0-9])$",
+        "key" : "config_swift_lottie_rename_ignore_length",
+        "tips" : "Lottie名长度小于指定长度为危险名称，将忽略，取值范围(4~19)，默认4，注意：一个汉字长度为3",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "忽略危险",
+        "check" : "",
+        "key" : "config_swift_lottie_rename_ignore_danger_enable",
+        "tips" : "与字典key同名，将忽略",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_lottie_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入图片",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll(_:)"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_image_inject.json",
+      "configValues" : [
+        "scrollViewDidScroll(_:)"
+      ]
+    },
+    "key" : "config_is_swift_image_inject",
+    "tips" : "源码中自动调用图片，小技巧：可多次执行\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "插入路径",
+        "check" : "^.*\\.xcassets$",
+        "key" : "config_swift_image_inject_path",
+        "tips" : "注意: 只能是xcassets文件夹, 建议项目中用到的图片全部放到xcassets文件夹",
+        "configValue" : "\/Users\/douxiu\/Desktop\/003_project\/codeResource\/AppleProject\/AppleProject\/Images.xcassets",
+        "required" : 1
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "插入数量",
+        "check" : "^[1-9][0-9]$",
+        "key" : "config_swift_image_inject_count",
+        "tips" : "10~99",
+        "configValue" : "50",
+        "required" : 1
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名枚举",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或枚举成员，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_enum_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_enum_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "String,",
+        "title" : "忽略原始值",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_enum_rename_ignore_raw_values",
+        "tips" : "多个原始值，逗号隔开",
+        "configValue" : "String,",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_enum_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_property_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_property_rename",
+    "tips" : "注意：\n1.使用R.swift，需要主动关闭刷新R.generated.swift\n2.混编项目需要同时开启OC对应功能不可分开执行\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_property_rename_model_suffix",
+        "tips" : "作用：利用类名后缀(支持正则)，批量过滤包含属性的类\n例如: 'Model,_M'将过滤类UserModel、User_M等\n目的：避免Model字段不匹配后台数据\n提示：如果使用ObjectMapper的属性映射, 可不设Model后缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model映射",
+        "check" : "^(Codable|SmartCodable|,)+$",
+        "key" : "config_swift_property_rename_model_mapping",
+        "tips" : "自动插入映射,可多选(Codable|SmartCodable), 例如: Codable,该选项只作用与Model后缀的文件\n目的: 属性改了同时也能匹配后台数据",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_property_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入属性",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll:"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或关联属性名(单独执行有效)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_property_inject.json",
+      "configValues" : [
+        "scrollViewDidScroll:"
+      ]
+    },
+    "key" : "config_is_swift_property_inject",
+    "tips" : "根据已有属性插入\n小技巧：可多次执行，插入属性数量指数（x2）增加\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Model后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_property_inject_model_suffix",
+        "tips" : "作用：利用类名后缀(支持正则)，批量过滤包含属性的类\n例如: 'Model,_M'将过滤类UserModel、User_M等\n目的: 避免Model字段不匹配后台数据，或者对象归档失败",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_property_inject_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_function_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_function_rename",
+    "tips" : "注意：\n1.使用R.swift，需要主动关闭刷新R.generated.swift\n2.混编项目需要同时开启OC对应功能不可分开执行\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "参数标签",
+        "check" : "",
+        "key" : "config_swift_function_rename_argument_label_enable",
+        "tips" : "注意：耗时增加20%左右",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_function_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改闭包",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_closure_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_closure_modify",
+    "tips" : "提取方法体中的闭包内容封装为方法并调用\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_closure_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "拆分方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_function_split.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_function_split",
+    "tips" : "拆分方法体\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_function_split_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_function_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_function_inject",
+    "tips" : "根据方法的返回值类型，在分类中创建相应的方法，同时封装原方法的返回值并调用，后期将进一步升级\n小技巧：可多次执行，插入方法数量指数（x2）增加\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_function_inject_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改方法",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_function_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_function_modify",
+    "tips" : "拆分方法，对原方法进行封装并根据参数不同进行局部调整，然后调用\n小技巧：可多次执行，修改方法数量指数（x2）增加\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "交换参数",
+        "check" : "",
+        "key" : "config_swift_function_modify_exchange_param_enable",
+        "tips" : "随机交换参数位置，主要用于多参方法",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "动态派发百分比",
+        "check" : "^([1-9][0-9]{0,1}|100|0)$",
+        "key" : "config_swift_function_modify_dynamic_dispatch_percentage",
+        "tips" : "取值范围(1~100)，0忽略",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "50",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_function_modify_percentage",
+        "tips" : "取值范围(1~100)，默认50%",
+        "configValue" : "50",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名全局变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或全局变量名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_global_variable_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_global_variable_rename",
+    "tips" : "支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "k,k_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_global_variable_rename_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符不可为数字",
+        "configValue" : "k,k_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "value,data,string,name",
+        "title" : "变量后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_global_variable_rename_suffix",
+        "tips" : "多个逗号隔开并随机调用\n注意：忽略首字符大小写",
+        "configValue" : "value,data,string,name",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_global_variable_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改字体",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_font_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_font_modify",
+    "tips" : "微调项目中字体大小",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_font_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改颜色",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_color_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_color_modify",
+    "tips" : "微调UI控件、colorset的颜色",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_color_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改布局",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "scrollViewDidScroll"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考#selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_layout_modify.json",
+      "configValues" : [
+        "scrollViewDidScroll"
+      ]
+    },
+    "key" : "config_is_swift_layout_modify",
+    "tips" : "微调UI布局，有一定风险，尤其是某些地方有严格的尺寸要求，该情况请加入黑名单过滤",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "Frame,SnapKit",
+        "title" : "布局模式",
+        "check" : "^(Frame|SnapKit|,)+$",
+        "key" : "config_swift_layout_modify_mode",
+        "tips" : "可多选(Frame | SnapKit), 例如: Frame,SnapKit",
+        "configValue" : "Frame,SnapKit",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_layout_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名多语言",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_localizable_rename.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_localizable_rename",
+    "tips" : "对直接或间接使用系统方法NSLocalizedString的多语言进行修改\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "自定义方法",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_localizable_custom_function",
+        "tips" : "类似NSLocalizedString，多个方法逗号隔开",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_localizable_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入局部变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "main.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或属性名或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_local_variable_inject.json",
+      "configValues" : [
+        "main.m"
+      ]
+    },
+    "key" : "config_is_swift_local_variable_inject",
+    "tips" : "拆分复合语句\n小技巧：可多次执行，修改的代码数量指数（x2）增加",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_local_variable_inject_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改局部变量",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "main.m"
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或局部变量名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_local_variable_modify.json",
+      "configValues" : [
+        "main.m"
+      ]
+    },
+    "key" : "config_is_swift_local_variable_modify",
+    "tips" : "局部变量的值运行时保持不变\n小技巧：可多次执行，修改的代码数量指数（x2）增加\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_local_variable_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改字符串",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或字符串(包含前后的引号等)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_string_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_string_modify",
+    "tips" : "字符串随机加密混淆,如果字符串加密后如果影响性能,请自行加入黑名单过滤\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "最少长度",
+        "check" : "^\\d+$",
+        "key" : "config_swift_string_modify_min_length ",
+        "tips" : "字符个数>=最少长度,将被修改",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "3",
+        "title" : "有效个数",
+        "check" : "^\\d+$",
+        "key" : "config_swift_string_modify_valid_count",
+        "tips" : "包含中文、英文和数字等常见有意义字符之和>=有效个数,将被修改",
+        "configValue" : "3",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "k,k_",
+        "title" : "变量前缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_string_modify_prefix",
+        "tips" : "多个逗号隔开并随机调用，注意：首字符不可为数字",
+        "configValue" : "k,k_",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "value,data,string,name",
+        "title" : "变量后缀",
+        "check" : "^(\\w|,|，)+$",
+        "key" : "config_swift_string_modify_suffix",
+        "tips" : "多个逗号隔开并随机调用\n注意：忽略首字符大小写",
+        "configValue" : "value,data,string,name",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_string_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改xib、storyboard",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_xib_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_xib_modify",
+    "tips" : "xib、storyboard文件插入垃圾视图，并修改内部结构属性\n支持部分版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_xib_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入文件",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_file_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_file_inject",
+    "tips" : "生成swift文件、插入的文件互相调用，而且会在项目中的其它文件中引用，进行初始化、调用公有方法等过程。\n注意：(在项目根路径下，会生成\"other_xxx_file\"的文件夹）\n子选项Target控制导入方式，若为空，则需要手动导入，将生成的文件夹拖入工程即可；反之，自动导入",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "Target",
+        "check" : "",
+        "key" : "config_swift_file_inject_target",
+        "tips" : "工程的target，例如: confuse_test，默认第一个，多个请用逗号隔开\n注意：需要自行检查",
+        "configValue" : "AppleProject",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "访问控制",
+        "check" : "^public$",
+        "key" : "config_swift_file_inject_access_control",
+        "tips" : "主要用于组件化项目，例如：public",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "文件名前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_swift_file_inject_prefix",
+        "tips" : "所有文件名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "20",
+        "title" : "插入次数",
+        "check" : "^([1-4][0-9]|[1-9])$",
+        "key" : "config_swift_file_inject_count",
+        "tips" : "范围1~49，每次插入14个文件",
+        "configValue" : "20",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "插入文本",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)或方法名(参考@selector)，多个换行",
+      "title" : "黑名单",
+      "key" : "config_black_swift_text_inject.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_swift_text_inject",
+    "tips" : "生成json、txt、doc、plist等文本、而且会在项目中的其它文件中引用，生成属性、初始化、自动销毁等。\n注意：(在项目根路径下，会生成\"other_xxx_text\"的文件夹，生成的文件会自动导入）",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "文件名前缀",
+        "check" : "^[A-Za-z_]+$",
+        "key" : "config_swift_text_inject_prefix",
+        "tips" : "所有的文件名添加指定前缀",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "20",
+        "title" : "插入数量",
+        "check" : "^([1-4][0-9]|[1-9])$",
+        "key" : "config_swift_text_inject_count",
+        "tips" : "1~49",
+        "configValue" : "20",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "重命名类",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "Main",
+        "LaunchScreen",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ],
+      "tips" : "#文件名(带扩展名且正则只对新模式有效)或类名，多个换行",
+      "title" : "黑名单",
+      "key" : "black_swift_class_rename.json",
+      "configValues" : [
+        "Main",
+        "LaunchScreen",
+        "main",
+        "AppDelegate",
+        "ViewController"
+      ]
+    },
+    "key" : "config_is_swift_class_rename",
+    "tips" : "包含类名、结构体名、枚举名、协议名，如果需要同步改文件名请勾选'重命名同名文件名'，注意：\n1.混编项目未勾选旧模式，需要同时开启OC对应功能不可分开执行\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "旧模式",
+        "check" : "",
+        "key" : "config_swift_class_rename_old_enable",
+        "tips" : "考虑到Swift类名本身具有一定的唯一性，保留旧版本功能，混淆速度极快。旧版类名要求1.首字不能是小写 2.类名长度>=5，新模式不受限",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "类名前缀",
+        "check" : "^[A-Za-z]+$",
+        "key" : "config_swift_class_rename_prefix",
+        "tips" : "大小写字母",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "0",
+        "title" : "重命名同名文件名",
+        "check" : "",
+        "key" : "config_swift_class_rename_file_rename_enable",
+        "tips" : "文件名和类名相同，将同步修改\n提示：测试阶段关闭，方便查看修改和对比，发布的时候记得开启",
+        "configValue" : "0",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_swift_class_rename_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改图片",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_image_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_image_modify",
+    "tips" : "小技巧：可多次执行\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "自定义路径",
+        "check" : "",
+        "key" : "config_image_modify_custom_paths",
+        "tips" : "支持正则，指定部分图片修改，空忽略",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "像素点信息",
+        "check" : "^(\\d+_\\d+(,|$))*$",
+        "key" : "config_image_modify_point_info",
+        "tips" : "日志显示像素点的实际信息，空忽略，例如:8_9,12_23",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "自定义RGBA",
+        "check" : "^(#([0-9A-Fa-f]{2}){3,4}=#([0-9A-Fa-f]{2}){3,4}(,|$))*$",
+        "key" : "config_image_modify_custom_rgba",
+        "tips" : "偏差范围2，空忽略，例如:#FF1122FF=#004400FF,#AABBCC=#FFBBDD",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "4",
+        "title" : "RGBA偏移",
+        "check" : "^\\d$",
+        "key" : "config_image_modify_rgba_offset",
+        "tips" : "偏移(0~9)范围，0忽略",
+        "configValue" : "4",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "主题色",
+        "check" : "^(\\d|[1-9]\\d|[1-2]\\d\\d|3[0-5]\\d|360|)$",
+        "key" : "config_image_modify_hsv_hue",
+        "tips" : "生成统一颜色风格，取值范围(0~360)，空忽略",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "9",
+        "title" : "色调偏移",
+        "check" : "^(\\d|[1-2]\\d|3[0-6])$",
+        "key" : "config_image_modify_hsv_h_offset",
+        "tips" : "取值范围(0~36)，0忽略",
+        "configValue" : "9",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "3",
+        "title" : "饱和度偏移",
+        "check" : "^\\d$",
+        "key" : "config_image_modify_hsv_s_offset",
+        "tips" : "取值范围(0~9)，0忽略",
+        "configValue" : "3",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "3",
+        "title" : "明暗度偏移",
+        "check" : "^\\d$",
+        "key" : "config_image_modify_hsv_v_offset",
+        "tips" : "取值范围(0~9)，0忽略",
+        "configValue" : "3",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "10",
+        "title" : "像素点数",
+        "check" : "^([0-9]|[1-9][0-9])$",
+        "key" : "config_image_modify_point_count",
+        "tips" : "微调(0-99)个像素点，实际上限总像素的1%，0忽略",
+        "configValue" : "10",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "70",
+        "title" : "质量调整",
+        "check" : "^([67]\\d|80|0)$",
+        "key" : "config_image_modify_quality",
+        "tips" : "百分比(60~80)，0忽略",
+        "configValue" : "70",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "2",
+        "title" : "大小偏移范围",
+        "check" : "^\\d$",
+        "key" : "config_image_modify_size_offset",
+        "tips" : "偏移(0~9)个像素范围，实际上限为长或宽的4%，0忽略",
+        "configValue" : "2",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "模式比例",
+        "check" : "(?#json_dictionary)",
+        "key" : "config_image_modify_mode_rate",
+        "tips" : "默认比例：contrast、blur、level、gamma，例如：{\"contrast\":1,\"blur\":2}，空忽略",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 1,
+        "defaultValue" : "",
+        "title" : "模式指令",
+        "check" : "",
+        "key" : "config_image_modify_mode_cmd",
+        "tips" : "图片修改指令集",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_image_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改Lottie",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_lottie_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_lottie_modify",
+    "tips" : "模拟Lottie文件结构且不影响实际效果。\n注意：预检查日志会扫描需要手动处理的部分",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_lottie_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改文件属性",
+    "selected" : 1,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "#文件名(带扩展名且支持正则)，多个换行",
+      "title" : "黑名单",
+      "key" : "black_file_property_modify.json",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_file_property_modify",
+    "tips" : "修改文件MD5值、创建时间、修改时间、访问时间\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "百分比控制",
+        "check" : "^([1-9][0-9]{0,1}|100)$",
+        "key" : "config_file_property_modify_percentage",
+        "tips" : "取值范围(1~100)，默认100%",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "修改工程",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+        "test_target",
+        "test_sdk",
+        "test_target.xcodeproj"
+      ],
+      "tips" : "#target名称或xcodeproj（带扩展名），多个换行",
+      "title" : "黑名单",
+      "key" : "black_xcode_project_modify.json",
+      "configValues" : [
+        "test_target",
+        "test_sdk",
+        "test_target.xcodeproj"
+      ]
+    },
+    "key" : "config_is_xcode_project_modify",
+    "tips" : "无需删除Cocoapods工程\n支持版本迭代混淆",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "修改uuid",
+        "check" : "",
+        "key" : "config_xcode_project_uuid_enable",
+        "tips" : "所有xx.xcodeproj的uuid都将被修改，如需过滤，请在黑名单中设置",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "1",
+        "title" : "修改target",
+        "check" : "",
+        "key" : "config_xcode_project_target_rename_enable",
+        "tips" : "提示：target名称要唯一，关联的文件名，文件夹名和工程配置都会一起修改。请保证工程文件名.xcodeproj和target名称保持一致，以免漏改",
+        "configValue" : "1",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "自定义target名称",
+        "check" : ".+=.+",
+        "key" : "config_xcode_project_target_rename_mapping",
+        "tips" : "格式要求：name1=replace1,name2=replace2\n例如：confuse_test=confuse_replace1,confuse_sdk=confuse_replace2",
+        "configValue" : "",
+        "required" : 0
+      }
+    ]
+  },
+  {
+    "depends" : [
+
+    ],
+    "title" : "文件对比",
+    "selected" : 0,
+    "black" : {
+      "defaultValues" : [
+
+      ],
+      "tips" : "",
+      "title" : "",
+      "key" : "",
+      "configValues" : [
+
+      ]
+    },
+    "key" : "config_is_file_difference_begin",
+    "tips" : "用于查看混淆前后文件的修改百分比，预计占用总时间10%左右，大项目建议关闭，用git工具对比",
+    "required" : 0,
+    "items" : [
+      {
+        "hidden" : 0,
+        "defaultValue" : "",
+        "title" : "参考路径",
+        "check" : "",
+        "key" : "config_file_difference_reference_path",
+        "tips" : "请选择原始项目根路径，注意:空为同级目录下的备份路径",
+        "configValue" : "",
+        "required" : 0
+      },
+      {
+        "hidden" : 0,
+        "defaultValue" : "100",
+        "title" : "最大限制",
+        "check" : "^[1-9][0-9]{0,3}$",
+        "key" : "config_file_difference_max_size",
+        "tips" : "单位KB，超过该大小的文件将忽略对比，取值范围(1~9999)，默认100",
+        "configValue" : "100",
+        "required" : 0
+      }
+    ]
+  }
+]

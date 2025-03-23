@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>moduleTreasure</key>
+    <string>LevelLockEndlessInterpreter</string>
+    <key>rareContainer</key>
+    <string>DialogModernInBase</string>
+    <key>windowDirectLoadCreator</key>
+    <string>NorthRoundGrandCoordinator</string>
+    <key>songDetect</key>
+    <string>RoyalRelayAttachArray</string>
+</dict>
+</plist>
