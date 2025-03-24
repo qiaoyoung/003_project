@@ -108,7 +108,7 @@ class EndUserAgreementScreen extends StatelessWidget {
               ),
               SizedBox(height: 24),
               Text(
-                '7. QINTAR APP-SPECIFIC TERMS',
+                '7. GRIVORA APP-SPECIFIC TERMS',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -116,7 +116,7 @@ class EndUserAgreementScreen extends StatelessWidget {
               ),
               SizedBox(height: 8),
               Text(
-                'The Qintar app is for entertainment purposes only. It does not provide financial, medical, or legal services. Any AI-generated content is not a substitute for professional advice.',
+                'The Grivora app is for entertainment purposes only. It does not provide financial, medical, or legal services. Any AI-generated content is not a substitute for professional advice.',
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
@@ -126,7 +126,7 @@ class EndUserAgreementScreen extends StatelessWidget {
               ),
               SizedBox(height: 32),
               Text(
-                '© 2025 Qintar. All rights reserved.',
+                '© 2025 Grivora. All rights reserved.',
                 style: TextStyle(
                   fontSize: 12,
                   color: Colors.grey,

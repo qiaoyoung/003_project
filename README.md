@@ -1,6 +1,6 @@
-# Qintar - AI聊天应用
+# Grivora - AI聊天应用
 
-Qintar是一款基于Flutter开发的AI聊天应用，专为iOS平台打造。
+Grivora是一款基于Flutter开发的AI聊天应用，专为iOS平台打造。
 
 ## 项目特点
 

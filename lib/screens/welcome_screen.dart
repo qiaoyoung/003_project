@@ -105,7 +105,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       builder: (context) => AlertDialog(
         title: const Text('Network Connection Error'),
         content: const Text(
-            'Qintar requires an internet connection to function properly. Please check your network settings and try again.'),
+            'Grivora requires an internet connection to function properly. Please check your network settings and try again.'),
         actions: [
           TextButton(
             onPressed: () {
@@ -220,7 +220,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: SlideTransition(
                       position: _slideAnimation,
                       child: const Text(
-                        'Qintar',
+                        'Grivora',
                         style: TextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.bold,
@@ -350,7 +350,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   FadeTransition(
                     opacity: _fadeAnimation,
                     child: const Text(
-                      '© 2025 Qintar. All rights reserved.',
+                      '© 2025 Grivora. All rights reserved.',
                       style: TextStyle(
                         color: Colors.white70,
                         fontSize: 12,

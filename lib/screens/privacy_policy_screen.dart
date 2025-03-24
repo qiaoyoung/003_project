@@ -35,7 +35,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             const Text(
-              'Qintar Team ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Qintar.',
+              'Grivora Team ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how your personal information is collected, used, and disclosed by Grivora.',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
@@ -72,7 +72,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             _buildSection(
               '5. Your Choices',
-              'Account Information: You may update, correct, or delete your account information at any time by logging into your account. If you wish to delete your account, please contact us at privacy@qintar.com.\n\n'
+              'Account Information: You may update, correct, or delete your account information at any time by logging into your account. If you wish to delete your account, please contact us at privacy@grivora.com.\n\n'
                   'Cookies: Most web browsers are set to accept cookies by default. If you prefer, you can usually choose to set your browser to remove or reject browser cookies.\n\n'
                   'Communications: You may opt out of receiving communications from us by following the instructions in those messages. If you opt out, we may still send you important administrative messages, such as those about your account or our ongoing relationship.',
             ),
@@ -90,12 +90,12 @@ class PrivacyPolicyScreen extends StatelessWidget {
             ),
             _buildSection(
               '9. Contact Us',
-              'If you have any questions about this Privacy Policy, please contact us at privacy@qintar.com.',
+              'If you have any questions about this Privacy Policy, please contact us at privacy@grivora.com.',
             ),
             const SizedBox(height: 32),
             Center(
               child: Text(
-                '© 2025 Qintar. All rights reserved.',
+                '© 2025 Grivora. All rights reserved.',
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey[500],

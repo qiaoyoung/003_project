@@ -33,7 +33,7 @@ class VersionInfoScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Qintar',
+                    'Grivora',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -92,14 +92,14 @@ class VersionInfoScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            _buildInfoItem('Developer', 'Qintar Team'),
+            _buildInfoItem('Developer', 'Grivora Team'),
             _buildInfoItem('Category', 'Social Networking'),
             _buildInfoItem('Age Rating', '12+'),
             _buildInfoItem('Languages', 'English'),
             const SizedBox(height: 32),
             const Center(
               child: Text(
-                '© 2025 Qintar. All rights reserved.',
+                '© 2025 Grivora. All rights reserved.',
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.grey,
