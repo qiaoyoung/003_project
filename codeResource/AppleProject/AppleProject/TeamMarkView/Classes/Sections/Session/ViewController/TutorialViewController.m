@@ -1022,14 +1022,6 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
         //: NIMSession *session = message.session;
         NIMSession *session = message.session;
 
-        //: UIViewController *topvc = [self getTopMostController];
-        UIViewController *topvc = [self titleTeam];
-        //: if (![topvc isKindOfClass:NSClassFromString(@"NTESSessionViewController")] && ![topvc isKindOfClass:[CCCSessionViewController class]]) {
-        if (![topvc isKindOfClass:NSClassFromString(@"PointBlankViewController")] && ![topvc isKindOfClass:[TutorialViewController class]]) {
-            //: return;
-            return;
-        }
-
         //: if (![session isEqual:self.session] || !messages.count)
         if (![session isEqual:self.session] || !messages.count)
         {
@@ -1131,49 +1123,6 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
         self.canTapVoiceBtn = YES;
     }
 }
-
-
-//获取当前最上层的控制器
-//: - (UIViewController *)getTopMostController {
-- (UIViewController *)titleTeam {
-    //: UIViewController *topVC = [UIApplication sharedApplication].windows.firstObject.rootViewController;
-    UIViewController *topVC = [UIApplication sharedApplication].windows.firstObject.rootViewController;
-    //循环之前tempVC和topVC是一样的
-    //: UIViewController *tempVC = topVC;
-    UIViewController *tempVC = topVC;
-    //: while (1) {
-    while (1) {
-        //: if ([topVC isKindOfClass:[UITabBarController class]]) {
-        if ([topVC isKindOfClass:[UITabBarController class]]) {
-            //: topVC = ((UITabBarController*)topVC).selectedViewController;
-            topVC = ((UITabBarController*)topVC).selectedViewController;
-        }
-        //: if ([topVC isKindOfClass:[UINavigationController class]]) {
-        if ([topVC isKindOfClass:[UINavigationController class]]) {
-            //: topVC = ((UINavigationController*)topVC).visibleViewController;
-            topVC = ((UINavigationController*)topVC).visibleViewController;
-        }
-        //: if (topVC.presentedViewController) {
-        if (topVC.presentedViewController) {
-            //: topVC = topVC.presentedViewController;
-            topVC = topVC.presentedViewController;
-        }
-        //如果两者一样，说明循环结束了
-        //: if ([tempVC isEqual:topVC]) {
-        if ([tempVC isEqual:topVC]) {
-            //: break;
-            break;
-        //: } else {
-        } else {
-        //如果两者不一样，继续循环
-            //: tempVC = topVC;
-            tempVC = topVC;
-        }
-    }
-    //: return topVC;
-    return topVC;
-}
-
 
 //: - (void)fetchMessageAttachment:(NIMMessage *)message progress:(float)progress
 - (void)fetchMessageAttachment:(NIMMessage *)message progress:(float)progress

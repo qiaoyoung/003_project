@@ -629,12 +629,7 @@
     {
         NIMMessage *message = messages.firstObject;
         NIMSession *session = message.session;
-        
-        UIViewController *topvc = [self getTopMostController];
-        if (![topvc isKindOfClass:NSClassFromString(@"NTESSessionViewController")] && ![topvc isKindOfClass:[CCCSessionViewController class]]) {
-            return;
-        }
-        
+ 
         if (![session isEqual:self.session] || !messages.count)
         {
             return;
@@ -706,35 +701,7 @@
         self.canTapVoiceBtn = YES;
     }
 }
-
-
-//获取当前最上层的控制器
-- (UIViewController *)getTopMostController {
-    UIViewController *topVC = [UIApplication sharedApplication].windows.firstObject.rootViewController;
-    //循环之前tempVC和topVC是一样的
-    UIViewController *tempVC = topVC;
-    while (1) {
-        if ([topVC isKindOfClass:[UITabBarController class]]) {
-            topVC = ((UITabBarController*)topVC).selectedViewController;
-        }
-        if ([topVC isKindOfClass:[UINavigationController class]]) {
-            topVC = ((UINavigationController*)topVC).visibleViewController;
-        }
-        if (topVC.presentedViewController) {
-            topVC = topVC.presentedViewController;
-        }
-        //如果两者一样，说明循环结束了
-        if ([tempVC isEqual:topVC]) {
-            break;
-        } else {
-        //如果两者不一样，继续循环
-            tempVC = topVC;
-        }
-    }
-    return topVC;
-}
-
-
+ 
 - (void)fetchMessageAttachment:(NIMMessage *)message progress:(float)progress
 {
     if ([message.session isEqual:_session])
