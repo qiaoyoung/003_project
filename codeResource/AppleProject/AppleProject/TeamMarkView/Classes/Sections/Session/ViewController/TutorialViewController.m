@@ -1934,7 +1934,7 @@ VaccineData str_textSpeciallyData = (VaccineData){34, (Byte []){79, 71, 81, 81, 
 }
 
 //: - (void)onTapMenuItemDelete:(BBBMediaItem *)item
-- (void)ting:(WithMin *)item
+- (void)onTapMenuItemDelete:(WithMin *)item
 {
     //: NIMMessage *message = [self messageForMenu];
     NIMMessage *message = [self messageForMenu];
