@@ -31,6 +31,32 @@ target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
+  pod 'NIMSDK_LITE', '9.16.5'
+  pod 'TZImagePickerController'
+  pod 'IQKeyboardManager'
+  pod 'SDWebImage'
+  pod 'SDWebImageFLPlugin'
+  pod 'Toast'
+  pod 'YYImage'
+  pod 'YYImage/WebP'
+  pod 'AFNetworking', :git => 'https://github.com/qioayang/AFNetworking.git'
+  pod 'Masonry'
+  pod 'YYText'
+  pod 'KMNavigationBarTransition'
+  pod 'FFDropDownMenu'
+  pod 'TXScrollLabelView'
+  pod 'UMCommon'
+  pod 'UMDevice'
+  pod 'UMAPM'
+  pod 'Bugly'
+  pod 'FMDB'
+  pod 'Reachability'
+  pod 'SVProgressHUD'
+  pod 'YYModel'
+  pod 'UCZProgressView'
+  pod 'FLAnimatedImage'
+  pod 'SSZipArchive'
+  
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 end
 
