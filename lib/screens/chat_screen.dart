@@ -330,127 +330,145 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Column(
+      body: Stack(
         children: [
-          // Disclaimer banner
-          if (_showDisclaimer)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              color: Colors.amber.shade700,
-              child: Row(
-                children: [
-                  const Icon(Icons.info_outline, color: Colors.white, size: 18),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      'For entertainment purposes only. This app does not provide financial, medical, or legal services.',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                  ),
-                  IconButton(
-                    icon:
-                        const Icon(Icons.close, color: Colors.white, size: 16),
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                    onPressed: () {
-                      setState(() {
-                        _showDisclaimer = false;
-                      });
-                    },
-                  )
-                ],
-              ),
+          // 背景图片
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
             ),
-          // Error message
-          if (_errorMessage.isNotEmpty)
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: Colors.red.withOpacity(0.1),
-              width: double.infinity,
-              child: Text(
-                _errorMessage,
-                style: const TextStyle(color: Colors.red),
-              ),
-            ),
-
-          // Message list
-          Expanded(
-            child: _isLoading && _messages.isEmpty
-                ? const Center(child: CircularProgressIndicator())
-                : _messages.isEmpty
-                    ? const Center(
-                        child: Text('Start chatting with the AI assistant!'))
-                    : ListView.builder(
-                        controller: _scrollController,
-                        padding: const EdgeInsets.all(16),
-                        itemCount: _messages.length,
-                        itemBuilder: (context, index) {
-                          return _buildMessageItem(_messages[index]);
-                        },
-                      ),
           ),
-
-          // Typing indicator
-          if (_isTyping)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: 32,
-                    height: 32,
-                    child: _getAIAvatar(),
-                  ),
-                  const SizedBox(width: 12),
-                  const Text('Typing...'),
-                ],
-              ),
-            ),
-
-          // Input box
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 5,
-                  offset: const Offset(0, -1),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: _messageController,
-                    decoration: InputDecoration(
-                      hintText: 'Type a message...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(24),
-                        borderSide: BorderSide.none,
+          // 内容
+          Column(
+            children: [
+              // Disclaimer banner
+              if (_showDisclaimer)
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  color: Colors.amber.shade700,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.info_outline,
+                          color: Colors.white, size: 18),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'For entertainment purposes only. This app does not provide financial, medical, or legal services.',
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
                       ),
-                      filled: true,
-                      fillColor: Theme.of(context).colorScheme.surfaceVariant,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
+                      IconButton(
+                        icon: const Icon(Icons.close,
+                            color: Colors.white, size: 16),
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: () {
+                          setState(() {
+                            _showDisclaimer = false;
+                          });
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              // Error message
+              if (_errorMessage.isNotEmpty)
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  color: Colors.red.withOpacity(0.1),
+                  width: double.infinity,
+                  child: Text(
+                    _errorMessage,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                ),
+
+              // Message list
+              Expanded(
+                child: _isLoading && _messages.isEmpty
+                    ? const Center(child: CircularProgressIndicator())
+                    : _messages.isEmpty
+                        ? const Center(
+                            child:
+                                Text('Start chatting with the AI assistant!'))
+                        : ListView.builder(
+                            controller: _scrollController,
+                            padding: const EdgeInsets.all(16),
+                            itemCount: _messages.length,
+                            itemBuilder: (context, index) {
+                              return _buildMessageItem(_messages[index]);
+                            },
+                          ),
+              ),
+
+              // Typing indicator
+              if (_isTyping)
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 32,
+                        height: 32,
+                        child: _getAIAvatar(),
+                      ),
+                      const SizedBox(width: 12),
+                      const Text('Typing...'),
+                    ],
+                  ),
+                ),
+
+              // Input box
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 5,
+                      offset: const Offset(0, -1),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _messageController,
+                        decoration: InputDecoration(
+                          hintText: 'Type a message...',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(24),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor:
+                              Theme.of(context).colorScheme.surfaceVariant,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 12,
+                          ),
+                        ),
+                        textInputAction: TextInputAction.send,
+                        onSubmitted: (_) => _isTyping ? null : _sendMessage(),
+                        enabled: !_isTyping,
                       ),
                     ),
-                    textInputAction: TextInputAction.send,
-                    onSubmitted: (_) => _isTyping ? null : _sendMessage(),
-                    enabled: !_isTyping,
-                  ),
+                    const SizedBox(width: 8),
+                    FloatingActionButton(
+                      onPressed: _isTyping ? null : _sendMessage,
+                      mini: true,
+                      backgroundColor: const Color(0xFF2BBCFB), // 使用主题色
+                      child: const Icon(Icons.send),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 8),
-                FloatingActionButton(
-                  onPressed: _isTyping ? null : _sendMessage,
-                  mini: true,
-                  child: const Icon(Icons.send),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),

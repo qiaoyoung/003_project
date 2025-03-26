@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../data/user_data.dart';
 import '../widgets/user_card.dart';
+import '../colors.dart'; // 导入颜色定义
 import 'dart:async';
 import 'dart:math';
 
@@ -85,33 +86,50 @@ class _UserListScreenState extends State<UserListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Characters'),
+        title: const Text(
+          'AI Characters',
+          style: TextStyle(color: Colors.black87), // 修改文字颜色为黑色以便于在主题色背景上看清
+        ),
+        backgroundColor: AppColors.primaryColor, // 使用主题色作为导航栏背景
         elevation: 0,
       ),
-      body: RefreshIndicator(
-        key: _refreshIndicatorKey,
-        onRefresh: _refreshData,
-        child: groupedUsers.isEmpty
-            ? const Center(child: CircularProgressIndicator())
-            : CustomScrollView(
-                slivers: _buildOccupationGroups(),
-              ),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.2),
+            ),
+          ),
+          RefreshIndicator(
+            key: _refreshIndicatorKey,
+            onRefresh: _refreshData,
+            child: groupedUsers.isEmpty
+                ? const Center(child: CircularProgressIndicator())
+                : CustomScrollView(
+                    slivers: _buildOccupationGroups(),
+                  ),
+          ),
+        ],
       ),
+      backgroundColor: Colors.transparent,
     );
   }
 
   List<Widget> _buildOccupationGroups() {
     List<Widget> groups = [];
 
-    // 将职业分组的键转换为列表，以便可以随机排序
     List<String> occupations = groupedUsers.keys.toList();
-    // 随机打乱职业分组的顺序
     occupations.shuffle(_random);
 
     for (var occupation in occupations) {
       var occupationUsers = groupedUsers[occupation]!;
 
-      // 添加分组标题
       groups.add(
         SliverToBoxAdapter(
           child: Padding(
@@ -120,10 +138,10 @@ class _UserListScreenState extends State<UserListScreen> {
               children: [
                 Text(
                   occupation,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.onBackground,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(width: 8),
@@ -131,15 +149,14 @@ class _UserListScreenState extends State<UserListScreen> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                    color: Colors.white.withOpacity(0.2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
                     '${occupationUsers.length} people',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 14,
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -238,7 +255,7 @@ class _UserListScreenState extends State<UserListScreen> {
       child: Container(
         width: 160,
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: Colors.white.withOpacity(0.9),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -269,10 +286,10 @@ class _UserListScreenState extends State<UserListScreen> {
                 children: [
                   Text(
                     user.nickname,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black87,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -282,7 +299,7 @@ class _UserListScreenState extends State<UserListScreen> {
                     '${user.age} years · ${user.location}',
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.white70,
+                      color: Colors.grey[700],
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -321,7 +338,7 @@ class _UserListScreenState extends State<UserListScreen> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
+          color: Colors.white.withOpacity(0.9),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -431,7 +448,7 @@ class _UserListScreenState extends State<UserListScreen> {
                       user.occupation,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.white,
+                        color: Colors.black87,
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,

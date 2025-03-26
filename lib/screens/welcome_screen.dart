@@ -172,8 +172,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              const Color(0xFF8BFFEA), // 浅青绿色（主色调）
-              const Color(0xFF00D1B2), // 深青绿色
+              const Color(0xFF2BBCFB), // 主题色 #2BBCFB
+              const Color(0xFF0091DA), // 深蓝色
             ],
           ),
         ),

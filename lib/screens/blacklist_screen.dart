@@ -136,9 +136,26 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
       ),
       body: Stack(
         children: [
+          // 背景图片
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // 半透明遮罩层
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.2),
+            ),
+          ),
+
+          // 主内容
           _blacklistedUserIds.isEmpty && !_isLoading
               ? _buildEmptyState()
               : _buildBlacklistView(),
+
           if (_isLoading)
             Container(
               color: Colors.black.withOpacity(0.3),
@@ -148,6 +165,7 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
             ),
         ],
       ),
+      backgroundColor: Colors.transparent,
     );
   }
 
@@ -159,23 +177,25 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
           Icon(
             Icons.block,
             size: 80,
-            color: Colors.grey[400],
+            color: Colors.white.withOpacity(0.6),
           ),
           const SizedBox(height: 16),
-          Text(
+          const Text(
             'Your blacklist is empty',
             style: TextStyle(
               fontSize: 18,
-              color: Colors.grey[600],
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 8),
-          Text(
+          const Text(
             'Click the block button on the AI character detail page to add them to the blacklist',
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey[500],
+              color: Colors.white70,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
@@ -183,43 +203,73 @@ class _BlacklistScreenState extends State<BlacklistScreen> {
   }
 
   Widget _buildBlacklistView() {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: _blacklistedUserIds.length,
-      itemBuilder: (context, index) {
-        final userId = _blacklistedUserIds[index];
-        final user = _userMap[userId];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // 顶部提醒文案
+        Padding(
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+          child: Text(
+            'You will not receive messages from any of the contacts in the list',
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.white.withOpacity(0.8),
+            ),
+          ),
+        ),
 
-        return Card(
-          margin: const EdgeInsets.only(bottom: 16),
-          elevation: 2,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+        // 黑名单列表
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            itemCount: _blacklistedUserIds.length,
+            itemBuilder: (context, index) {
+              final userId = _blacklistedUserIds[index];
+              final user = _userMap[userId];
+
+              return Container(
+                margin: const EdgeInsets.only(bottom: 12),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ListTile(
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  leading: CircleAvatar(
+                    radius: 25,
+                    backgroundImage:
+                        user != null ? AssetImage(user.avatarPath) : null,
+                    backgroundColor: user == null ? Colors.grey[200] : null,
+                    child: user == null
+                        ? const Icon(Icons.block, color: Colors.red)
+                        : null,
+                  ),
+                  title: Text(
+                    user?.nickname ?? 'AI Character $userId',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  trailing: TextButton(
+                    onPressed: () => _removeFromBlacklist(userId),
+                    style: TextButton.styleFrom(
+                      foregroundColor: AppColors.primaryColor,
+                    ),
+                    child: const Text(
+                      'relieve',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
-          child: ListTile(
-            contentPadding: const EdgeInsets.all(16),
-            leading: CircleAvatar(
-              backgroundImage:
-                  user != null ? AssetImage(user.avatarPath) : null,
-              backgroundColor: user == null ? Colors.red[100] : null,
-              child: user == null
-                  ? const Icon(Icons.block, color: Colors.red)
-                  : null,
-            ),
-            title: Text(
-              user?.nickname ?? 'AI Character $userId',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            subtitle: Text(user?.occupation ?? 'Added to blacklist'),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete_outline, color: Colors.red),
-              onPressed: () => _showRemoveConfirmation(userId),
-            ),
-          ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

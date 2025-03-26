@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: const Color(0xFF8BFFEA),
+        selectedItemColor: const Color(0xFF2BBCFB),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
@@ -81,7 +81,7 @@ class PlaceholderPage extends StatelessWidget {
             Icon(
               Icons.construction,
               size: 80,
-              color: Color(0xFF8BFFEA),
+              color: Color(0xFF2BBCFB),
             ),
             const SizedBox(height: 16),
             Text(

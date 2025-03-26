@@ -141,8 +141,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(_isFavorited
-                ? '${user.nickname} has been added to favorites'
-                : '${user.nickname} has been removed from favorites'),
+                ? '${user.nickname} has been added to AI Friends'
+                : '${user.nickname} has been removed from AI Friends'),
             duration: const Duration(seconds: 2),
             backgroundColor: Theme.of(context).colorScheme.secondary,
           ),
@@ -652,8 +652,8 @@ class _UserDetailScreenState extends State<UserDetailScreen> {
                               const SizedBox(width: 8),
                               Text(
                                 _isFavorited
-                                    ? 'Remove from Favorites'
-                                    : 'Add to Favorites',
+                                    ? 'Remove from AI Friends'
+                                    : 'Add to AI Friends',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,

@@ -12,13 +12,13 @@ class UserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
+      elevation: 8,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
+      color: Colors.white.withOpacity(0.9),
       child: InkWell(
         onTap: () {
-          // 导航到用户详情页
           Navigator.pushNamed(
             context,
             '/user_detail',
@@ -34,9 +34,21 @@ class UserCard extends StatelessWidget {
               // 用户头像
               Stack(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage(user.avatarPath),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundImage: AssetImage(user.avatarPath),
+                    ),
                   ),
                   if (user.isOnline)
                     Positioned(
@@ -69,6 +81,7 @@ class UserCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: Colors.black87,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -80,14 +93,14 @@ class UserCard extends StatelessWidget {
                         Icon(
                           Icons.location_on,
                           size: 16,
-                          color: Colors.grey[600],
+                          color: Colors.grey[700],
                         ),
                         const SizedBox(width: 4),
                         Text(
                           user.location,
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey[600],
+                            color: Colors.grey[700],
                           ),
                         ),
                         const SizedBox(width: 16),
@@ -95,7 +108,7 @@ class UserCard extends StatelessWidget {
                           '${user.age}岁',
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.grey[600],
+                            color: Colors.grey[700],
                           ),
                         ),
                       ],
@@ -106,6 +119,8 @@ class UserCard extends StatelessWidget {
                       user.occupation,
                       style: const TextStyle(
                         fontSize: 14,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w500,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -117,6 +132,7 @@ class UserCard extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey[800],
+                        height: 1.3,
                       ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -133,14 +149,18 @@ class UserCard extends StatelessWidget {
                             vertical: 4,
                           ),
                           decoration: BoxDecoration(
-                            color: tag.color.withOpacity(0.2),
+                            color: tag.color.withOpacity(0.15),
                             borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: tag.color.withOpacity(0.3),
+                              width: 1,
+                            ),
                           ),
                           child: Text(
                             tag.name,
                             style: TextStyle(
                               fontSize: 12,
-                              color: tag.color,
+                              color: tag.color.withOpacity(0.8),
                               fontWeight: FontWeight.w500,
                             ),
                           ),

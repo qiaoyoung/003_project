@@ -69,6 +69,14 @@ class _ReportsScreenState extends State<ReportsScreen> {
       ),
       body: Stack(
         children: [
+          // 背景图片
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          // 内容
           _reportedUsers.isEmpty && !_isLoading
               ? _buildEmptyState()
               : _buildReportsList(),

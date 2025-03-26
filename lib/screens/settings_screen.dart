@@ -62,7 +62,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             'Account${DateTime.now().millisecondsSinceEpoch % 100000000}';
         final String? avatarPath = prefs.getString('user_avatar_path');
         if (avatarPath != null && avatarPath.isNotEmpty) {
-          _avatarFile = File(avatarPath);
+          final avatarFile = File(avatarPath);
+          // 检查文件是否存在
+          if (avatarFile.existsSync()) {
+            _avatarFile = avatarFile;
+          } else {
+            // 文件不存在，清除存储的路径
+            prefs.remove('user_avatar_path');
+            print('Avatar file not found: $avatarPath');
+          }
         }
         _isUserInfoLoading = false;
         _isInitialized = true;
@@ -149,15 +157,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
       );
 
       if (pickedFile != null) {
+        // 创建应用文档目录的永久文件
+        final appDir = await Directory.systemTemp.createTemp('avatars');
+        final fileName =
+            DateTime.now().millisecondsSinceEpoch.toString() + '.jpg';
+        final savedImage =
+            await File(pickedFile.path).copy('${appDir.path}/$fileName');
+
         setState(() {
-          _avatarFile = File(pickedFile.path);
+          _avatarFile = savedImage;
         });
 
         // 保存头像路径
         final prefs = await SharedPreferences.getInstance();
-        await prefs.setString('user_avatar_path', pickedFile.path);
+        await prefs.setString('user_avatar_path', savedImage.path);
+        print('Saved avatar path: ${savedImage.path}');
       }
     } catch (e) {
+      print('Error picking image: $e');
       if (e.toString().contains('permission')) {
         // 权限错误处理
         showDialog(
@@ -337,96 +354,127 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: Colors.black,
         elevation: 0,
       ),
-      body: _isUserInfoLoading
-          ? const Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildProfileSection(),
-                  // 设置列表
-                  Column(
+      body: Stack(
+        children: [
+          // 背景图片
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // 半透明遮罩层
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.2),
+            ),
+          ),
+
+          // 主内容 - 使用原有的内容
+          _isUserInfoLoading
+              ? const Center(child: CircularProgressIndicator())
+              : SingleChildScrollView(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 8),
-                      _buildSectionTitle('General Settings'),
-                      _buildSwitchItem(
-                        icon: Icons.notifications,
-                        title: 'Notifications',
-                        value: _isNotificationEnabled,
-                        onChanged: (value) {
-                          _saveSettings('isNotificationEnabled', value);
-                        },
+                      _buildProfileSection(),
+                      // 设置列表
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 8),
+                          _buildSectionTitle('General Settings'),
+                          _buildSwitchItem(
+                            icon: Icons.notifications,
+                            title: 'Notifications',
+                            value: _isNotificationEnabled,
+                            onChanged: (value) {
+                              _saveSettings('isNotificationEnabled', value);
+                            },
+                          ),
+                          const Divider(),
+                          _buildSectionTitle('My Collections & Management'),
+                          _buildSettingItem(
+                            icon: Icons.favorite,
+                            title: 'My AI Friends',
+                            subtitle:
+                                '$_favoritesCount AI characters favorited',
+                            onTap: _navigateToFavorites,
+                          ),
+                          _buildSettingItem(
+                            icon: Icons.block,
+                            title: 'Blacklist',
+                            subtitle:
+                                '$_blacklistCount AI characters blacklisted',
+                            onTap: _navigateToBlacklist,
+                          ),
+                          _buildSettingItem(
+                            icon: Icons.report,
+                            title: 'Report Records',
+                            subtitle: '$_reportedCount AI characters reported',
+                            onTap: _navigateToReports,
+                          ),
+                          const Divider(),
+                          _buildSectionTitle('About'),
+                          _buildSettingItem(
+                            icon: Icons.info_outline,
+                            title: 'Version Info',
+                            subtitle: 'v1.1.0',
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const VersionInfoScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                          _buildSettingItem(
+                            icon: Icons.description_outlined,
+                            title: 'Terms of Service',
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const TermsOfServiceScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                          _buildSettingItem(
+                            icon: Icons.privacy_tip_outlined,
+                            title: 'Privacy Policy',
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const PrivacyPolicyScreen(),
+                                ),
+                              );
+                            },
+                          ),
+                          const SizedBox(height: 24),
+                        ],
                       ),
-                      const Divider(),
-                      _buildSectionTitle('My Collections & Management'),
-                      _buildSettingItem(
-                        icon: Icons.favorite,
-                        title: 'My Favorites',
-                        subtitle: '$_favoritesCount AI characters favorited',
-                        onTap: _navigateToFavorites,
-                      ),
-                      _buildSettingItem(
-                        icon: Icons.block,
-                        title: 'Blacklist',
-                        subtitle: '$_blacklistCount AI characters blacklisted',
-                        onTap: _navigateToBlacklist,
-                      ),
-                      _buildSettingItem(
-                        icon: Icons.report,
-                        title: 'Report Records',
-                        subtitle: '$_reportedCount AI characters reported',
-                        onTap: _navigateToReports,
-                      ),
-                      const Divider(),
-                      _buildSectionTitle('About'),
-                      _buildSettingItem(
-                        icon: Icons.info_outline,
-                        title: 'Version Info',
-                        subtitle: 'v1.0.0',
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const VersionInfoScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      _buildSettingItem(
-                        icon: Icons.description_outlined,
-                        title: 'Terms of Service',
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const TermsOfServiceScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      _buildSettingItem(
-                        icon: Icons.privacy_tip_outlined,
-                        title: 'Privacy Policy',
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => const PrivacyPolicyScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                      const SizedBox(height: 24),
                     ],
                   ),
-                ],
-              ),
-            ),
+                ),
+        ],
+      ),
+      backgroundColor: Colors.transparent, // 设置背景色为透明
     );
   }
 
   Widget _buildProfileSection() {
+    return _buildUserProfileCard();
+  }
+
+  Widget _buildUserProfileCard() {
     return Card(
       margin: const EdgeInsets.all(16.0),
       elevation: 2.0,
@@ -592,52 +640,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onChanged: onChanged,
         activeColor: AppColors.primaryColor,
       ),
-    );
-  }
-
-  void _showVersionInfoDialog() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Version Info'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text('Current Version: v1.0.0'),
-              SizedBox(height: 8),
-              Text('Build Date: 2025-03-15'),
-              SizedBox(height: 16),
-              Text('New Features:'),
-              SizedBox(height: 4),
-              Text('• Brand new user interface'),
-              Text('• Optimized AI chat experience'),
-              Text('• More AI characters added'),
-              Text('• Fixed known issues'),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const VersionInfoScreen(),
-                  ),
-                );
-              },
-              child: const Text('View Details'),
-            ),
-          ],
-        );
-      },
     );
   }
 }

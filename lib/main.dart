@@ -8,6 +8,7 @@ import 'screens/translator_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/end_user_agreement_screen.dart';
 import 'models/user_model.dart';
+import 'colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +22,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Grivora',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark().copyWith(
-        primaryColor: const Color(0xFF8BFFEA),
+        primaryColor: AppColors.primaryColor,
         scaffoldBackgroundColor: const Color(0xFF121212),
         appBarTheme: AppBarTheme(
           backgroundColor: const Color(0xFF1E1E1E),
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF8BFFEA),
+            backgroundColor: AppColors.primaryColor,
             foregroundColor: Colors.black,
           ),
         ),
@@ -49,25 +50,30 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Roboto',
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF1E1E1E),
-          foregroundColor: Colors.white,
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.primaryColor,
+          foregroundColor: Colors.black87,
           elevation: 0,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF8BFFEA),
-            foregroundColor: Colors.black,
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: Colors.black87,
           ),
         ),
-        scaffoldBackgroundColor: const Color(0xFF121212),
-        cardColor: const Color(0xFF2C2C2C),
-        colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF8BFFEA),
-          secondary: Color(0xFF5CDED0),
-          surface: Color(0xFF1E1E1E),
-          background: Color(0xFF121212),
+        scaffoldBackgroundColor: AppColors.backgroundColor,
+        cardColor: AppColors.cardColor,
+        dividerColor: AppColors.dividerColor,
+        colorScheme: ColorScheme.light(
+          primary: AppColors.primaryColor,
+          secondary: AppColors.secondaryColor,
+          surface: AppColors.cardColor,
+          background: AppColors.backgroundColor,
           error: Colors.redAccent,
+          onPrimary: Colors.black87,
+          onSecondary: Colors.black87,
+          onSurface: AppColors.textPrimaryColor,
+          onBackground: AppColors.textPrimaryColor,
         ),
       ),
       initialRoute: '/',
@@ -93,9 +99,9 @@ class MyApp extends StatelessWidget {
             gender: 'None',
             age: 0,
             tags: [
-              UserTag(name: 'AI', color: const Color(0xFF8BFFEA)),
-              UserTag(name: 'Assistant', color: const Color(0xFF5CDED0)),
-              UserTag(name: 'Smart', color: const Color(0xFF00D1B2)),
+              UserTag(name: 'AI', color: AppColors.primaryColor),
+              UserTag(name: 'Assistant', color: AppColors.secondaryColor),
+              UserTag(name: 'Smart', color: AppColors.accentColor),
             ],
             isOnline: true,
             lastActive: DateTime.now(),

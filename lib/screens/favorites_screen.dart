@@ -3,6 +3,7 @@ import '../colors.dart';
 import '../services/user_preference_service.dart';
 import '../data/user_data.dart';
 import '../models/user_model.dart';
+import 'friend_detail_screen.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               content:
-                  Text('Failed to load favorites, please try again later')),
+                  Text('Failed to load AI Friends, please try again later')),
         );
       }
     }
@@ -80,7 +81,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
                 content: Text(
-                    'Failed to remove from favorites, please try again later')),
+                    'Failed to remove from AI Friends, please try again later')),
           );
         }
       }
@@ -93,7 +94,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
               content: Text(
-                  'Failed to remove from favorites, please try again later')),
+                  'Failed to remove from AI Friends, please try again later')),
         );
       }
     }
@@ -106,8 +107,8 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Remove from Favorites'),
-        content: Text('Are you sure you want to remove $name from favorites?'),
+        title: const Text('Remove from AI Friends'),
+        content: Text('Are you sure you want to remove $name from AI Friends?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -129,13 +130,21 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Favorites'),
+        title: const Text('My AI Friends'),
         backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black,
         elevation: 0,
       ),
       body: Stack(
         children: [
+          // 背景图片
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/backgroundImage.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+          // 内容
           _favoriteUserIds.isEmpty && !_isLoading
               ? _buildEmptyState()
               : _buildFavoritesList(),
@@ -163,7 +172,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            'You have not collected any AI characters',
+            'You have not added any AI Friends yet',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
@@ -171,7 +180,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           ),
           const SizedBox(height: 8),
           Text(
-            'Click the favorite button on the AI character detail page to add to favorites',
+            'Click the heart button on the AI character detail page to add them as friends',
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[500],
@@ -213,17 +222,23 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
               ),
             ),
             subtitle: Text(user?.occupation ?? 'Collected'),
-            trailing: IconButton(
-              icon: const Icon(Icons.delete_outline, color: Colors.red),
-              onPressed: () => _showRemoveConfirmation(userId),
-            ),
+            trailing: const Icon(Icons.chevron_right),
             onTap: () {
-              // 导航到AI角色详情页
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => UserDetailScreen(userId: userId),
-              //   ),
-              // );
+              // 导航到AI好友详情页
+              if (user != null) {
+                Navigator.of(context)
+                    .push(
+                  MaterialPageRoute(
+                    builder: (context) => FriendDetailScreen(user: user),
+                  ),
+                )
+                    .then((removed) {
+                  // 如果好友被移除，刷新列表
+                  if (removed == true) {
+                    _loadFavorites();
+                  }
+                });
+              }
             },
           ),
         );

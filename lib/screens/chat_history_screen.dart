@@ -3,6 +3,7 @@ import '../models/message_model.dart';
 import '../models/user_model.dart';
 import '../services/chat_service.dart';
 import '../data/user_data.dart';
+import '../colors.dart'; // 导入颜色定义
 import 'chat_screen.dart';
 import 'dart:async';
 
@@ -69,8 +70,14 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: const Text('Chat History'),
+        backgroundColor: AppColors.primaryColor, // 使用主题色作为导航栏背景
+        elevation: 0,
+        title: const Text(
+          'Chat History',
+          style: TextStyle(color: Colors.black87), // 修改文字颜色为黑色以便于在主题色背景上看清
+        ),
       ),
       body: RefreshIndicator(
         onRefresh: _loadAllChatHistories,
@@ -95,30 +102,25 @@ class _ChatHistoryScreenState extends State<ChatHistoryScreen>
                 Icon(
                   Icons.chat_bubble_outline,
                   size: 80,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  color: Colors.white.withOpacity(0.5),
                 ),
                 const SizedBox(height: 16),
-                Text(
+                const Text(
                   'No Chat Records',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onBackground
-                        .withOpacity(0.7),
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text(
+                const Text(
                   'Start a conversation with AI characters, records will appear here',
                   style: TextStyle(
                     fontSize: 14,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onBackground
-                        .withOpacity(0.5),
+                    color: Colors.white70,
                   ),
+                  textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 24),
                 ElevatedButton.icon(
