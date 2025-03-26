@@ -129,7 +129,7 @@ ProteosomeData str_competitiveWidowName = (ProteosomeData){228, (Byte []){148, 1
         _apiURL = StringFromProteosomeData(&str_breakfastContent);
 
         //        _apnsCername = @"DEVELOPER";
-        _apnsCername = @"push_womiro_release";
+        _apnsCername = @"push_Grivora_release";
 //        _apnsCername = StringFromProteosomeData(&str_terriblyTitle);
         _pkCername = @"pushkit_voice_test";
 //        _pkCername = StringFromProteosomeData(&str_competitiveWidowName);
