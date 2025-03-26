@@ -238,7 +238,6 @@ Byte str_needName[] = {28, 12, 88, 4, 202, 189, 200, 199, 202, 204, 183, 186, 19
         //: _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         //: [_sureBtn addTarget:self action:@selector(handleDelete) forControlEvents:UIControlEventTouchUpInside];
-        [_sureBtn addTarget:self action:@selector(handleDelete) forControlEvents:UIControlEventTouchUpInside];
         //: _sureBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         _sureBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         //: [_sureBtn setTitleColor:[UIColor colorWithHexString:@"666666"] forState:UIControlStateNormal];

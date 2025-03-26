@@ -117,7 +117,6 @@
 - (UIButton *)sureBtn {
     if (!_sureBtn) {
         _sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_sureBtn addTarget:self action:@selector(handleDelete) forControlEvents:UIControlEventTouchUpInside];
         _sureBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_sureBtn setTitleColor:TextColor_2 forState:UIControlStateNormal];
         [_sureBtn setTitle:LangKey(@"user_profile_avtivity_remove_friend") forState:UIControlStateNormal];
