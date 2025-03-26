@@ -710,14 +710,14 @@ typedef NS_ENUM(NSInteger,NTESMainTabType) {
     // 调整容器视图的大小
     //: CGRect containerFrame = self.containerView.frame;
     CGRect containerFrame = self.containerView.frame;
-    //: containerFrame.size.height = self.view.bounds.size.height - (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49);
-    containerFrame.size.height = self.view.bounds.size.height - (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49);
+    //: containerFrame.size.height = self.view.bounds.size.height - (IsiPhoneX ? 49 + 35 : 49);
+    containerFrame.size.height = self.view.bounds.size.height - (IsiPhoneX ? 49 + 35 : 49);
     //: self.containerView.frame = containerFrame;
     self.containerView.frame = containerFrame;
 
     // 设置 TabBar 的位置
-    //: CGRect tabBarFrame = CGRectMake(0, self.view.bounds.size.height - (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), self.view.bounds.size.width, (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49));
-    CGRect tabBarFrame = CGRectMake(0, self.view.bounds.size.height - (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), self.view.bounds.size.width, (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49));
+    //: CGRect tabBarFrame = CGRectMake(0, self.view.bounds.size.height - (IsiPhoneX ? 49 + 35 : 49), self.view.bounds.size.width, (IsiPhoneX ? 49 + 35 : 49));
+    CGRect tabBarFrame = CGRectMake(0, self.view.bounds.size.height - (IsiPhoneX ? 49 + 35 : 49), self.view.bounds.size.width, (IsiPhoneX ? 49 + 35 : 49));
     //: self.customTabBar.frame = tabBarFrame;
     self.customTabBar.frame = tabBarFrame;
 

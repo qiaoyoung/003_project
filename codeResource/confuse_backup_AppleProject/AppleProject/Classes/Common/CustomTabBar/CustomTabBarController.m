@@ -8,17 +8,6 @@
 
 #import "CustomTabBarController.h"
 
-// 确保 IsiPhoneX 宏定义存在
-#ifndef IsiPhoneX
-#define IsiPhoneX ({\
-    BOOL isPhoneX = NO;\
-    if (@available(iOS 11.0, *)) {\
-        isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
-    }\
-    isPhoneX;\
-})
-#endif
-
 @interface CustomTabBarController () <CustomTabBarDelegate>
 
 @property (nonatomic, strong) CustomTabBar *customTabBar;

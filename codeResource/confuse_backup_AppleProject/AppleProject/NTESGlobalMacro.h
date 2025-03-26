@@ -16,7 +16,15 @@
 #define UIScreenWidth                              [UIScreen mainScreen].bounds.size.width
 #define UIScreenHeight                             [UIScreen mainScreen].bounds.size.height
 #define UISreenWidthScale   UIScreenWidth / 320
-#define IsiPhoneX (UIScreenHeight == 812.0f || UIScreenHeight == 896.0f)
+#ifndef IsiPhoneX
+#define IsiPhoneX ({\
+    BOOL isPhoneX = NO;\
+    if (@available(iOS 11.0, *)) {\
+        isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+    }\
+    isPhoneX;\
+})
+#endif
 #define UITabbarHeight (IsiPhoneX ? 49 + 35 : 49)
 
 #define UICommonTableBkgColor UIColorFromRGB(0xe4e7ec)

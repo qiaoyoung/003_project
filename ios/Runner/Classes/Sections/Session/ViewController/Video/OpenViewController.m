@@ -223,8 +223,8 @@ FessQuitData str_tropicWithValue = (FessQuitData){217, (Byte []){250, 235, 155, 
     //: [self.view addSubview:backButton];
     [self.view addSubview:backButton];
 
-    //: UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
-    UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
+    //: UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
+    UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
     //: [self.view addSubview:btnView];
     [self.view addSubview:btnView];
     //: [self.view bringSubviewToFront:btnView];
@@ -435,8 +435,8 @@ FessQuitData str_tropicWithValue = (FessQuitData){217, (Byte []){250, 235, 155, 
 
 //: - (void)startPlay{
 - (void)titlePlay{
-    //: self.avPlayer.view.frame = CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49));
-    self.avPlayer.view.frame = CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49));
+    //: self.avPlayer.view.frame = CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(IsiPhoneX ? 49 + 35 : 49));
+    self.avPlayer.view.frame = CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(IsiPhoneX ? 49 + 35 : 49));
 //    self.avPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     //: [self.avPlayer prepareToPlay];

@@ -142,8 +142,8 @@ Byte str_goalChangeCuriousData[] = {41, 22, 65, 6, 198, 176, 2, 52, 50, 51, 46, 
     // 布局图标 - 稍微调整一下位置，使其与系统TabBar一致
     //: CGFloat iconSize = 24.0;
     CGFloat iconSize = 24.0;
-    //: CGFloat iconY = ([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 8 : 6; 
-    CGFloat iconY = ([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 8 : 6; // 针对刘海屏做适配
+    //: CGFloat iconY = IsiPhoneX ? 8 : 6; 
+    CGFloat iconY = IsiPhoneX ? 8 : 6; // 针对刘海屏做适配
     //: _iconImageView.frame = CGRectMake((itemWidth - iconSize) / 2, iconY, iconSize, iconSize);
     _iconImageView.frame = CGRectMake((itemWidth - iconSize) / 2, iconY, iconSize, iconSize);
 

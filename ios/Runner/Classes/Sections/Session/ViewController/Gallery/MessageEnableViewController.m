@@ -200,8 +200,8 @@ Byte str_dateLengthName[] = {61, 11, 6, 148, 239, 199, 116, 112, 109, 111, 114, 
     //: [self.view addSubview:backButton];
     [self.view addSubview:backButton];
 
-    //: self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49))];
-    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49))];
+    //: self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(IsiPhoneX ? 49 + 35 : 49))];
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(IsiPhoneX ? 49 + 35 : 49))];
     //: self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     //: self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -218,8 +218,8 @@ Byte str_dateLengthName[] = {61, 11, 6, 148, 239, 199, 116, 112, 109, 111, 114, 
     //: [self.scrollView addSubview:_ImageView];
     [self.scrollView addSubview:_ImageView];
 
-    //: UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
-    UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
+    //: UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
+    UIView *btnView = [[UIView alloc]initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49), [[UIScreen mainScreen] bounds].size.width, 49)];
     //: [self.view addSubview:btnView];
     [self.view addSubview:btnView];
     //: [self.view bringSubviewToFront:btnView];
@@ -363,8 +363,8 @@ Byte str_dateLengthName[] = {61, 11, 6, 148, 239, 199, 116, 112, 109, 111, 114, 
 // 拍照完成后显示照片并添加圆形裁剪框
 //: - (void)showCapturedPhoto:(UIImage *)photo {
 - (void)image:(UIImage *)photo {
-    //: _cropimage = [[UIImageView alloc] initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49)-(44.0f + [UIDevice vg_statusBarHeight]))];
-    _cropimage = [[UIImageView alloc] initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49)-(44.0f + [UIDevice task]))];
+    //: _cropimage = [[UIImageView alloc] initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49)-(44.0f + [UIDevice vg_statusBarHeight]))];
+    _cropimage = [[UIImageView alloc] initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(IsiPhoneX ? 49 + 35 : 49)-(44.0f + [UIDevice task]))];
     //: _cropimage.contentMode = UIViewContentModeScaleAspectFit;
     _cropimage.contentMode = UIViewContentModeScaleAspectFit;
     //: _cropimage.image = photo;
@@ -671,8 +671,8 @@ Byte str_dateLengthName[] = {61, 11, 6, 148, 239, 199, 116, 112, 109, 111, 114, 
 {
     //: if(!_tkImageView){
     if(!_tkImageView){
-        //: _tkImageView = [[TKImageView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49))];
-        _tkImageView = [[WithInputView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49))];
+        //: _tkImageView = [[TKImageView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice vg_statusBarHeight]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice vg_statusBarHeight])-(IsiPhoneX ? 49 + 35 : 49))];
+        _tkImageView = [[WithInputView alloc]initWithFrame:CGRectMake(0, (44.0f + [UIDevice task]), [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-(44.0f + [UIDevice task])-(IsiPhoneX ? 49 + 35 : 49))];
     }
     //: return _tkImageView;
     return _tkImageView;

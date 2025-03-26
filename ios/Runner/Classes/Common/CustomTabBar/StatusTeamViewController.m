@@ -93,8 +93,8 @@
     //: NSLog(@"CustomTabBarController - viewDidLayoutSubviews 被调用，TabBar 隐藏状态: %@", self.customTabBar.hidden ? @"隐藏" : @"显示");
 
     // 使用项目中定义的 TabBar 高度常量
-    //: CGFloat tabBarHeight = (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49);
-    CGFloat tabBarHeight = (([UIScreen mainScreen].bounds.size.height == 812.0f || [UIScreen mainScreen].bounds.size.height == 896.0f) ? 49 + 35 : 49);
+    //: CGFloat tabBarHeight = (IsiPhoneX ? 49 + 35 : 49);
+    CGFloat tabBarHeight = (IsiPhoneX ? 49 + 35 : 49);
     //: CGFloat screenHeight = CGRectGetHeight(self.view.bounds);
     CGFloat screenHeight = CGRectGetHeight(self.view.bounds);
 
