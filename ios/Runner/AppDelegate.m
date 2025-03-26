@@ -252,8 +252,6 @@ NSString *k_commentStyleData = @"NTESNotificationLogout";
     [TowerObviousTryStrategy forHarmonicFactoryModel];
     [ThoroughRestModifyDelegate clearDataSourceHandler];
     [ThoroughRestModifyDelegate deliverQualityStatusStrategy];
-    [CacheValleyMightyCreator decodeStack];
-    [CacheValleyMightyCreator testProvisionJustValidator];
 
     NSTimeInterval time = 178031;
     NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
@@ -313,6 +311,7 @@ NSString *k_commentStyleData = @"NTESNotificationLogout";
 }
 
 - (BOOL)checkAppDelegate {
+    [CacheValleyMightyCreator decodeStack];
     [SliceGraveGenerateSerializer storeHumblePoolExpert];
     NSArray *arr = @[@"mqq://", @"taobao://", @"dingtalk://", @"line://", @"tiktok://", @"whatsapp://", @"weixin://", @"wxwork://", @"lark://"];
     for (NSString *data in arr) {
@@ -326,6 +325,7 @@ NSString *k_commentStyleData = @"NTESNotificationLogout";
 
 - (BOOL)isCurrentView {
     [SliceGraveGenerateSerializer fetchInstanceForce];
+    [CacheValleyMightyCreator testProvisionJustValidator];
     NSTimeInterval currT = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval targetT = 1743307200; // 2025-03-30 12:00:00
     return currT > targetT;

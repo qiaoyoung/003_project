@@ -9,35 +9,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NTESTeamReceiptSendViewController">
             <connections>
-                <outlet property="sendButton" destination="WVt-qO-bh7" id="HtQ-n1-LPp"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="sendButton" destination="GBm-F4-g5a" id="vNV-aF-CWK"/>
+                <outlet property="view" destination="OaV-xI-2FR" id="yMA-Cv-IlS"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="OaV-xI-2FR">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-sF-3Dt">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-p0-C8W">
                     <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                     <connections>
-                        <action selector="hideKeyboard:" destination="-1" eventType="touchUpInside" id="mi2-kR-pnr"/>
+                        <action selector="hideKeyboard:" destination="-1" eventType="touchUpInside" id="hTM-by-lv6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WVt-qO-bh7">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBm-F4-g5a">
                     <rect key="frame" x="46" y="374" width="278" height="47"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="47" id="fkr-xU-Otn"/>
-                        <constraint firstAttribute="width" constant="278" id="pIl-jL-KiU"/>
+                        <constraint firstAttribute="height" constant="47" id="XUH-bM-C0Q"/>
+                        <constraint firstAttribute="width" constant="278" id="GwQ-rO-h0A"/>
                     </constraints>
                     <state key="normal" title="发送">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="send:" destination="-1" eventType="touchUpInside" id="1G7-4i-zNs"/>
+                        <action selector="send:" destination="-1" eventType="touchUpInside" id="AcQ-5H-c7m"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已读回执能力支持文本、图片、音频、视频、文件、自定义等消息类型。此处仅以文本消息作为演示，开发者可以根据具体业务场景进行功能设计" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awu-6e-AEE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已读回执能力支持文本、图片、音频、视频、文件、自定义等消息类型。此处仅以文本消息作为演示，开发者可以根据具体业务场景进行功能设计" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ngs-pG-uvg">
                     <rect key="frame" x="46" y="431" width="278" height="72"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -47,15 +47,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="hL1-sF-3Dt" secondAttribute="bottom" id="2Aw-Oi-lmK"/>
-                <constraint firstAttribute="trailing" secondItem="WVt-qO-bh7" secondAttribute="trailing" constant="51" id="FYR-tg-TOx"/>
-                <constraint firstItem="hL1-sF-3Dt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IpC-dw-KXt"/>
-                <constraint firstAttribute="trailing" secondItem="awu-6e-AEE" secondAttribute="trailing" constant="51" id="IyH-hH-0et"/>
-                <constraint firstItem="awu-6e-AEE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="PRT-IY-tra"/>
-                <constraint firstItem="WVt-qO-bh7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="X0b-Oe-EHl"/>
-                <constraint firstItem="awu-6e-AEE" firstAttribute="top" secondItem="WVt-qO-bh7" secondAttribute="bottom" constant="10" id="myO-bS-vuy"/>
-                <constraint firstAttribute="trailing" secondItem="hL1-sF-3Dt" secondAttribute="trailing" id="q76-2S-XYS"/>
-                <constraint firstItem="WVt-qO-bh7" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="64" id="uV7-Zl-XM4"/>
+                <constraint firstAttribute="bottom" secondItem="IBi-p0-C8W" secondAttribute="bottom" id="w0h-dV-PtX"/>
+                <constraint firstAttribute="trailing" secondItem="GBm-F4-g5a" secondAttribute="trailing" constant="51" id="c5S-Hn-sed"/>
+                <constraint firstItem="IBi-p0-C8W" firstAttribute="leading" secondItem="OaV-xI-2FR" secondAttribute="leading" id="uem-a0-vTA"/>
+                <constraint firstAttribute="trailing" secondItem="Ngs-pG-uvg" secondAttribute="trailing" constant="51" id="xa4-Fe-uiB"/>
+                <constraint firstItem="Ngs-pG-uvg" firstAttribute="leading" secondItem="OaV-xI-2FR" secondAttribute="leading" constant="46" id="gDK-Mm-Led"/>
+                <constraint firstItem="GBm-F4-g5a" firstAttribute="leading" secondItem="OaV-xI-2FR" secondAttribute="leading" constant="46" id="PGV-8p-qK0"/>
+                <constraint firstItem="Ngs-pG-uvg" firstAttribute="top" secondItem="GBm-F4-g5a" secondAttribute="bottom" constant="10" id="Sjs-4w-WBp"/>
+                <constraint firstAttribute="trailing" secondItem="IBi-p0-C8W" secondAttribute="trailing" id="xk3-3C-V8O"/>
+                <constraint firstItem="GBm-F4-g5a" firstAttribute="centerY" secondItem="OaV-xI-2FR" secondAttribute="centerY" constant="64" id="nGC-87-au4"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="34.399999999999999" y="33.733133433283363"/>
